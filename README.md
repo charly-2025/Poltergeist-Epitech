@@ -1,6 +1,6 @@
 ## README – Structure
 
-## Folder Structure
+## Folders Structure
 
 ```
 .
@@ -19,7 +19,7 @@
 
 ```
 
-## Commit Convention for documentations
+## Commit Convention
 ```
 Format of the commit message: KARMA GIT
 
