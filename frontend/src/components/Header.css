@@ -1,0 +1,68 @@
+.Header-computer {
+  background-color: #0A0A0A;
+  padding: 30px 60px;
+  border-bottom: 1px solid #1f1f1f;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content:space-between;
+  row-gap: 20px;
+  height:72px;
+}
+
+
+.Header-smartphone {
+  height: 72px;
+  background-color: #0A0A0A;
+  padding: 30px 60px;
+  border-bottom: 1px solid #1f1f1f;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 30px;
+}
+
+
+.Logo-namesite {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-self: center;
+  gap: 15px;
+  color: #17DB35;
+  /*Police : Jersey 20*/
+}
+.Logo-namesite h1 {
+  font-family: 'Jersey M54', sans-serif;
+  font-size: 40px;
+  margin: auto;
+}
+
+
+.Burger-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+@media (max-width: 520px) {
+  .Logo-namesite h1 {
+    font-size: 30px;
+  }
+  .Logo-namesite img {
+    height: 50px;
+  }
+
+  .Header-smartphone {
+    padding: 10px 30px;
+    gap: 10px;
+  }
+
+  .Burger-button img {
+    width: 30px;
+    height: 30px;
+  }
+}

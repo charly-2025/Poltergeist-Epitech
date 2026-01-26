@@ -1,0 +1,74 @@
+
+.Drawer-container{
+    background-color: #141414;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400px;
+    height: 100%;
+    padding: 30px;
+    font-size: 35px;
+    
+}
+
+.Drawer-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.Drawer-body{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.nav-drawer-item{
+    color: #99A1AF;
+    font-size: 30px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: auto;
+    cursor: pointer;
+    margin: 0 5px;
+    height: 45px;
+    padding: 0 15px;
+}
+
+.nav-drawer-item:hover{
+    color: #17DB35;
+    border-radius: 33px;
+    background-color: rgba(23, 219, 53, 0.1);
+}
+
+.selected{
+    color: #17DB35;
+}
+
+.nav-drawer-item:hover .img-home{
+    content: url('../images/home-vert.png');
+}
+
+.nav-drawer-item:hover .img-localization{
+    content: url('../images/location-vert.png');
+}
+
+.nav-drawer-item:hover .img-favorite{
+    content: url('../images/wishlist-vert.png');
+}
+
+.nav-drawer-item:hover .img-feedback{
+    content: url('../images/message-vert.png');
+}
+
+.nav-drawer-item:hover .img-support{
+    content: url('../images/support-vert.png');
+}
+
+a{
+    text-decoration: none;
+}

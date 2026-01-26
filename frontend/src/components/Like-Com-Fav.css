@@ -1,0 +1,147 @@
+
+
+.Like{
+    color: #99A1AF;
+    display: flex;
+    align-items: center;;
+    cursor: pointer;
+    margin: 0px;
+    padding: 10px 10px 7px 10px;    
+    background-color:rgb(0, 0, 0, 0.6);
+    border-radius: 12px;
+    justify-content: center;
+    width: 21px;
+}
+
+.Like img{
+    width: 20px;
+    height: 20px;
+}
+
+.Like:hover{
+    color: #17DB35;
+    border-radius: 12px;
+    background-color: rgba(23, 219, 53, 0.1);
+}
+
+.Like:hover img{
+    content: url("../images/heart-vert.png");
+}
+
+
+.Like-liked{
+    color: #99A1AF;
+    display: flex;
+    align-items: center;;
+    cursor: pointer;
+    margin: 0px;
+    padding: 10px 10px 7px 10px;    
+    background-color:rgb(0, 0, 0, 0.6);
+    border-radius: 12px;
+    justify-content: center;
+    width: 21px;
+}
+
+.Like-liked img{
+    width: 20px;
+    height: 20px;
+}
+
+.Like-liked:hover{
+    color: #17DB35;
+    border-radius: 12px;
+    background-color: rgba(23, 219, 53, 0.1);
+}
+
+.Like-liked:hover img{
+    content: url("../images/heart-vert-filled.png");
+}
+
+
+
+.Favorite{
+    color: #99A1AF;
+    display: flex;
+    align-items: center;;
+    cursor: pointer;
+    margin: 0px;
+    padding: 9px 10px 9px 10px;    
+    background-color:rgb(0, 0, 0, 0.6);
+    border-radius: 12px;
+    justify-content: center;
+    width: 21px;
+}
+
+.Favorite img{
+    width: 20px;
+    height: 20px;
+}
+
+.Favorite:hover{
+    color: #17DB35;
+    border-radius: 12px;
+    background-color: rgba(23, 219, 53, 0.1);
+}
+
+.Favorite:hover img{
+    content: url("../images/wishlist-vert.png");
+}
+
+
+.Favorite-favorited{
+    color: #99A1AF;
+    display: flex;
+    align-items: center;;
+    cursor: pointer;
+    margin: 0px;
+    padding: 9px 10px 9px 10px;    
+    background-color:rgb(0, 0, 0, 0.6);
+    border-radius: 12px;
+    justify-content: center;
+    width: 21px;
+}
+
+.Favorite-favorited img{
+    width: 20px;
+    height: 20px;
+}
+
+.Favorite-favorited:hover{
+    color: #17DB35;
+    border-radius: 12px;
+    background-color: rgba(23, 219, 53, 0.1);
+}
+
+.Favorite-favorited:hover img{
+    content: url("../images/wishlist-vert-filled.png");
+}
+
+
+.Com{
+    color: #99A1AF;
+    display: flex;
+    align-items: center;;
+    cursor: pointer;
+    margin: 0px;
+    padding: 10px 10px 10px 11px;    
+    background-color:rgb(0, 0, 0, 0.6);
+    border-radius: 12px;
+    justify-content: center;
+    align-items: center;
+    width: 21px;
+}
+
+.Com img{
+    width: auto;
+    height: 20px;
+}
+
+.Com:hover{
+    color: #17DB35;
+    border-radius: 12px;
+    background-color: rgba(23, 219, 53, 0.1);
+}
+
+.Com:hover img{
+    content: url("../images/chat-vert.png");
+}
