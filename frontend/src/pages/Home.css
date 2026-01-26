@@ -1,0 +1,112 @@
+.Home-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.Home-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 40px;
+    max-height: 848px;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.Theme-buttons {
+    padding: 8px 8px;
+    height: 70px;
+    display: flex;
+    gap: 20px;
+    background-color: #141414;
+    border-radius: 50px;
+    justify-content: center;
+    align-items: center;
+}
+
+.Theme-buttons button {
+    height: 100%;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 20px;
+    color: #99A1AF;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+
+.Theme-buttons .Theme-active {
+    height: 100%;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    background: none;
+    font-size: 20px;
+    color: #000000;
+    font-size: 20px;
+    background-color: #17DB35;
+    border-radius: 50px;
+    
+    
+}
+
+.Search-bar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    max-width: 848px;
+    border: 1px solid #1F1F1F;
+    border-radius: 50px;
+    color: #99A1AF;
+    outline: none;
+    background-color: #141414;
+    padding: 0 10px;
+}
+
+.Search-bar:focus-within {
+    border: 1px solid #17DB35;
+}
+
+.Search-bar input {
+    flex: 1;
+    padding: 20px 10px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 50px;
+    background-color:transparent;
+    border: none;
+    outline: none;
+    color: #99A1AF;
+
+}
+
+.Search-bar img[alt="Search"] {
+    height: 40px;
+}
+
+.Search-bar img[alt="Close"] {
+    height: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.AlertNoLoc {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-color: #141414;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 20px;
+}
