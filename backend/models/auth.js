@@ -1,17 +1,21 @@
-let mongoose = require('mongoose');
-const autiIncrement = require('mongoose-id-autoincrement');
+import mongoose from 'mongoose';
+import { AutoIncrementID } from '@typegoose/auto-increment';
+import bcrypt from 'bcrypt'; 
 
-mongoose.connect("mongodb://localhost:3000/poltergeistdb");
+const anonyme_schema = new mongoose.Schema({
+  anonyme_id: { type: Number },
+  created_at: { type: Date, required: true },
+  ip: { type: String, required: true }
+});
 
-autiIncrement.initialize(db);
+anonyme_schema.pre("save", async function () {
+  if (!this.isModified("ip")) return;
+  this.ip = await bcrypt.hash(this.ip, 10);
+});   
 
-let anonyme_schema = new mongoose.Schema ({
-    anonyme_id : { type : Number , required : true},
-    created_at : { type : Date , required : true},
-    
-})
+anonyme_schema.plugin(AutoIncrementID, { 
+  field: 'anonyme_id', 
+  startAt: 1 
+});
 
-userSchema.plugin(autiIncrement.plugin, { model: 'User', field: 'anonyme_id', unique: false });
-
-const user = mongoose.model("User", anonyme_schema);
-export default user;
+export default mongoose.model('User', anonyme_schema);   
