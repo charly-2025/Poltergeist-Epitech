@@ -33,8 +33,11 @@ export const createThread = async (req, res) => {
             thread_title: req.body.thread_title,
             thread_content: req.body.thread_content,
             thread_country: req.body.thread_country,
-            thread_city: req.body.thread_city
+            thread_city: req.body.thread_city,
+
         });
+        thread.thread_random_profile_picture = thread.author_id * thread.thread_id;
+        await thread.save();
         res.status(200).json(thread);
     } catch (err) {
         res.status(400).json({ message: err.message });
