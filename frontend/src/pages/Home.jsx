@@ -12,7 +12,7 @@ import SearchLoop from "../images/search.png";
 import CloseCross from "../images/close.png";
 
 
-const Home = ({ localization, setLocalization }) => {
+const Home = ({ localization}) => {
     const [activeTheme, setActiveTheme] = useState("recent");
     const [listPosts, setListPosts] = useState([]);  
     const [searchQuery, setSearchQuery] = useState("");
@@ -26,7 +26,7 @@ const Home = ({ localization, setLocalization }) => {
 
     return (
         <div className="Home-page">
-            <Header />
+            <Header localization={localization} />
             <div className="Home-content">
                 <div className="Home-wrapper">
                <div className="Theme-buttons">

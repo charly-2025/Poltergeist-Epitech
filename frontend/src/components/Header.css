@@ -25,6 +25,29 @@
 }
 
 
+.Header-Name-Loc{
+  display: flex;
+  flex-direction: column;
+}
+
+.Header-Loc{
+  display: flex;
+  flex-direction: row; 
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+
+.Header-Loc img{
+  height: 26px;
+}
+
+.Header-Loc div{
+  color: #6A7282;
+  font-size: 22px;
+}
+
+
 .Logo-namesite {
   display: flex;
   flex-direction: row;
@@ -58,11 +81,35 @@
 
   .Header-smartphone {
     padding: 10px 30px;
-    gap: 10px;
+    gap: 5px;
   }
 
   .Burger-button img {
     width: 30px;
     height: 30px;
   }
+
+  .Header-Name-Loc{
+  display: flex;
+  flex-direction: column;
+}
+
+.Header-Loc{
+  display: flex;
+  flex-direction: row; 
+  justify-content: start;
+  align-items: center;
+  gap: 5px;
+}
+
+.Header-Loc img{
+  height: 26px;
+}
+
+.Header-Loc div{
+  color: #6A7282;
+  font-size: 13px;
+}
+
+
 }

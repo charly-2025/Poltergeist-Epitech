@@ -1,0 +1,79 @@
+.CityCard-container{
+    height: auto;
+    width: 440px;
+    box-sizing: border-box;
+    border: 1px solid #1F1F1F;
+    background-color: #0F0F0F;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
+    gap: 5px;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.CityCard-container:hover{
+    border:1px solid #17DB35;
+}
+
+.CityCard-container-select{
+    height: auto;
+    width: 440px;
+    box-sizing: border-box;
+    border: 4px solid #17DB35;
+    background-color: rgba(23, 219, 53, 0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
+    gap: 5px;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+
+
+
+.CityCard-Name{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+    gap: 5px;
+}
+
+.CityCard-Name img{
+    height: 20px;
+    width: auto;
+}
+
+.CityCard-Country{
+    color: #6A7282;
+}
+
+.CityCard-nbThread{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    height: 30px;
+    padding: 5px;
+    
+}
+
+.CityCard-nbThread div{
+    height: 20px;
+    color: #99A1AF;
+}
+
+.CityCard-nbThread p{
+    margin: 0;
+    font-size: 32px;
+    font-weight: bold;
+    color:transparent;
+    background-color: #17DB35;
+    height: 12px;
+    width: 12px;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
