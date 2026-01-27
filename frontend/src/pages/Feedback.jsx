@@ -2,10 +2,10 @@ import React from "react";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 
-const Feedback = () => {
+const Feedback = ({localization}) => {
     return (
         <div className="Feedback-container">
-            <Header />
+            <Header localization={localization} />
             <div className="Feedback-content">
                 <h2>We value your feedback!</h2>
             </div>

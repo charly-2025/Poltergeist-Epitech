@@ -1,4 +1,4 @@
-import React from 'react';
+import {useEffect,useState} from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -10,7 +10,9 @@ import Support from "./pages/Support";
 
 
 function App() {
-  const [localization, setLocalization] = React.useState(null);
+  const [localization, setLocalization] = useState(null);
+
+  useEffect(() => {console.log(localization)}, [localization]);
 
   /*use effect pour récuperer la localisation une fois+un autre pour mettre a jour la localisation*/
 
@@ -20,9 +22,9 @@ function App() {
         <Routes>
           <Route path="/" element={<Home localization={localization} setLocalization={setLocalization} />} />
           <Route path="/localization" element={<Localization localization={localization} setLocalization={setLocalization} />} />
-          <Route path="/favorite" element={<Favorite />} />
-          <Route path="/feedback" element={<Feedback />} />
-          <Route path="/support" element={<Support />} />
+          <Route path="/favorite" element={<Favorite localization={localization} setLocalization={setLocalization}/>} />
+          <Route path="/feedback" element={<Feedback localization={localization} setLocalization={setLocalization}/>} />
+          <Route path="/support" element={<Support localization={localization} setLocalization={setLocalization}/>} />
         </Routes>
       </BrowserRouter>
     </div>

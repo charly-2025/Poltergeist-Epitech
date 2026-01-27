@@ -11,10 +11,10 @@ import './Header.css';
 
 import Logo from '../images/logopol.png';
 import Burger from '../images/burger-bar.png';
+import LocalizationLoc from "../images/location.png"
 
 
-
-const Header = () => {
+const Header = ({localization}) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const {isOpen, onOpen, onOpenChange,onClose} = useDisclosure();
   
@@ -50,12 +50,15 @@ const Header = () => {
       <Navdrawer isOpen={isOpen} onOpenChange={onOpenChange}/>
       
       
-      
-      <div className='Logo-namesite'>
-        <img src={Logo} alt="Logo" style={{height:70}} />
-        <h1>POLTERGEIST</h1>
-      
-      
+          <div className='Logo-namesite'>
+            <img src={Logo} alt="Logo" style={{height:70}} />
+            <div className='Header-Name-Loc'>
+            <h1>POLTERGEIST</h1>
+                {localization?(<div className='Header-Loc'>
+                <img src={LocalizationLoc} alt='LogoLoc'/>
+                <div>{localization?.country} , {localization.name}</div>
+                </div>):""}
+            </div>
       </div>
       {windowWidth>=1362 ? <Navbar/> : ""}
     </div>

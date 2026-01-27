@@ -2,10 +2,10 @@ import React from "react";
 import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 
-const Support = () => {
+const Support = ({localization}) => {
     return (
         <div className="Support-container">
-            <Header />
+            <Header localization={localization} />
             <div className="Support-content">
                 <h2>Need Help? Contact Our Support Team!</h2>
             </div>
