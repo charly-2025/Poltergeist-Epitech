@@ -6,7 +6,60 @@ import "./Localization.css";
 
 
 const Localization = ({ localization, setLocalization }) => {
-    const [listCity, setListCity] = useState([{country:"France",name:"Paris"},{country:"Royaume-Unis",name:"Londres"}]);
+const [listCity, setListCity] = useState([
+  { country: "France", name: "Paris" },
+  { country: "France", name: "Lyon" },
+  { country: "France", name: "Marseille" },
+  { country: "France", name: "Toulouse" },
+  { country: "France", name: "Nice" },
+  { country: "France", name: "Nantes" },
+  { country: "France", name: "Strasbourg" },
+  { country: "France", name: "Montpellier" },
+  { country: "France", name: "Bordeaux" },
+  { country: "France", name: "Lille" },
+
+  { country: "Royaume-Uni", name: "Londres" },
+  { country: "Royaume-Uni", name: "Manchester" },
+  { country: "Royaume-Uni", name: "Liverpool" },
+  { country: "Royaume-Uni", name: "Birmingham" },
+  { country: "Royaume-Uni", name: "Leeds" },
+
+  { country: "Allemagne", name: "Berlin" },
+  { country: "Allemagne", name: "Munich" },
+  { country: "Allemagne", name: "Hambourg" },
+  { country: "Allemagne", name: "Cologne" },
+  { country: "Allemagne", name: "Francfort" },
+
+  { country: "Espagne", name: "Madrid" },
+  { country: "Espagne", name: "Barcelone" },
+  { country: "Espagne", name: "Valence" },
+  { country: "Espagne", name: "Séville" },
+  { country: "Espagne", name: "Bilbao" },
+
+  { country: "Italie", name: "Rome" },
+  { country: "Italie", name: "Milan" },
+  { country: "Italie", name: "Naples" },
+  { country: "Italie", name: "Turin" },
+  { country: "Italie", name: "Florence" },
+
+  { country: "États-Unis", name: "New York" },
+  { country: "États-Unis", name: "Los Angeles" },
+  { country: "États-Unis", name: "Chicago" },
+  { country: "États-Unis", name: "Houston" },
+  { country: "États-Unis", name: "San Francisco" },
+
+  { country: "Canada", name: "Toronto" },
+  { country: "Canada", name: "Montréal" },
+  { country: "Canada", name: "Vancouver" },
+  { country: "Canada", name: "Calgary" },
+  { country: "Canada", name: "Ottawa" },
+
+  { country: "Japon", name: "Tokyo" },
+  { country: "Japon", name: "Osaka" },
+  { country: "Japon", name: "Kyoto" },
+  { country: "Japon", name: "Yokohama" },
+  { country: "Japon", name: "Nagoya" }
+]);
     const [listCountry, setListCountry] = useState([]);
     const [CountryFiltered, setCountryFiltered] = useState("all");
     const [searchCity, setSearchCity] = useState("");
@@ -26,8 +79,8 @@ const Localization = ({ localization, setLocalization }) => {
                     </div>
                     <div className="Localization-searchBar">
                     </div>
-                    <div className="Localization-CountryFilter"> 
-
+                    <div className="Localization-CountryFilter"> a
+                    
                     </div>
                     <div className="Localization-listCity">
                         {listCity.map(city=>(<CityCard localization={localization} setLocalization={setLocalization} city={city}/>/*CityCard + variabele */))}
