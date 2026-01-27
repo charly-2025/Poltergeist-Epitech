@@ -1,56 +1,126 @@
 {
   "main": {
-    "id": "4c63927233c451b3",
+    "id": "dc0c74c0c41faa83",
     "type": "split",
     "children": [
       {
-        "id": "62b7117c395f3e22",
+        "id": "257ea5c2bd39e3f5",
         "type": "tabs",
         "children": [
           {
-            "id": "c403a567cb2b6263",
+            "id": "55ce23cb21e2ad39",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "docs/03_user_journey/user_journey.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "README"
+              "title": "user_journey"
             }
           },
           {
-            "id": "20afc9044c44a95d",
+            "id": "45f9b5c41eb06be8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/01_research/interviews.md",
+                "file": "docs/07_feedback/test_protocol.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "interviews"
+              "title": "test_protocol"
+            }
+          },
+          {
+            "id": "1484abfa945b19df",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/01_research/readme.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "readme"
+            }
+          },
+          {
+            "id": "401d54979acfe3d2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/05_mockups/mockups.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "mockups"
+            }
+          },
+          {
+            "id": "39f28cadeb2ffb83",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/07_feedback/test_protocol.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "test_protocol"
+            }
+          },
+          {
+            "id": "e82d08072b1cd3cc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/08_prioritization/prioritization_matrix.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "prioritization_matrix"
+            }
+          },
+          {
+            "id": "2f57c62d02e85caa",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/08_prioritization/prioritization_matrix.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "prioritization_matrix"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "cd0a2d45767b9e75",
+    "id": "aa7564514255428f",
     "type": "split",
     "children": [
       {
-        "id": "66fa5e71161388c2",
+        "id": "2cf599b8a5fbb9c1",
         "type": "tabs",
         "children": [
           {
-            "id": "dd3ac58275f7800d",
+            "id": "9e0501d1af55fa7c",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -63,7 +133,7 @@
             }
           },
           {
-            "id": "b0a0f44734f369ce",
+            "id": "f7d5dd58f11c4486",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -80,7 +150,7 @@
             }
           },
           {
-            "id": "c694d62392e6f41f",
+            "id": "2c0e4d5a37b5e400",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -96,20 +166,20 @@
     "width": 300
   },
   "right": {
-    "id": "88c123f305a31aac",
+    "id": "15399deb4d4d098c",
     "type": "split",
     "children": [
       {
-        "id": "dcc7862ed0829ab4",
+        "id": "5aa2ef5cbaba8251",
         "type": "tabs",
         "children": [
           {
-            "id": "b340cb5d931b6e70",
+            "id": "369b97396ee8e52e",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/02_personas/persona_1.md",
+                "file": "docs/01_research/interviews.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -119,25 +189,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for persona_1"
+              "title": "Backlinks for interviews"
             }
           },
           {
-            "id": "0c8bb05d560512ac",
+            "id": "f555dedc859f26b1",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/02_personas/persona_1.md",
+                "file": "docs/01_research/interviews.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from persona_1"
+              "title": "Outgoing links from interviews"
             }
           },
           {
-            "id": "2ef51d0cd533e205",
+            "id": "2a73ec17d9d3f3e1",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -152,7 +222,7 @@
             }
           },
           {
-            "id": "3b694310e5c6d5be",
+            "id": "7d591ec08c5e26f1",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -166,18 +236,18 @@
             }
           },
           {
-            "id": "8586a815c25c23b4",
+            "id": "0b45019b8b7cbbce",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/02_personas/persona_1.md",
+                "file": "docs/01_research/interviews.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of persona_1"
+              "title": "Outline of interviews"
             }
           }
         ]
@@ -198,21 +268,53 @@
       "bases:Create new base": false
     }
   },
-  "active": "20afc9044c44a95d",
+  "active": "2f57c62d02e85caa",
   "lastOpenFiles": [
-    "docs/02_personas/persona_1.md",
+    "frontend/src/pages/Support.jsx",
+    "frontend/src/pages/Localization.jsx",
+    "frontend/src/pages/Home.jsx",
+    "frontend/src/pages/Home.css",
+    "frontend/src/pages/Feedback.jsx",
+    "frontend/src/pages/Favorite.jsx",
+    "frontend/src/images/wishlist.png",
+    "frontend/src/images/wishlist-vert.png",
+    "frontend/src/images/wishlist-vert-filled.png",
+    "frontend/src/images/support.png",
+    "frontend/src/images/support-vert.png",
+    "frontend/src/images/search.png",
+    "frontend/src/images/message.png",
+    "frontend/src/images/message-vert.png",
+    "frontend/src/images/marker.png",
+    "frontend/src/images/logopol.png",
+    "frontend/src/components/Post.jsx",
+    "frontend/src/components/Post.css",
+    "frontend/src/components/Navdrawer.jsx",
+    "frontend/src/components/Navdrawer.css",
+    "frontend/src/components/Navbar.jsx",
+    "frontend/README.md",
+    "backend/node_modules/tslib/SECURITY.md",
+    "backend/node_modules/tslib/README.md",
+    "backend/node_modules/loglevel/README.md",
+    "backend/node_modules/loglevel/CONTRIBUTING.md",
+    "backend/node_modules/cookie-parser/node_modules/cookie-signature/Readme.md",
+    "backend/node_modules/cookie-parser/node_modules/cookie-signature/History.md",
+    "backend/node_modules/cookie-parser/README.md",
+    "backend/node_modules/cookie-parser/HISTORY.md",
+    "backend/node_modules/@typegoose/auto-increment/README.md",
+    "docs/08_prioritization/mvp_definition.md",
+    "docs/07_feedback/feedback_summary.md",
+    "docs/07_feedback/test_protocol.md",
+    "docs/08_prioritization/prioritization_matrix.md",
+    "docs/01_research/benchmark.md",
+    "docs/01_research/interviews.md",
+    "README.md",
+    "docs/06_prototype/prototype.md",
+    "docs/05_mockups/mockups.md",
     "docs/01_research/readme.md",
     "docs/01_research/problem_statement.md",
     "docs/01_research/objectives_constraints.md",
-    "docs/01_research/interviews.md",
-    "docs/01_research/benchmark.md",
     "docs/03_user_journey/user_journey.md",
-    "docs/03_user_journey",
     "docs/02_personas/persona_3.md",
-    "docs/02_personas/persona_2.md",
-    "docs/02_personas/persona_4.md",
-    "docs/02_personas",
-    "Untitled",
-    "README.md"
+    "docs/02_personas/persona_2.md"
   ]
 }

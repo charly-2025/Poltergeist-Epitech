@@ -1,24 +1,27 @@
 import express from "express";
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 import cors from "cors";
-import cookieParser from 'cookie-parser';
-import register_router from "./routes/register.js";   
-import geocodeRouter from "./routes/geocode.js";
+import cookieParser from 'cookie-parser'; 
+import { config } from 'dotenv';
 
+import register_router from "./routes/register.js";  
+import threads_router from "./routes/threads.js";
 
-dotenv.config();
+config({ path: './.env' });   
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(express.urlencoded({ extended: true }));   
+app.use(cors({
+  origin: '*',
+  credentials: true
+}));
 app.use(cookieParser()); 
 
 app.set('trust proxy', true);
 
-app.use('/', register_router); 
-app.use("/geocode", geocodeRouter);
-
+app.use('/', register_router);
+app.use('/', threads_router);   
 app.get('/', function (req, res) {
     console.log(req.ip)
     res.send();

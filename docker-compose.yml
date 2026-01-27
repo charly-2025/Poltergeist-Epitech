@@ -3,10 +3,11 @@ services:
     build: ./backend
     ports:
       - "3000:3000"
-    environment:
-      MONGO_URI: mongodb://mongo:27017/poltergeistdb
+    env_file:
+      - .env
     depends_on:
       - mongo
+      
 
   frontend:
     build: ./frontend
