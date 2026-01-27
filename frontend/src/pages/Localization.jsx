@@ -3,6 +3,8 @@ import Footer from "../components/Footer.jsx";
 import CityCard from "../components/CityCard.jsx";
 import { useEffect,useState } from "react";
 import "./Localization.css";
+import SearchLoop from "../images/search.png";
+import CloseCross from "../images/close.png";
 
 
 const Localization = ({ localization, setLocalization }) => {
@@ -78,8 +80,18 @@ const [listCity, setListCity] = useState([
                     <p>Set your localization preferences here.</p>
                     </div>
                     <div className="Localization-searchBar">
+                        <img src={SearchLoop} alt="Search" />
+                        <input 
+                            type="text" 
+                            placeholder="Search city..." 
+                            value={searchCity} 
+                            onChange={(e) => setSearchCity(e.target.value)} 
+                        />
+                        {searchCity ? (
+                            <img src={CloseCross} alt="Close" onClick={() => setSearchCity("")} />
+                          ) : ""}
                     </div>
-                    <div className="Localization-CountryFilter"> a
+                    <div className="Localization-CountryFilter">
                     
                     </div>
                     <div className="Localization-listCity">

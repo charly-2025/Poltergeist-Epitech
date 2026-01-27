@@ -29,6 +29,49 @@
     padding-bottom: 100px;
 }
 
+.Localization-searchBar {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    max-width: 848px;
+    border: 1px solid #1F1F1F;
+    border-radius: 50px;
+    color: #99A1AF;
+    outline: none;
+    background-color: #141414;
+    padding: 0 10px;
+}
+
+.Localization-searchBar:focus-within {
+    border: 1px solid #17DB35;
+}
+
+.Localization-searchBar input {
+    flex: 1;
+    padding: 20px 10px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 50px;
+    background-color:transparent;
+    border: none;
+    outline: none;
+    color: #99A1AF;
+
+}
+
+.Localization-searchBar img[alt="Search"] {
+    height: 40px;
+}
+
+.Localization-searchBar img[alt="Close"] {
+    height: 20px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+
 @media (max-width:940px){
     .Localization-listCity{
         justify-content: center;
