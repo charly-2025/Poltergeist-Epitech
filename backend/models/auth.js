@@ -4,9 +4,9 @@ import bcrypt from 'bcrypt';
 
 const anonyme_schema = new mongoose.Schema({
   anonyme_id: { type: Number },
-  created_at: { type: Date, required: true },
-  ip: { type: String, required: true }
-});
+  ip: { type: String, required: [true, 'IP is required'] }
+},{timestamps : true}
+);
 
 anonyme_schema.pre("save", async function () {
   if (!this.isModified("ip")) return;
