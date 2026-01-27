@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from 'cookie-parser';
 import register_router from "./routes/register.js";   
+import geocodeRouter from "./routes/geocode.js";
+
 
 dotenv.config();
 
@@ -14,7 +16,9 @@ app.use(cookieParser());
 
 app.set('trust proxy', true);
 
-app.use('/', register_router);   
+app.use('/', register_router); 
+app.use("/geocode", geocodeRouter);
+
 app.get('/', function (req, res) {
     console.log(req.ip)
     res.send();
