@@ -18,7 +18,7 @@ import CloseCross from "../images/close.png";
 export function Home  ({ localization}) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     
-    const [activeTheme, setActiveTheme] = useState("recent");
+    const [activeTheme, setActiveTheme] = useState("recents");
     const [listPosts, setListPosts] = useState([]);  
     const [searchQuery, setSearchQuery] = useState("");
 
@@ -42,17 +42,12 @@ export function Home  ({ localization}) {
 
 
     useEffect(() => {
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjE0LCJpYXQiOjE3Njk2MDYzMTF9.hseaKfFJ297uB8Wj2s2Z8AjDTKyjfk4T9Say_f902uc"/*localStorage.getItem("token");*/ 
-
         const fetchPosts = async () => {
         const res = await fetch(
-        `http://localhost:3000/getThread?type=${activeTheme}&search=${searchQuery}`,
+        `http://localhost:3000/getThreads?type=${activeTheme}&search=${searchQuery}`,
         {
           method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
+          credentials: "include"
         }
       );
         if (!res.ok){
