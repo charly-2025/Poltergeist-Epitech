@@ -7,7 +7,7 @@ import { config } from 'dotenv';
 import register_router from "./routes/register.js";  
 import threads_router from "./routes/threads.js";
 
-config({ path: './.env' });   
+config({ path: '../.env' });   
 
 const app = express();
 app.use(express.json());
