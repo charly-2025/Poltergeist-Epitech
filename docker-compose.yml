@@ -7,7 +7,17 @@ services:
       - .env
     depends_on:
       - mongo
-      
+    develop:
+      watch:
+        - action: sync
+          path: ./backend
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./backend/package.json
+        - action: rebuild
+          path: ./backend/package-lock.json
 
   frontend:
     build: ./frontend
@@ -15,6 +25,17 @@ services:
       - "3001:3001"
     depends_on:
       - backend
+    develop:
+      watch:
+        - action: sync
+          path: ./frontend
+          target: /app
+          ignore:
+            - node_modules/
+        - action: rebuild
+          path: ./frontend/package.json
+        - action: rebuild
+          path: ./frontend/package-lock.json
 
   mongo:
     image: mongo
@@ -24,4 +45,4 @@ services:
       - mongodb_data:/data/db
 
 volumes:
-  mongodb_data:   
+  mongodb_data:
