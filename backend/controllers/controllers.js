@@ -26,7 +26,7 @@ export const getThreads = async (req, res) => {
         if (search) {
             if (type === "proximity") {
                 filter.$or = [
-                    { thread_city : new RegExp(`^${search}$`, "i") }
+                    { thread_city : { $regex: search , $options : "i" } }
                 ];
             } else {
                 filter.thread_title = { $regex: search, $options: "i"} 
