@@ -25,6 +25,9 @@ const threads_schema = new mongoose.Schema({
 },{timestamps: true }
 );
 
+threads_schema.index({ thread_title: "text" });
+threads_schema.index({ thread_city: 1 })
+
 threads_schema.plugin(AutoIncrementID, {
   field: 'thread_id',
   startAt: 1

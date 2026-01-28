@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import { AutoIncrementID } from '@typegoose/auto-increment';
-import bcrypt from 'bcrypt'; 
+import crypto from "crypto";
 
 const anonyme_schema = new mongoose.Schema({
   anonyme_id: { type: Number },
@@ -10,7 +10,10 @@ const anonyme_schema = new mongoose.Schema({
 
 anonyme_schema.pre("save", async function () {
   if (!this.isModified("ip")) return;
-  this.ip = await bcrypt.hash(this.ip, 10);
+  this.ip = crypto
+    .createHmac("sha256", process.env.IP_SECRET)
+    .update(this.ip)
+    .digest("hex") 
 });   
 
 anonyme_schema.plugin(AutoIncrementID, { 
