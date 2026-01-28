@@ -7,4 +7,6 @@ Octave :
 	-
 
 Lino :
-	-
+	- Had an easy time navigating
+	- Thought we should include some form of image preview on the posts
+	- Had an easy time with every step and even liked the color scheme

@@ -9,6 +9,7 @@ import Support from "./pages/Support";
 
 
 
+
 function App() {
   const [localization, setLocalization] = useState(null);
 

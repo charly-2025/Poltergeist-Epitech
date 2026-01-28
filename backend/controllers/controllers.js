@@ -16,11 +16,27 @@ export const Register = async (req, res) => {
         res.status(400).json({ message: err.message });
     }
 };
- 
-export const getRecentsThreads = async (req, res) => {
+
+
+export const getThreads = async (req, res) => {
     try { 
-        const threads = await Threads.find().sort({createdAt: -1})
-        res.status(200).json(threads);
+        const { type = "recents", search } = req.query; 
+        let filter = {}
+
+        if (search) {
+            if (type === "proximity") {
+                filter.$or = [
+                    { thread_city : { $regex: search , $options : "i" } }
+                ];
+            } else {
+                filter.thread_title = { $regex: search, $options: "i"} 
+            }
+        }
+        const threads = await Threads.find(filter)
+            .sort({createdAt: -1})
+            .limit(50);
+
+        res.json(threads)
     } catch (err) {
     res.status(400).json({ message: err.message });
     }
@@ -33,8 +49,11 @@ export const createThread = async (req, res) => {
             thread_title: req.body.thread_title,
             thread_content: req.body.thread_content,
             thread_country: req.body.thread_country,
-            thread_city: req.body.thread_city
+            thread_city: req.body.thread_city,
+
         });
+        thread.thread_random_profile_picture = thread.author_id * thread.thread_id;
+        await thread.save();
         res.status(200).json(thread);
     } catch (err) {
         res.status(400).json({ message: err.message });
