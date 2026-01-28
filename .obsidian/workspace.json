@@ -109,12 +109,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "todolist.md",
+                "file": "docs/08_prioritization/prioritization_matrix.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "todolist"
+              "title": "prioritization_matrix"
             }
           }
         ],
@@ -282,10 +282,20 @@
   },
   "active": "ba91ddcd5defb877",
   "lastOpenFiles": [
+    "docs/08_prioritization/prioritization images/Pasted image 20260127122409.png",
+    "docs/08_prioritization/prioritization images/Pasted image 20260127122359.png",
+    "docs/08_prioritization/prioritization images/Pasted image 20260127122337.png",
+    "docs/08_prioritization/prioritization images/Pasted image 20260127122320.png",
+    "docs/08_prioritization/prioritization images/Pasted image 20260127122308.png",
+    "docs/08_prioritization/prioritization images/Pasted image 20260127122302.png",
+    "docs/08_prioritization/Pasted image 20260127122409.png",
+    "docs/08_prioritization/Pasted image 20260127122359.png",
+    "docs/08_prioritization/Pasted image 20260127122337.png",
+    "docs/08_prioritization/Pasted image 20260127122320.png",
+    "docs/08_prioritization/Pasted image 20260127122308.png",
     "docs/08_prioritization/mvp_definition.md",
     "docs/08_prioritization/prioritization_matrix.md",
     "todolist.md",
-    "Pasted image 20260127122308.png",
     "frontend/src/pages/Localization.css",
     "frontend/src/components/MapPicker.jsx",
     "frontend/src/components/CityCard.jsx",
@@ -296,11 +306,6 @@
     "backend/models/thread_model.js",
     "backend/controllers/controllers.js",
     "backend/controllers",
-    "Pasted image 20260127122302.png",
-    "Pasted image 20260127122320.png",
-    "Pasted image 20260127122337.png",
-    "Pasted image 20260127122359.png",
-    "Pasted image 20260127122409.png",
     "docs/06_prototype/prototype.md",
     "docs/05_mockups/mockups.md",
     "docs/03_user_journey/user_journey.md",
@@ -310,12 +315,8 @@
     "docs/01_research/objectives_constraints.md",
     "docs/01_research/interviews.md",
     "docs/01_research/benchmark.md",
-    "docs/08_prioritization/prioritization images/Le client découvre le site.png",
     "docs/07_feedback/feedback_summary.md",
     "docs/07_feedback/test_protocol.md",
-    "frontend/src/images/wishlist.png",
-    "frontend/src/images/wishlist-vert.png",
-    "frontend/src/images/wishlist-vert-filled.png",
     "frontend/README.md",
     "backend/node_modules/tslib/SECURITY.md",
     "backend/node_modules/tslib/README.md",
