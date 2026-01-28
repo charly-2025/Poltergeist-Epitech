@@ -1,0 +1,169 @@
+.triggerButton {
+  background-color: var(--retro-green);
+  color: var(--black);
+  padding: 12px 24px;
+  font-weight: 700;
+  border-radius: 4px; /* Bords légèrement arrondis */
+  box-shadow: 0 0 10px rgba(0, 224, 128, 0.6);
+  transition: all 0.2s ease-in-out;
+  border: none;
+  cursor: pointer;
+  text-transform: none;
+  font-family: inherit;
+  font-size: 1rem;
+  
+  &:hover {
+    background-color: #33FFB3; /* Vert plus clair au survol */
+    box-shadow: 0 0 15px var(--retro-green);
+    transform: translateY(-2px);
+  }
+}
+
+/* --- MODALE (Base UI Dialog) --- */
+.backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px); /* Flou plus prononcé pour l'effet moderne */
+}
+
+.viewport {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.popup {
+  box-sizing: border-box;
+  width: min(600px, 90vw);
+  max-height: 90vh;
+  background-color: var(--black);
+  border: 1px solid var(--retro-green);
+  border-radius: 6px; /* Bords légèrement arrondis pour la modale */
+  box-shadow: 0 0 25px rgba(0, 224, 128, 0.7); /* Lueur verte intense */
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color);
+  /* Animation de la modale */
+  transition: opacity 300ms, transform 300ms;
+}
+
+.popup[data-starting-style],
+.popup[data-ending-style] {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.modalTitle {
+  margin: 0 0 1.5rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--retro-green);
+  text-transform: uppercase;
+  border-bottom: 2px dashed var(--retro-green-transparent);
+  padding-bottom: 0.5rem;
+}
+
+/* --- SCROLL AREA (pour le contenu de la modale) --- */
+.bodyScrollArea {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden;
+  margin-right: -10px; /* Compensation pour la barre de défilement */
+}
+
+.scrollViewport {
+  padding-right: 10px;
+}
+
+.scrollContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.scrollbar {
+  display: flex;
+  width: 6px;
+  height: 100%;
+  padding: 2px;
+  transition: opacity 0.2s;
+}
+
+.scrollbarThumb {
+  background-color: var(--retro-green);
+  border-radius: 3px;
+}
+
+/* --- CHAMPS DE FORMULAIRE (MUI TextField overrides) --- */
+
+/* Appliquez des styles aux composants MUI via les styles globaux (si supporté) 
+   ou utilisez des classes pour les surcharger directement via les props 'className' sur un conteneur */
+.formField {
+  /* Le composant TextField dans MUI permet une surcharge via sx, mais pour rester en CSS Modules: */
+  /* Ciblez la structure générée par MUI pour le style customisé */
+  background-color: #0d0d0d;
+  border-radius: 4px;
+  border: 1px solid #333;
+
+  & .MuiInputBase-root {
+    color: var(--text-color);
+    background-color: transparent;
+  }
+  
+  & .MuiOutlinedInput-notchedOutline {
+    border-color: transparent !important; /* Cache la bordure par défaut */
+  }
+
+  /* Focus state */
+  &:focus-within {
+    border-color: var(--retro-green);
+    box-shadow: 0 0 5px var(--retro-green-transparent);
+  }
+}
+
+/* --- SECTION HASHTAGS --- */
+.hashtagsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  min-height: 40px;
+  border: 1px solid #333;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.hashtagChip {
+  background-color: var(--retro-green);
+  color: var(--black);
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+.removeHashtag {
+  margin-left: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  opacity: 0.8;
+  transition: opacity 0.1s;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.hashtagInputWrapper {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
