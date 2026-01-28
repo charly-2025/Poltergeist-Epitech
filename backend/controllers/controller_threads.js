@@ -1,10 +1,11 @@
 import Threads from "../models/thread_model.js";
+import User from "../models/auth.js"
 
 /**
  * @swagger
- * /getThreads?type={type}&search={search}:
+ * /getThreads:
  *   get:
- *     summary: get the 50 most recents threads ( just by recents or by proximity)
+ *     summary: Retrieve threads based on type and search query
  *     tags: [Threads]
  *     parameters:
  *       - in: query
@@ -12,24 +13,23 @@ import Threads from "../models/thread_model.js";
  *         schema:
  *           type: string
  *           enum: [recents, proximity]
+ *         description: Type of thread list to get
  *       - in: query
  *         name: search
  *         schema:
  *           type: string
- *         description: If the type is recents , so it will get the 50 most recent threads and additionnaly where the string 'search' is contained in the thread title.  However if the type is proximity , it will get the 50 threads most recents and where the search string is contained in the thread city value.
- * 
+ *         description: Search string for thread's title
  *     responses:
  *       200:
- *         description: return 50 threads 
+ *         description: List of max 50 threads
  *         content:
  *           application/json:
  *             schema:
- *               type: object
+ *               type: array
  *               items:
  *                  properties:
  *                      _id : 
  *                          type : string
- *                          exemple : "a10b45157z4z"
  *                      author_id:
  *                          type: number
  *                      thread_title:
@@ -44,7 +44,7 @@ import Threads from "../models/thread_model.js";
  *                          type : array
  *                      thread_replies : 
  *                          type : array
- *                      thread_favorite :
+ *                      thread_favorite : 
  *                          type : array
  *                      thread_random_profile_picture :
  *                          type : number   
@@ -57,7 +57,7 @@ import Threads from "../models/thread_model.js";
  *                      __v : 
  *                          type : number
  *       500:
- *         description: Error
+ *         description: Server error
  *         content:
  *           application/json:
  *             schema:
@@ -65,47 +65,50 @@ import Threads from "../models/thread_model.js";
  *               properties:
  *                 message:
  *                   type: string
+  *       400:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: User location is null
  */   
 
 export const getThreads = async (req, res) => {
-    try { 
-        const { type = "recents", search } = req.query; 
-        let filter = {}
+    try {
+        const { type = "recents", search } = req.query;
+        const userId = req.anonyme_id?.userID;
 
-        if (search) {
-            if (type === "proximity") {
-                filter.$or = [
-                    { thread_city : { $regex: search , $options : "i" } }
-                ];
+        let filter = {};
+        if (type === "proximity" && userId) {
+            const user = await User.findOne({ anonyme_id: userId });
+            const userCity = user?.location?.city;
+
+            if (userCity) {
+                filter.thread_city = { $regex: userCity, $options: "i" };
             } else {
-                filter.thread_title = { $regex: search, $options: "i"} 
+                return res.status(400).json({ message: "User location is null" });
             }
         }
+        if (search) {
+            filter.thread_title = { $regex: search, $options: "i" };
+        }
         const threads = await Threads.find(filter)
-            .sort({createdAt: -1})
+            .sort({ createdAt: -1 })
             .limit(50);
-
         res.status(200).json(threads);
     } catch (err) {
-    res.status(500).json({ message: err.message });
+        res.status(500).json({ message: err.message });
     }
-};
+};     
 
-export const getThreadsID = async (req, res) => {
-    try { 
 
-        const threads = await Threads.find(filter)
-            .sort({createdAt: -1})
-            .limit(50);
-
-        res.status(200).json(threads);
-    } catch (err) {
-    res.status(400).json({ message: err.message });
-    }
-};
 /**
  * @swagger
- * /threads:
+ * /thread:
  *   post:
  *     summary: create a new thread
  *     tags: [Threads]

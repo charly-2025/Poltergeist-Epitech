@@ -106,3 +106,84 @@ export const getUserInfos = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+
+
+/**
+ * @swagger
+ * /updateLocation:
+ *   patch:
+ *     summary: update user's location 
+ *     tags: [User]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - country
+ *               - city
+ *             properties:
+ *               country:
+ *                 type: string
+ *               city:
+ *                 type: string      
+ *     responses:
+ *       200:
+ *         description: location updated
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 location:
+ *                   type: object
+ *                   properties:
+ *                     country:
+ *                       type: string
+ *                     city:
+ *                       type: string
+ *       400:
+ *         description: Country and city are null
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Values should not be null
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ */   
+
+
+export const UpdateLocation = async (req, res) => {
+    try {
+        const {country, city} = req.body
+        const anonyme_id = req.anonyme_id.userID
+        if (!country || !city){
+            res.status(400).json({message: "Values should not be null"})
+        }
+        const user = await User.findOneAndUpdate(
+            {"anonyme_id" : anonyme_id},
+            {$set : {
+                "location.country": country,
+                "location.city": city
+            }},{new: true}
+        ).select("anonyme_id location") 
+        res.status(200).json({location: user.location})
+
+    }catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+}
+
+
