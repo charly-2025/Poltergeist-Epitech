@@ -1,6 +1,5 @@
 .CityCard-container{
-    height: auto;
-    width: 440px;
+    height: 140px;
     box-sizing: border-box;
     border: 1px solid #1F1F1F;
     background-color: #0F0F0F;
@@ -18,7 +17,6 @@
 
 .CityCard-container-select{
     height: auto;
-    width: 440px;
     box-sizing: border-box;
     border: 4px solid #17DB35;
     background-color: rgba(23, 219, 53, 0.1);
@@ -75,5 +73,16 @@
     width: 12px;
     border-radius: 50px;
     overflow: hidden;
+    
 }
 
+
+@media (max-width:475px) {
+    .CityCard-container{
+        width: 100%;
+    }
+
+    .CityCard-container-select{
+        width: 100%;
+    }
+}
