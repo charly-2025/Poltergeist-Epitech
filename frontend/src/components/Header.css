@@ -54,11 +54,11 @@
   justify-content: center;
   align-self: center;
   gap: 15px;
-  color: #17DB35;
+  color: #17db35;
   /*Police : Jersey 20*/
 }
 .Logo-namesite h1 {
-  font-family: 'Jersey M54', sans-serif;
+  font-family: 'Jersey 20', sans-serif;
   font-size: 40px;
   margin: auto;
 }
@@ -92,6 +92,16 @@
   .Header-Name-Loc{
   display: flex;
   flex-direction: column;
+  
+}
+
+  .Header-Name-Loc h1{
+  
+  font-family: 'Jersey 20', sans-serif;
+  font-size: 40px;
+ 
+
+  
 }
 
 .Header-Loc{
