@@ -3,18 +3,15 @@
     min-width: unset;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     flex-wrap: nowrap;
-    align-items: start;
     border: 1px solid #1F1F1F;
     padding: 16px;
-    margin-bottom: 16px;
     border-radius: 33px;
     background-color: #141414;
-    width: 100%;
     max-width: 1048px;
     height: auto;
     gap: 18px;
+    box-sizing: border-box;
 }
 
 
@@ -92,6 +89,9 @@
     color: white;
     margin: 0;
     padding: 0;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
 
 }
 
@@ -102,6 +102,10 @@
     padding: 0;
     margin-top: 12px;
     white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+
 }
 
 .Post-footer {
