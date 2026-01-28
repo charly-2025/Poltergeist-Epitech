@@ -13,12 +13,34 @@ import CloseCross from "../images/close.png";
 
 
 const Home = ({ localization}) => {
-    const [activeTheme, setActiveTheme] = useState("recent");
+    const [activeTheme, setActiveTheme] = useState("recents");
     const [listPosts, setListPosts] = useState([]);  
     const [searchQuery, setSearchQuery] = useState("");
 
     useEffect(() => {
-        /*fetch(`http://localhost:5000/posts?theme=${activeTheme}&search=${searchQuery}`)*/
+        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjE0LCJpYXQiOjE3Njk2MDYzMTF9.hseaKfFJ297uB8Wj2s2Z8AjDTKyjfk4T9Say_f902uc"/*localStorage.getItem("token");*/ 
+
+        const fetchPosts = async () => {
+        const res = await fetch(
+        `http://localhost:3000/getThread?type=${activeTheme}&search=${searchQuery}`,
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+        if (!res.ok){
+            console.error("erreur http :", res.status);
+            return;
+        }
+        const data = await res.json();
+        console.log(data)
+        setListPosts(data);
+        };
+
+        fetchPosts();
     }, [activeTheme,searchQuery]);
 
     const addNewPost = (New) => {
@@ -30,7 +52,7 @@ const Home = ({ localization}) => {
             <div className="Home-content">
                 <div className="Home-wrapper">
                <div className="Theme-buttons">
-                    <button className={activeTheme === "recent" ? "Theme-active" : ""} onClick={() => setActiveTheme("recent")}>Recent</button>
+                    <button className={activeTheme === "recents" ? "Theme-active" : ""} onClick={() => setActiveTheme("recents")}>Recent</button>
                     <button className={activeTheme === "proximity" ? "Theme-active" : ""} onClick={() => setActiveTheme("proximity")}>Proximity</button>
                 </div>
                 <div className="Search-bar">
@@ -52,7 +74,7 @@ const Home = ({ localization}) => {
                 </div>
                 : <div className="Posts-container">
                     {listPosts.map(post => (
-                    <Post /*ici rajouter donner de chaque post ex: id=post.id*//>))}
+                    <Post title={post.thread_title} content={post.thread_content} country={post.thread_country} city={post.thread_city} listLike={post.thread_likes} listCom={post.thread_replies} createdDate={post.createdAt}/>))}
                 </div>}
 
                 </div>
