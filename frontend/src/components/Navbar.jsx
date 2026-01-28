@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <div className="navbar">
-        <Link to="/"><div className={page==="/"?"nav-item selected":"nav-item"}><img src={page==="/"?HomeIconVert:HomeIcon} style={{height:20}} alt="Home" className="img-home"/>Home</div></Link>
+        <Link to="/home"><div className={page==="/home"?"nav-item selected":"nav-item"}><img src={page==="/home"?HomeIconVert:HomeIcon} style={{height:20}} alt="Home" className="img-home"/>Home</div></Link>
         <Link to="/localization"><div className={page==="/localization"?"nav-item selected":"nav-item"}><img src={page==="/localization"?LocalizationIconVert:LocalizationIcon} style={{height:20}} alt="Localisation" className="img-localization"/>Localisation</div></Link>
         <Link to="/favorite"><div className={page==="/favorite"?"nav-item selected":"nav-item"}><img src={page==="/favorite"?FavoriteIconVert:FavoriteIcon} style={{height:20}} alt="Favorite" className="img-favorite"/>Favorite</div></Link>
         <Link to="/feedback"><div className={page==="/feedback"?"nav-item selected":"nav-item"}><img src={page==="/feedback"?FeedbackIconVert:FeedbackIcon} style={{height:20}} alt="FeedBack" className="img-feedback"/>FeedBack</div></Link>
