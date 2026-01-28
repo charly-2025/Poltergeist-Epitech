@@ -5,7 +5,7 @@ import { useEffect,useState } from "react";
 import "./Localization.css";
 import SearchLoop from "../images/search.png";
 import CloseCross from "../images/close.png";
-
+import {useNavigate} from "react-router-dom";
 
 const Localization = ({ localization, setLocalization }) => {
 const [listCity, setListCity] = useState([
@@ -65,6 +65,22 @@ const [listCity, setListCity] = useState([
     const [listCountry, setListCountry] = useState([]);
     const [CountryFiltered, setCountryFiltered] = useState("all");
     const [searchCity, setSearchCity] = useState("");
+    const navigate = useNavigate();
+    
+        useEffect(() => {
+        const checkAuth = async () => {
+          const res = await fetch("http://localhost:3000/check", {
+            method:"POST",
+            credentials: "include"
+          });
+    
+          if (!res.ok) {
+            navigate("/");
+          }
+        };
+    
+        checkAuth();
+      }, []);
 
     useEffect(() => {/*Fetch list ville filtré */}, [searchCity, CountryFiltered]);
 

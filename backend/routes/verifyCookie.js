@@ -1,16 +1,8 @@
-import jwt from "jsonwebtoken";
+import express from "express";
+import { checkAuth } from "../controllers/controller_cookie.js";
 
-export const checkAuth = (req, res) => {
-  const token = req.cookies.token;
+const checkAuth_router = express.Router();
 
-  if (!token) {
-    return res.status(401).json({ authenticated: false });
-  }
+checkAuth_router.post("/check", checkAuth);
 
-  try {
-    jwt.verify(token, process.env.JWT_SECRET);
-    res.json({ authenticated: true });
-  } catch {
-    res.status(401).json({ authenticated: false });
-  }
-};
+export default checkAuth_router;   
