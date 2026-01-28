@@ -6,6 +6,8 @@ import { config } from 'dotenv';
 
 import register_router from "./routes/register.js";  
 import threads_router from "./routes/threads.js";
+import checkAuth_router from "./routes/verifyCookie.js";
+
 
 import swaggerUi from "swagger-ui-express"
 import swaggerJsDoc from "swagger-jsdoc";
@@ -17,13 +19,14 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));   
 app.use(cors({
-  origin: '*',
+  origin: "http://localhost:3001",
   credentials: true
 }));
 app.use(cookieParser()); 
 
 app.set('trust proxy', true);
 
+app.use('/', checkAuth_router);
 app.use('/', register_router);
 app.use('/', threads_router);   
 app.get('/', function (req, res) {

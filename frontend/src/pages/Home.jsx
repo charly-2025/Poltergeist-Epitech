@@ -2,7 +2,7 @@ import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import Post from "../components/Post.jsx";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 
 
@@ -16,6 +16,25 @@ const Home = ({ localization}) => {
     const [activeTheme, setActiveTheme] = useState("recents");
     const [listPosts, setListPosts] = useState([]);  
     const [searchQuery, setSearchQuery] = useState("");
+
+    const navigate = useNavigate();
+    
+        useEffect(() => {
+        const checkAuth = async () => {
+          const res = await fetch("http://localhost:3000/check", {
+            method:"POST",
+            credentials: "include"
+          });
+    
+          if (!res.ok) {
+            navigate("/");
+          }
+        };
+    
+        checkAuth();
+      }, []);
+
+
 
     useEffect(() => {
         const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjE0LCJpYXQiOjE3Njk2MDYzMTF9.hseaKfFJ297uB8Wj2s2Z8AjDTKyjfk4T9Say_f902uc"/*localStorage.getItem("token");*/ 

@@ -7,7 +7,8 @@ const StartPage = () =>{
 
     useEffect(() => {
   const checkAuth = async () => {
-    const res = await fetch("http://localhost:3000/auth/check", {
+    const res = await fetch("http://localhost:3000/check", {
+        method : "POST",
       credentials: "include"
     });
 
@@ -31,7 +32,7 @@ const StartPage = () =>{
       return;
     }
 
-        navigate("/home")
+    navigate("/home")
     } catch (err) {
         console.error(err);
     }
