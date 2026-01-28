@@ -95,6 +95,18 @@
             "id": "2f57c62d02e85caa",
             "type": "leaf",
             "state": {
+              "type": "image",
+              "state": {
+                "file": "Pasted image 20260127122308.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20260127122308"
+            }
+          },
+          {
+            "id": "ba91ddcd5defb877",
+            "type": "leaf",
+            "state": {
               "type": "markdown",
               "state": {
                 "file": "docs/08_prioritization/prioritization_matrix.md",
@@ -106,7 +118,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -268,29 +280,43 @@
       "bases:Create new base": false
     }
   },
-  "active": "2f57c62d02e85caa",
+  "active": "ba91ddcd5defb877",
   "lastOpenFiles": [
-    "frontend/src/pages/Support.jsx",
-    "frontend/src/pages/Localization.jsx",
-    "frontend/src/pages/Home.jsx",
-    "frontend/src/pages/Home.css",
-    "frontend/src/pages/Feedback.jsx",
-    "frontend/src/pages/Favorite.jsx",
-    "frontend/src/images/wishlist.png",
-    "frontend/src/images/wishlist-vert.png",
-    "frontend/src/images/wishlist-vert-filled.png",
-    "frontend/src/images/support.png",
-    "frontend/src/images/support-vert.png",
-    "frontend/src/images/search.png",
-    "frontend/src/images/message.png",
-    "frontend/src/images/message-vert.png",
-    "frontend/src/images/marker.png",
-    "frontend/src/images/logopol.png",
-    "frontend/src/components/Post.jsx",
-    "frontend/src/components/Post.css",
-    "frontend/src/components/Navdrawer.jsx",
-    "frontend/src/components/Navdrawer.css",
-    "frontend/src/components/Navbar.jsx",
+    "docs/08_prioritization/prioritization images/Pasted image 20260127122409.png",
+    "docs/08_prioritization/prioritization images/Pasted image 20260127122359.png",
+    "docs/08_prioritization/prioritization images/Pasted image 20260127122337.png",
+    "docs/08_prioritization/prioritization images/Pasted image 20260127122320.png",
+    "docs/08_prioritization/prioritization images/Pasted image 20260127122308.png",
+    "docs/08_prioritization/prioritization images/Pasted image 20260127122302.png",
+    "docs/08_prioritization/Pasted image 20260127122409.png",
+    "docs/08_prioritization/Pasted image 20260127122359.png",
+    "docs/08_prioritization/Pasted image 20260127122337.png",
+    "docs/08_prioritization/Pasted image 20260127122320.png",
+    "docs/08_prioritization/Pasted image 20260127122308.png",
+    "docs/08_prioritization/mvp_definition.md",
+    "docs/08_prioritization/prioritization_matrix.md",
+    "todolist.md",
+    "frontend/src/pages/Localization.css",
+    "frontend/src/components/MapPicker.jsx",
+    "frontend/src/components/CityCard.jsx",
+    "frontend/src/components/CityCard.css",
+    "frontend/src/App.jsx",
+    "backend/routes/threads.js",
+    "backend/routes/geocode.js",
+    "backend/models/thread_model.js",
+    "backend/controllers/controllers.js",
+    "backend/controllers",
+    "docs/06_prototype/prototype.md",
+    "docs/05_mockups/mockups.md",
+    "docs/03_user_journey/user_journey.md",
+    "docs/02_personas/persona_2.md",
+    "docs/01_research/readme.md",
+    "docs/01_research/problem_statement.md",
+    "docs/01_research/objectives_constraints.md",
+    "docs/01_research/interviews.md",
+    "docs/01_research/benchmark.md",
+    "docs/07_feedback/feedback_summary.md",
+    "docs/07_feedback/test_protocol.md",
     "frontend/README.md",
     "backend/node_modules/tslib/SECURITY.md",
     "backend/node_modules/tslib/README.md",
@@ -301,20 +327,6 @@
     "backend/node_modules/cookie-parser/README.md",
     "backend/node_modules/cookie-parser/HISTORY.md",
     "backend/node_modules/@typegoose/auto-increment/README.md",
-    "docs/08_prioritization/mvp_definition.md",
-    "docs/07_feedback/feedback_summary.md",
-    "docs/07_feedback/test_protocol.md",
-    "docs/08_prioritization/prioritization_matrix.md",
-    "docs/01_research/benchmark.md",
-    "docs/01_research/interviews.md",
-    "README.md",
-    "docs/06_prototype/prototype.md",
-    "docs/05_mockups/mockups.md",
-    "docs/01_research/readme.md",
-    "docs/01_research/problem_statement.md",
-    "docs/01_research/objectives_constraints.md",
-    "docs/03_user_journey/user_journey.md",
-    "docs/02_personas/persona_3.md",
-    "docs/02_personas/persona_2.md"
+    "README.md"
   ]
 }
