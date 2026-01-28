@@ -6,6 +6,7 @@ import { config } from 'dotenv';
 
 import register_router from "./routes/register.js";  
 import threads_router from "./routes/threads.js";
+import user_router from "./routes/user.js";
 
 import swaggerUi from "swagger-ui-express"
 import swaggerJsDoc from "swagger-jsdoc";
@@ -26,6 +27,7 @@ app.set('trust proxy', true);
 
 app.use('/', register_router);
 app.use('/', threads_router);   
+app.use('/', user_router); 
 app.get('/', function (req, res) {
     console.log(req.ip)
     res.send();
