@@ -90,7 +90,7 @@
 .Posts-container{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 20px;
     width: 100%;
     align-self: stretch;
     max-width: 1048px;   
