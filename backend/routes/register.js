@@ -1,7 +1,5 @@
 import express from "express";
-import User from "../models/auth.js";
-import jwt from 'jsonwebtoken';
-import { Register } from "../controllers/controllers.js";
+import { Register } from "../controllers/controller_user.js";
 
 const register_router = express.Router();
 

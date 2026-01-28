@@ -4,7 +4,8 @@ import crypto from "crypto";
 
 const anonyme_schema = new mongoose.Schema({
   anonyme_id: { type: Number },
-  ip: { type: String, required: [true, 'IP is required'] }
+  ip: { type: String, required: [true, 'IP is required'] },
+  location: { country: { type : String , default : "" }, city: { type : String , default : ""} }
 },{timestamps : true}
 );
 
