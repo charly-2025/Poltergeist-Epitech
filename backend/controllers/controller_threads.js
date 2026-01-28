@@ -197,20 +197,95 @@ export const createThread = async (req, res) => {
     }   
 };   
 
+/**
+ * @swagger
+ * /threads/{threadId}/like:
+ *   post:
+ *     summary: Like a thread
+ *     tags: [Threads]
+ *     parameters:
+ *       - in: path
+ *         name: threadId
+ *         required: true
+ *         schema:
+ *           type: number
+ *         description: The auto-incremented ID of the thread to like
+ *     responses:
+ *       200:
+ *         description: Thread liked or already liked
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Thread liked
+ *       404:
+ *         description: Thread not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Thread not found
+ *       401:
+ *         description: Unauthorized
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ */
+
 
 export const likeThread = async(req, res) => {
     try {
         const userID = req.anonyme_id.userID
-        const threadId = req.thread.threadId
+        const threadId = req.params.threadId
+                if (!threadId){
+                return res.status(404).json({message:"thread does not exist"})}
 
         const thread = await Threads.findOne({ thread_id: threadId });
 
         if (thread.thread_likes.includes(userID)){
-            return res.status(200).json({ message: "already liked" });}
+            thread.thread_likes.pull(userID)
+            await thread.save();
+            return res.status(200).json({ message: "unliked" });}
         else {
             thread.thread_likes.push(userID)}
         await thread.save();
-        res.status(200).json({ message: "liked" });
+        return res.status(200).json({ message: "liked" });
+        
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+};
+
+export const saveThread = async(req, res) => {
+    try {
+        const userID = req.anonyme_id.userID
+        const threadId = req.params.threadId
+
+                if (!threadId){
+                return res.status(404).json({message:"thread does not exist"})}
+
+        const thread = await Threads.findOne({ thread_id: threadId });
+
+        if (thread.thread_favorite.includes(userID)){
+            thread.thread_favorite.pull(userID)
+            await thread.save();
+            return res.status(200).json({ message: "unadded" });}
+        else {
+            thread.thread_favorite.push(userID)}
+        await thread.save();
+        return res.status(200).json({ message: "added" });
         
     } catch (err) {
         res.status(400).json({ message: err.message });
