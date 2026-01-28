@@ -2,7 +2,9 @@ import Header from "../components/Header.jsx";
 import Footer from "../components/Footer.jsx";
 import Post from "../components/Post.jsx";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
+import { useDisclosure, Button } from "@heroui/react";
+import CreatePopUp from "../components/CreatePopUp.jsx";
 
 
 
@@ -12,23 +14,40 @@ import SearchLoop from "../images/search.png";
 import CloseCross from "../images/close.png";
 
 
-const Home = ({ localization}) => {
+
+export function Home  ({ localization}) {
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    
     const [activeTheme, setActiveTheme] = useState("recents");
     const [listPosts, setListPosts] = useState([]);  
     const [searchQuery, setSearchQuery] = useState("");
 
-    useEffect(() => {
-        const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOjE0LCJpYXQiOjE3Njk2MDYzMTF9.hseaKfFJ297uB8Wj2s2Z8AjDTKyjfk4T9Say_f902uc"/*localStorage.getItem("token");*/ 
+    const navigate = useNavigate();
+    
+        useEffect(() => {
+        const checkAuth = async () => {
+          const res = await fetch("http://localhost:3000/check", {
+            method:"POST",
+            credentials: "include"
+          });
+    
+          if (!res.ok) {
+            navigate("/");
+          }
+        };
+    
+        checkAuth();
+      }, []);
 
+
+
+    useEffect(() => {
         const fetchPosts = async () => {
         const res = await fetch(
-        `http://localhost:3000/getThread?type=${activeTheme}&search=${searchQuery}`,
+        `http://localhost:3000/getThreads?type=${activeTheme}&search=${searchQuery}`,
         {
           method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
+          credentials: "include"
         }
       );
         if (!res.ok){
@@ -44,8 +63,9 @@ const Home = ({ localization}) => {
     }, [activeTheme,searchQuery]);
 
     const addNewPost = (New) => {
-        setListPosts([New, ...listPosts]);}
-
+        setListPosts([New, ...listPosts]);
+        
+    };
     return (
         <div className="Home-page">
             <Header localization={localization} />
@@ -77,12 +97,30 @@ const Home = ({ localization}) => {
                     <Post title={post.thread_title} content={post.thread_content} country={post.thread_country} city={post.thread_city} listLike={post.thread_likes} listCom={post.thread_replies} createdDate={post.createdAt}/>))}
                 </div>}
 
+                <Button
+                    onPress={onOpen}
+                    className="create-thread-btn"
+                >
+                    + Create thread
+                </Button>
+
+                <CreatePopUp
+                    isOpen={isOpen}
+                    onOpenChange={onOpenChange}
+                    placement="right"
+                    size="sm"
+                    backdrop="opaque"
+                    hideCloseButton
+                    />
+
                 </div>
             </div>
-            <Footer />
+            
+
+            <Footer/>
         </div>
     );
-};
+}
 
 
 export default Home;
