@@ -1,26 +1,24 @@
 
 .Post-container {
+    min-width: unset;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     flex-wrap: nowrap;
-    align-items: start;
     border: 1px solid #1F1F1F;
     padding: 16px;
-    margin-bottom: 16px;
     border-radius: 33px;
     background-color: #141414;
-    min-width: 300px;
-    max-width: 848px;
+    max-width: 1048px;
     height: auto;
     gap: 18px;
-}ccc
+    box-sizing: border-box;
+}
 
 
 .Post-header {
-    background-color: re;
     display: flex;
     flex-direction: row;
+    flex-wrap: nowrap;
     align-items: center;
     width: 100%;
     justify-content: start;
@@ -37,16 +35,11 @@
     background: linear-gradient(to bottom,#17DB35,#0F7E27) !important;
     color : black;
     font-weight: bold;
-    margin-top: auto;
 }
 
-.Post-User-Info {
+.Post-UserInfo {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    
+    flex-direction: column;    
 }
 
 .Post-Username {
@@ -96,6 +89,9 @@
     color: white;
     margin: 0;
     padding: 0;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
 
 }
 
@@ -106,6 +102,10 @@
     padding: 0;
     margin-top: 12px;
     white-space: pre-wrap;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+
 }
 
 .Post-footer {

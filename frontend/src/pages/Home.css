@@ -29,7 +29,7 @@
 }
 
 .Theme-buttons button {
-    height: 100%;
+    height: 80%;
     width: 150px;
     padding: 10px 20px;
     border: none;
@@ -43,7 +43,7 @@
 }
 
 .Theme-buttons .Theme-active {
-    height: 100%;
+    height: 70px;
     padding: 10px 20px;
     border: none;
     cursor: pointer;
@@ -84,6 +84,20 @@
     border: none;
     outline: none;
     color: #99A1AF;
+
+}
+
+.Posts-container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-self: stretch;
+    max-width: 1048px;   
+    margin: 0 auto;    
+    padding: 0 16px;
+    box-sizing: border-box;
+    padding-bottom: 100px;
 
 }
 
