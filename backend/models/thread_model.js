@@ -20,6 +20,7 @@ const threads_schema = new mongoose.Schema({
   thread_country: {type : String, required: [true, 'country is required']},
   thread_city: {type : String, required: [true, 'city is required']},
   thread_likes: { type : [Number], default: [] },
+  thread_favorite: { type : [Number], default: [] },
   thread_replies: {type : [rep_schema], default : []},
   thread_random_profile_picture: {type : Number }
 },{timestamps: true }

@@ -44,6 +44,8 @@ import Threads from "../models/thread_model.js";
  *                          type : array
  *                      thread_replies : 
  *                          type : array
+ *                      thread_favorite :
+ *                          type : array
  *                      thread_random_profile_picture :
  *                          type : number   
  *                      createdAt : 
@@ -139,6 +141,8 @@ export const getThreads = async (req, res) => {
  *                      thread_likes :
  *                          type : array
  *                      thread_replies : 
+ *                          type : array
+ *                      thread_favorite : 
  *                          type : array
  *                      thread_random_profile_picture :
  *                          type : number   
