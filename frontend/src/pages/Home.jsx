@@ -3,6 +3,8 @@ import Footer from "../components/Footer.jsx";
 import Post from "../components/Post.jsx";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useDisclosure, Button } from "@heroui/react";
+import CreatePopUp from "../components/CreatePopUp.jsx";
 
 
 
@@ -12,7 +14,10 @@ import SearchLoop from "../images/search.png";
 import CloseCross from "../images/close.png";
 
 
-const Home = ({ localization}) => {
+
+export function Home  ({ localization}) {
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    
     const [activeTheme, setActiveTheme] = useState("recent");
     const [listPosts, setListPosts] = useState([]);  
     const [searchQuery, setSearchQuery] = useState("");
@@ -22,8 +27,9 @@ const Home = ({ localization}) => {
     }, [activeTheme,searchQuery]);
 
     const addNewPost = (New) => {
-        setListPosts([New, ...listPosts]);}
-
+        setListPosts([New, ...listPosts]);
+        
+    };
     return (
         <div className="Home-page">
             <Header localization={localization} />
@@ -55,12 +61,30 @@ const Home = ({ localization}) => {
                     <Post /*ici rajouter donner de chaque post ex: id=post.id*//>))}
                 </div>}
 
+                <Button
+                    onPress={onOpen}
+                    className="create-thread-btn"
+                >
+                    + Create thread
+                </Button>
+
+                <CreatePopUp
+                    isOpen={isOpen}
+                    onOpenChange={onOpenChange}
+                    placement="right"
+                    size="sm"
+                    backdrop="opaque"
+                    hideCloseButton
+                    />
+
                 </div>
             </div>
-            <Footer />
+            
+
+            <Footer/>
         </div>
     );
-};
+}
 
 
 export default Home;
