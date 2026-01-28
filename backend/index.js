@@ -6,8 +6,12 @@ import { config } from 'dotenv';
 
 import register_router from "./routes/register.js";  
 import threads_router from "./routes/threads.js";
+<<<<<<< HEAD
 import checkAuth_router from "./routes/verifyCookie.js";
 
+=======
+import user_router from "./routes/user.js";
+>>>>>>> fd2bf474abc04c964ad6c786ab95cad6dc510f23
 
 import swaggerUi from "swagger-ui-express"
 import swaggerJsDoc from "swagger-jsdoc";
@@ -29,6 +33,7 @@ app.set('trust proxy', true);
 app.use('/', checkAuth_router);
 app.use('/', register_router);
 app.use('/', threads_router);   
+app.use('/', user_router); 
 app.get('/', function (req, res) {
     console.log(req.ip)
     res.send();

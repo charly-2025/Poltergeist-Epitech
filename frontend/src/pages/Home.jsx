@@ -3,6 +3,8 @@ import Footer from "../components/Footer.jsx";
 import Post from "../components/Post.jsx";
 import { useState, useEffect } from "react";
 import { Link,useNavigate } from "react-router-dom";
+import { useDisclosure, Button } from "@heroui/react";
+import CreatePopUp from "../components/CreatePopUp.jsx";
 
 
 
@@ -12,8 +14,11 @@ import SearchLoop from "../images/search.png";
 import CloseCross from "../images/close.png";
 
 
-const Home = ({ localization}) => {
-    const [activeTheme, setActiveTheme] = useState("recents");
+
+export function Home  ({ localization}) {
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    
+    const [activeTheme, setActiveTheme] = useState("recent");
     const [listPosts, setListPosts] = useState([]);  
     const [searchQuery, setSearchQuery] = useState("");
 
@@ -63,8 +68,9 @@ const Home = ({ localization}) => {
     }, [activeTheme,searchQuery]);
 
     const addNewPost = (New) => {
-        setListPosts([New, ...listPosts]);}
-
+        setListPosts([New, ...listPosts]);
+        
+    };
     return (
         <div className="Home-page">
             <Header localization={localization} />
@@ -96,12 +102,30 @@ const Home = ({ localization}) => {
                     <Post title={post.thread_title} content={post.thread_content} country={post.thread_country} city={post.thread_city} listLike={post.thread_likes} listCom={post.thread_replies} createdDate={post.createdAt}/>))}
                 </div>}
 
+                <Button
+                    onPress={onOpen}
+                    className="create-thread-btn"
+                >
+                    + Create thread
+                </Button>
+
+                <CreatePopUp
+                    isOpen={isOpen}
+                    onOpenChange={onOpenChange}
+                    placement="right"
+                    size="sm"
+                    backdrop="opaque"
+                    hideCloseButton
+                    />
+
                 </div>
             </div>
-            <Footer />
+            
+
+            <Footer/>
         </div>
     );
-};
+}
 
 
 export default Home;

@@ -56,7 +56,7 @@ import Threads from "../models/thread_model.js";
  *                          type: number
  *                      __v : 
  *                          type : number
- *       400:
+ *       500:
  *         description: Error
  *         content:
  *           application/json:
@@ -87,10 +87,22 @@ export const getThreads = async (req, res) => {
 
         res.status(200).json(threads);
     } catch (err) {
-    res.status(400).json({ message: err.message });
+    res.status(500).json({ message: err.message });
     }
 };
 
+export const getThreadsID = async (req, res) => {
+    try { 
+
+        const threads = await Threads.find(filter)
+            .sort({createdAt: -1})
+            .limit(50);
+
+        res.status(200).json(threads);
+    } catch (err) {
+    res.status(400).json({ message: err.message });
+    }
+};
 /**
  * @swagger
  * /threads:
@@ -154,7 +166,7 @@ export const getThreads = async (req, res) => {
  *                          type: number
  *                      __v : 
  *                          type : number
- *       400:
+ *       500:
  *         description: Error
  *         content:
  *           application/json:
@@ -177,9 +189,30 @@ export const createThread = async (req, res) => {
 
         });
         thread.thread_random_profile_picture = thread.author_id * thread.thread_id;
+
         await thread.save();
         res.status(200).json(thread);
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.status(500).json({ message: err.message });
     }   
 };   
+
+
+export const likeThread = async(req, res) => {
+    try {
+        const userID = req.anonyme_id.userID
+        const threadId = req.thread.threadId
+
+        const thread = await Threads.findOne({ thread_id: threadId });
+
+        if (thread.thread_likes.includes(userID)){
+            return res.status(200).json({ message: "already liked" });}
+        else {
+            thread.thread_likes.push(userID)}
+        await thread.save();
+        res.status(200).json({ message: "liked" });
+        
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
+};
