@@ -250,8 +250,8 @@ export const likeThread = async(req, res) => {
     try {
         const userID = req.anonyme_id.userID
         const threadId = req.params.threadId
-                if (!threadId){
-                return res.status(404).json({message:"thread does not exist"})}
+        if (!threadId){
+            return res.status(404).json({message:"thread does not exist"})}
 
         const thread = await Threads.findOne({ thread_id: threadId });
 
@@ -319,8 +319,8 @@ export const favoriteThread = async(req, res) => {
         const userID = req.anonyme_id.userID
         const threadId = req.params.threadId
 
-                if (!threadId){
-                return res.status(404).json({message:"thread does not exist"})}
+        if (!threadId){
+            return res.status(404).json({message:"thread does not exist"})}
 
         const thread = await Threads.findOne({ thread_id: threadId });
 
