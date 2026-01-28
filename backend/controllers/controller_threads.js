@@ -204,7 +204,7 @@ export const createThread = async (req, res) => {
  * @swagger
  * /threads/{threadId}/like:
  *   post:
- *     summary: Like a thread
+ *     summary: Like or unlike a thread
  *     tags: [Threads]
  *     parameters:
  *       - in: path
@@ -212,7 +212,7 @@ export const createThread = async (req, res) => {
  *         required: true
  *         schema:
  *           type: number
- *         description: The auto-incremented ID of the thread to like
+ *         description: The auto incremented ID of the thread to like
  *     responses:
  *       200:
  *         description: Thread liked or already liked
@@ -234,10 +234,8 @@ export const createThread = async (req, res) => {
  *                 message:
  *                   type: string
  *                   example: Thread not found
- *       401:
- *         description: Unauthorized
  *       500:
- *         description: Server error
+ *         description: Error
  *         content:
  *           application/json:
  *             schema:
@@ -245,7 +243,7 @@ export const createThread = async (req, res) => {
  *               properties:
  *                 message:
  *                   type: string
- */
+ */   
 
 
 export const likeThread = async(req, res) => {
@@ -267,11 +265,56 @@ export const likeThread = async(req, res) => {
         return res.status(200).json({ message: "liked" });
         
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.status(500).json({ message: err.message });
     }
 };
 
-export const saveThread = async(req, res) => {
+/**
+ * @swagger
+ * /threads/{threadId}/favorite:
+ *   post:
+ *     summary: favorite or unfavorite a thread
+ *     tags: [Threads]
+ *     parameters:
+ *       - in: path
+ *         name: threadId
+ *         required: true
+ *         schema:
+ *           type: number
+ *         description: The auto incremented ID of the thread to favorite
+ *     responses:
+ *       200:
+ *         description: Thread favorited or already favorited
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Thread favorited
+ *       404:
+ *         description: Thread not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Thread not found
+ *       500:
+ *         description: Error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ */   
+
+export const favoriteThread = async(req, res) => {
     try {
         const userID = req.anonyme_id.userID
         const threadId = req.params.threadId
@@ -291,6 +334,6 @@ export const saveThread = async(req, res) => {
         return res.status(200).json({ message: "added" });
         
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.status(500).json({ message: err.message });
     }
 };
