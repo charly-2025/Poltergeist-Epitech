@@ -10,7 +10,7 @@ export const Register = async (req, res) => {
         });   
         await user.save();
         const token = jwt.sign({ userID: user.anonyme_id }, process.env.JWT_SECRET);   
-        res.cookie('token', token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 });  
+        res.cookie('token', token, { httpOnly: true, maxAge: 7 * 24 * 60 * 60 * 1000 ,sameSite:"lax",secure:"false"});  
         res.status(201).json({ message: "User registered" });
     } catch (err) {
         res.status(400).json({ message: err.message });
