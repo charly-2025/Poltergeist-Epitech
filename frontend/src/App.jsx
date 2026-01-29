@@ -18,8 +18,8 @@ function App() {
       try {
         const response = await fetch('http://localhost:3000/getUserInfos', {method: 'GET', credentials: 'include'});
         const data = await response.json();
-        if (data.country && data.city) {
-          setLocalization({ country: data.country, city: data.city });
+        if (data.location.country && data.location.city) {
+          setLocalization({ country: data.location.country, city: data.location.city });
         }
       } catch (error) {
         console.error("Error fetching localization data:", error);
@@ -38,13 +38,11 @@ function App() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ country: localization.country, city: localization.city }),
+        body: JSON.stringify({ country: localization?.country, city: localization?.city }),
       });
+      console.log("Localization updated:", localization);
     };
-
-    if (localization) {
-      updateLocalization();
-    }
+    updateLocalization();
   }, [localization]); 
 
 
