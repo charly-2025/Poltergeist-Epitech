@@ -63,6 +63,7 @@ export const getLocation = async (req, res) => {
                     { country: { $regex: search, $options: "i" } }
                 ]
             })
+            .limit(30)
             .toArray();
         res.status(200).json(locations);
     } catch (err) {
