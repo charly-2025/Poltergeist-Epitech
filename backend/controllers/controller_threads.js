@@ -490,3 +490,216 @@ export const addReply = async (req, res) => {
     return res.status(500).json({ message: err.message });
   }
 };
+
+/**
+ * @swagger
+ * /thread/{threadId}/replies:
+ *   post:
+ *     summary: Add a reply (comment) to a thread
+ *     tags: [Threads]
+ *     parameters:
+ *       - in: path
+ *         name: threadId
+ *         required: true
+ *         schema:
+ *           type: number
+ *         description: The auto-incremented ID of the thread
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - rep_content
+ *             properties:
+ *               rep_content:
+ *                 type: string
+ *                 example: "This is my comment"
+ *               quote_reply_id:
+ *                 type: string
+ *                 nullable: true
+ *                 description: Optional - the _id of an existing reply in this thread to quote/reply to later
+ *                 example: "65f1c2e9a9c1d1b8b7a12345"
+ *     responses:
+ *       201:
+ *         description: Returns the newly created reply
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *                   example: "65f1c2e9a9c1d1b8b7a99999"
+ *                 author_id:
+ *                   type: number
+ *                   example: 12
+ *                 rep_content:
+ *                   type: string
+ *                   example: "This is my comment"
+ *                 rep_likes:
+ *                   type: array
+ *                   items:
+ *                     type: number
+ *                   example: []
+ *                 quote:
+ *                   type: object
+ *                   nullable: true
+ *                   properties:
+ *                     reply_id:
+ *                       type: string
+ *                       nullable: true
+ *                     author_id:
+ *                       type: number
+ *                       nullable: true
+ *                     cut:
+ *                       type: string
+ *                       nullable: true
+ *                 createdAt:
+ *                   type: string
+ *                   format: date-time
+ *                 updatedAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Invalid request (missing content or bad quote id)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "rep_content is required"
+ *       404:
+ *         description: Thread not found (or quote reply not found if quote_reply_id is provided)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "thread does not exist"
+ *       401:
+ *         description: Unauthorized
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Server error"
+ */
+
+export const getReplies = async (req, res) => {
+  try {
+    const threadId = Number(req.params.threadId);
+
+    const thread = await Threads.findOne({ thread_id: threadId })
+      .select("thread_replies"); 
+
+    if (!thread) {
+      return res.status(404).json({ message: "thread not found" });
+    }
+
+    return res.status(200).json(thread.thread_replies);
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};
+
+/**
+ * @swagger
+ * /thread/{threadId}/replies:
+ *   get:
+ *     summary: get all replies from a thread
+ *     tags: [Threads]
+ *     parameters:
+ *       - in: path
+ *         name: threadId
+ *         required: true
+ *         schema:
+ *           type: number
+ *         description: get all replies
+ *     requestBody:
+ *       required: true
+ *       
+ *     responses:
+ *       201:
+ *         description: Returns all the replies from the thread
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *                   example: "65f1c2e9a9c1d1b8b7a99999"
+ *                 author_id:
+ *                   type: number
+ *                   example: 12
+ *                 rep_content:
+ *                   type: string
+ *                   example: "This is my comment"
+ *                 rep_likes:
+ *                   type: array
+ *                   items:
+ *                     type: number
+ *                   example: []
+ *                 quote:
+ *                   type: object
+ *                   nullable: true
+ *                   properties:
+ *                     reply_id:
+ *                       type: string
+ *                       nullable: true
+ *                     author_id:
+ *                       type: number
+ *                       nullable: true
+ *                     cut:
+ *                       type: string
+ *                       nullable: true
+ *                 createdAt:
+ *                   type: string
+ *                   format: date-time
+ *                 updatedAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Invalid request (missing content or bad quote id)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "rep_content is required"
+ *       404:
+ *         description: Thread not found (or quote reply not found if quote_reply_id is provided)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "thread does not exist"
+ *       401:
+ *         description: Unauthorized
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Server error"
+ */
