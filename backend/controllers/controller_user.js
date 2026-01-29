@@ -1,6 +1,6 @@
 import User from "../models/auth.js";
 import jwt from 'jsonwebtoken';
-
+import Threads from "../models/thread_model.js"
 
 /**
  * @swagger
@@ -50,7 +50,7 @@ export const Register = async (req, res) => {
  * @swagger
  * /getUserInfos:
  *   get:
- *     summary: get the location and the id of the user "connected" thanks to his token
+ *     summary: retrieve the location and the id of the authenticated user
  *     tags: [User]
  *     responses:
  *       200:
@@ -107,6 +107,95 @@ export const getUserInfos = async (req, res) => {
     }
 };
 
+
+/**
+ * @swagger
+ * /getUserThreads:
+ *   get:
+ *     summary: Retrieve all threads created by the authenticated user
+ *     tags: [User]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: A list of threads authored by the user
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 count:
+ *                   type: integer
+ *                   description: Number of threads returned
+ *                 threads:
+ *                   type: array
+ *                   items:
+ *                     type: object
+ *                     properties:
+ *                       thread_id:
+ *                         type: string
+ *                       author_id:
+ *                         type: number
+ *                       thread_title:
+ *                         type: string
+ *                       thread_content:
+ *                         type: string
+ *                       thread_country:
+ *                         type: string
+ *                       thread_city:
+ *                         type: string
+ *                       thread_likes:
+ *                        type: array
+ *                        items:
+ *                         type : integer
+ *                       thread_favorite:
+ *                        type: array
+ *                        items:
+ *                         type : integer
+ *                       thread_replies:
+ *                        type: array
+ *                        items:
+ *                         type : integer
+ *                       thread_random_profile_picture:
+ *                         type: number
+ *                       createdAt:
+ *                         type: string
+ *                         format: timestamp
+ *       404:
+ *         description: No threads found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: no threads found
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 error:
+ *                   type: string
+ */   
+
+export const getUserThreads = async (req, res) => {
+    try {
+        const userId = req.anonyme_id.userID;
+        const threads = await Threads.find({ author_id: userId }).select('thread_id author_id thread_title thread_content thread_country thread_city thread_likes thread_favorite threads_replies thread_random_profile_picture createdAt');
+
+        if (!threads) { 
+            return res.status(404).json({ message: "no threads found" });
+        }
+
+        res.status(200).json({threads});
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
 
 /**
  * @swagger

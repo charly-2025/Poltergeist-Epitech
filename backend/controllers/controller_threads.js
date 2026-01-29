@@ -43,21 +43,24 @@ import User from "../models/auth.js"
  *                     type: string
  *                   thread_likes:
  *                     type: array
- *                     items: {}
+ *                     items:
+ *                       type : integer
  *                   thread_replies:
  *                     type: array
- *                     items: {}
+ *                     items:
+ *                       type : integer
  *                   thread_favorite:
  *                     type: array
- *                     items: {}
+ *                     items:
+ *                       type : integer
  *                   thread_random_profile_picture:
  *                     type: number
  *                   createdAt:
  *                     type: string
- *                     format: date-time
+ *                     format: timestamp
  *                   updatedAt:
  *                     type: string
- *                     format: date-time
+ *                     format: timestamp
  *                   thread_id:
  *                     type: number
  *                   __v:
@@ -161,11 +164,17 @@ export const getThreads = async (req, res) => {
  *                      thread_city:
  *                          type : string
  *                      thread_likes :
- *                          type : array
+ *                        type: array
+ *                        items:
+ *                         type : integer
  *                      thread_replies : 
- *                          type : array
+ *                        type: array
+ *                        items:
+ *                         type : integer
  *                      thread_favorite : 
- *                          type : array
+ *                        type: array
+ *                        items:
+ *                         type : integer
  *                      thread_random_profile_picture :
  *                          type : number   
  *                      createdAt : 
@@ -341,7 +350,7 @@ export const favoriteThread = async(req, res) => {
         return res.status(200).json({ message: "added" });
         
     } catch (err) {
-        res.status(500).json({ message: err.message });
+        res.status(400).json({ message: err.message });
     }
 };
 
