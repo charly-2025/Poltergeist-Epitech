@@ -3,6 +3,7 @@ import "./Post.css";
 
 import { Like,Comment,Favorite } from "./Like-Com-Fav.jsx";
 import {Avatar} from "@heroui/react";
+import CommentsPopup from "./CommentsPopup.jsx";
 
 import Marker from "../images/marker.png";
 
@@ -10,6 +11,7 @@ const Post = ({thread_id,title,content,country,city,listLike,listCom,createdDate
   const [isLiked, setIsLiked] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
   const [userData, setUserData] = useState(null);
+  const [showComments, setShowComments] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -55,7 +57,7 @@ const Post = ({thread_id,title,content,country,city,listLike,listCom,createdDate
 
 
   const openComments = () => {
-    /*ouvrir la section des commentaires*/
+    setShowComments(true);
   }
 
 
@@ -100,9 +102,10 @@ const Post = ({thread_id,title,content,country,city,listLike,listCom,createdDate
           <p className="Post-Text">{content}</p>
         </div>
         <div className="Post-footer">
-          <div className="Like-Com"><Like isLiked={isLiked} handleLike={handleLike}  /><Comment openComments={openComments}/></div>
+          <div className="Like-Com"><Like isLiked={isLiked} handleLike={handleLike}  /><Comment openComments={openComments} /></div>
           <Favorite isFavorited={isFavorited} handleFavorite={handleFavorite} />
         </div>
+        <CommentsPopup postId={thread_id} open={showComments} onClose={() => setShowComments(false)} />
     </div>
   );
 };
