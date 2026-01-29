@@ -62,8 +62,8 @@ export function Home  ({ localization}) {
         fetchPosts();
     }, [activeTheme,searchQuery]);
 
-    const addNewPost = (New) => {
-        setListPosts([New, ...listPosts]);
+    const addNewPost = (thread) => {
+        setListPosts([thread, ...listPosts]);
         
     };
     return (
@@ -105,8 +105,11 @@ export function Home  ({ localization}) {
                 </Button>
 
                 <CreatePopUp
-                    isOpen={isOpen}
-                    onOpenChange={onOpenChange}/>
+                isOpen={isOpen}
+                onOpenChange={onOpenChange}
+                onPostCreated={addNewPost}
+                localization={localization}
+                />
 
                 </div>
             </div>
