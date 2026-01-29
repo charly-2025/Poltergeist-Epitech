@@ -80,7 +80,26 @@ const [listCity, setListCity] = useState([
         checkAuth();
       }, []);
 
-    useEffect(() => {/*Fetch list ville filtré */}, [searchCity, CountryFiltered]);
+    useEffect(() => {
+      const fetchLocatizations = async () => {
+        try {
+          const response = await fetch(`http://localhost:3000/location?search=${searchCity}`, {
+            method: "GET",
+            credentials: "include"
+          });
+          if (!response.ok) return;
+          const data = await response.json();
+          console.log(data);
+          setListCity(data);
+        } catch (error) {
+          console.error("Error fetching localizations:", error);
+        }
+      };
+
+      if (searchCity !== "" || CountryFiltered !== "all") {
+        fetchLocatizations();
+      }
+    }, [searchCity, CountryFiltered]);
 
     
 
