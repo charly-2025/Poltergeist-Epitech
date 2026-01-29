@@ -1,4 +1,4 @@
-import {useEffect,useState} from 'react';
+import {use, useEffect,useState} from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
@@ -13,7 +13,37 @@ import StartPage from './pages/StartPage';
 function App() {
   const [localization, setLocalization] = useState(null);
 
-  useEffect(() => {console.log(localization)}, [localization]);
+  useEffect(() => {
+    const fetchLocalization = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/getUserInfos', {method: 'GET', credentials: 'include'});
+        const data = await response.json();
+        if (data.location.country && data.location.city) {
+          setLocalization({ country: data.location.country, city: data.location.city });
+        }
+      } catch (error) {
+        console.error("Error fetching localization data:", error);
+      }  
+    };
+
+    fetchLocalization();
+  }, []);
+
+
+  useEffect(() => {
+    const updateLocalization = async () => {
+      fetch('http://localhost:3000/updateLocation', {
+        method: 'PATCH',
+        credentials: 'include',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ country: localization?.country, city: localization?.city }),
+      });
+      console.log("Localization updated:", localization);
+    };
+    updateLocalization();
+  }, [localization]); 
 
 
 

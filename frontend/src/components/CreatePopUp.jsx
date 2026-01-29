@@ -55,10 +55,12 @@ export default function CreatePopUp({
       size="xl"
       backdrop="blur"
       portalContainer={document.body}
+      hideCloseButton
       classNames={{
         wrapper: "thread-wrapper",
         base: "thread-modal",
       }}
+      hideCloseButton={true}
     >
       <ModalContent>
         {(onClose) => (

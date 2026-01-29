@@ -6,10 +6,32 @@ import {Avatar} from "@heroui/react";
 
 import Marker from "../images/marker.png";
 
-const Post = ({title,content,country,city,listLike,listCom,createdDate}) => { 
+const Post = ({thread_id,title,content,country,city,listLike,listCom,createdDate}) => { 
   const [isLiked, setIsLiked] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
+  const [userData, setUserData] = useState(null);
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/getUserInfos', {method: 'GET', credentials: 'include'});
+        const data = await response.json();
+        setUserData(data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+    fetchUserData();
+  },  []);
+
+  useEffect(() => {
+    for (let like of listLike) {
+      if (userData && like === userData.anonyme_id) {
+        setIsLiked(true);
+        break;
+      }
+    }
+  }, [listLike, userData]);
 
   function timeAgo(dateString) {
   const now = new Date();
@@ -36,18 +58,26 @@ const Post = ({title,content,country,city,listLike,listCom,createdDate}) => {
     /*ouvrir la section des commentaires*/
   }
 
-  console.log(isFavorited);
 
   const handleFavorite = () => {
     setIsFavorited(!isFavorited);
   };
 
-  useEffect(() => {
-    /*fetch le post pour savoir si l'utilisateur a déjà aimé le post*/
-  },[]);
-
   const handleLike = () => {
-    setIsLiked(!isLiked);
+    const fetchLike = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/thread/${thread_id}/like`, {
+          method: 'POST',
+          credentials: 'include',
+        });
+        if (response.ok) {
+          setIsLiked(!isLiked);
+        }
+      } catch (error) {
+        console.error("Error toggling like:", error);
+      }
+    };
+    fetchLike();
   };
 
   useEffect(() => {
