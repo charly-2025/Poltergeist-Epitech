@@ -3,14 +3,17 @@ import { AutoIncrementID } from '@typegoose/auto-increment';
 
 
 const rep_schema = new mongoose.Schema({
-  author_id: { type : Number ,required: [true, 'author ID is required']},
-  rep_content: { type : String , required: [true, 'content is required']},
-  rep_likes: { type : [Number], default: [] },
-  rep: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Rep' }]
-}, {timestamps: true}  
-);
+  author_id: { type: Number, required: true },
+  rep_content: { type: String, required: true },
+  rep_likes: { type: [Number], default: [] },
 
-const reps = mongoose.model('Rep', rep_schema);
+
+  quote: { //JVC STYLE 18-25 2SUCRES
+    reply_id: { type: mongoose.Schema.Types.ObjectId, default: null }, 
+    author_id: { type: Number, default: null },                        
+    excerpt: { type: String, default: null }                           
+  }
+}, { timestamps: true });
 
 const threads_schema = new mongoose.Schema({
   thread_id: { type : Number },
