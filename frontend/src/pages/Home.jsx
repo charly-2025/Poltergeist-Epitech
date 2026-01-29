@@ -94,7 +94,7 @@ export function Home  ({ localization}) {
                 </div>
                 : <div className="Posts-container">
                     {listPosts.map(post => (
-                    <Post title={post.thread_title} content={post.thread_content} country={post.thread_country} city={post.thread_city} listLike={post.thread_likes} listCom={post.thread_replies} createdDate={post.createdAt}/>))}
+                    <Post thread_id={post.thread_id} title={post.thread_title} content={post.thread_content} country={post.thread_country} city={post.thread_city} listLike={post.thread_likes} listCom={post.thread_replies} createdDate={post.createdAt}/>))}
                 </div>}
 
                 <Button
@@ -106,12 +106,7 @@ export function Home  ({ localization}) {
 
                 <CreatePopUp
                     isOpen={isOpen}
-                    onOpenChange={onOpenChange}
-                    placement="right"
-                    size="sm"
-                    backdrop="opaque"
-                    hideCloseButton
-                    />
+                    onOpenChange={onOpenChange}/>
 
                 </div>
             </div>

@@ -12,10 +12,10 @@ const CityCard = ({localization,setLocalization,city}/*variable comme city name,
     };
 
     return(
-        <div onClick={handleCityCard} className={localization?.name === city.name ? "CityCard-container-select":"CityCard-container"}>
+        <div onClick={handleCityCard} className={localization?.city === city.city ? "CityCard-container-select":"CityCard-container"}>
             <div className="CityCard-Name">
                 <img src={LocalizationLogo} alt="LocLogo"/>
-                <h2>{city.name}</h2>
+                <h2>{city.city}</h2>
             </div>
             <div className="CityCard-Country">{city.country}</div>
             <div className="CityCard-nbThread">
