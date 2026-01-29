@@ -6,8 +6,7 @@ import Threads from "../models/thread_model.js"
  * /location:
  *   get:
  *     summary: search location and get number of location's number of threads
- *     tags:
- *       - Location
+ *     tags: [Location]
  *     parameters:
  *       - in: query
  *         name: search
