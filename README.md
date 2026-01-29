@@ -27,31 +27,35 @@ JWT_SECRET= <a code secret>
 IP_secret= <a code secret>
 ```
 
-Navigate to the backend folder and do this : 
+Now to this: 
 
 ```
-docker cp world-cities.csv b-tbm-100-ren-1-1-yowl-1-mongo-1:/world-cities.csv
+cd backend/
+docker cp world-cities.csv mvp-mongo-1:/world-cities.csv
 ```
 
 Then,
 
 ```
-docker exec b-tbm-100-ren-1-1-yowl-1-mongo-1 mongoimport \
+cd ../
+docker compose up --build
+cd backend/
+docker exec mvp-mongo-1 mongoimport \
   --db poltergeistdb \
   --collection Location \
   --type csv \
   --file /world-cities.csv \
-  --headerline \
+  --headerline
 ```
 
 ### Running the Project
 
-From the mvp/ directory, simply run:
+stop the current build docker compose you did before.
+From the mvp/ directory, and rebuild and simply run:
 
 ```
 docker compose up --build
 ```
-
 
 Once running, the application is accessible at:
   - http://localhost:3001
