@@ -9,7 +9,7 @@ import CommentsPopup from "./CommentsPopup.jsx";
 
 import Marker from "../images/marker.png";
 
-const Post = ({thread_id,title,content,country,city,listLike,listCom,createdDate}) => { 
+const Post = ({thread_id,title,content,country,city,listLike,listCom,listFavorite,createdDate}) => { 
   const [isLiked, setIsLiked] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
   const [userData, setUserData] = useState(null);
@@ -36,6 +36,17 @@ const Post = ({thread_id,title,content,country,city,listLike,listCom,createdDate
       }
     }
   }, [listLike, userData]);
+
+
+  useEffect(() => {
+    for (let favorite of listFavorite) {
+      if (userData && favorite === userData.anonyme_id) {
+        setIsFavorited(true);
+        break;
+      }
+    }
+  }, [listFavorite, userData]);
+
 
   function timeAgo(dateString) {
   const now = new Date();
@@ -64,8 +75,21 @@ const Post = ({thread_id,title,content,country,city,listLike,listCom,createdDate
 
 
   const handleFavorite = () => {
-    setIsFavorited(!isFavorited);
-  };
+    const fetchFavorite = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/thread/${thread_id}/favorite`, {
+          method: 'POST',
+          credentials: 'include',
+        });
+        if (response.ok) {
+          setIsFavorited(!isFavorited);
+        }
+      } catch (error) {
+        console.error("Error toggling favorite:", error);
+      }
+    };
+    fetchFavorite();
+    };
 
   const handleLike = () => {
     const fetchLike = async () => {
@@ -84,9 +108,6 @@ const Post = ({thread_id,title,content,country,city,listLike,listCom,createdDate
     fetchLike();
   };
 
-  useEffect(() => {
-    /*fetch le user_id pour envoyer que l'utilisateur a aimé le post*/
-  },[isLiked]);
 
 
 
@@ -94,11 +115,10 @@ const Post = ({thread_id,title,content,country,city,listLike,listCom,createdDate
     <div className="Post-container">
         <div className="Post-header">
           <Avatar
-  src={getAvatar(userData?.anonyme_id ?? 0, thread_id)}
-  name="Anonymous"
-  className="Post-avatar"
-/>
-
+            src={getAvatar(userData?.anonyme_id ?? 0, thread_id)}
+            name="Anonymous"
+            className="Post-avatar"
+          />     
           <div className="Post-UserInfo">
             <div className="Post-Username">Anonymous<p>- {timeAgo(createdDate)} ago </p></div>
             <p className="Post-UserLocation"><img src={Marker} alt="marker" /> {country} , {city}</p>
