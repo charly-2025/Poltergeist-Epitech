@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "06_prototype/prototype.md",
+                "file": "08_prioritization/mvp_definition.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "prototype"
+              "title": "mvp_definition"
             }
           }
         ],
@@ -200,13 +200,27 @@
   },
   "active": "d926ae49b76d24fa",
   "lastOpenFiles": [
+    "07_feedback/test_protocol.md",
+    "07_feedback/feedback_summary.md",
+    "04_wireframes/wireframes.md",
+    "04_wireframes/wireframes_images/Screenshot from 2026-01-29 16-54-08.png",
+    "04_wireframes/wireframes_images/Screenshot from 2026-01-29 16-54-00.png",
+    "04_wireframes/wireframes_images/Screenshot from 2026-01-29 16-53-39.png",
+    "04_wireframes/wireframes_images/Screenshot from 2026-01-29 16-52-58.png",
+    "04_wireframes/wireframes_images/Screenshot from 2026-01-29 16-53-02.png",
+    "04_wireframes/wireframes_images/Screenshot from 2026-01-29 16-59-06.png",
+    "04_wireframes/wireframes_images/Screenshot from 2026-01-29 16-53-46.png",
+    "04_wireframes/wireframes_images/Screenshot from 2026-01-29 16-51-59.png",
+    "06_prototype/prototype.md",
+    "04_wireframes/wireframes_images/Screenshot from 2026-01-29 16-54-27.png",
+    "04_wireframes/wireframes_images/Screenshot from 2026-01-29 16-54-20.png",
+    "04_wireframes/wireframes_images",
     "04_wireframes/poltergeist design.pdf",
     "04_wireframes",
     "08_prioritization/README.md",
     "07_feedback/README.md",
     "01_research/README.md",
     "06_prototype/README.md",
-    "06_prototype/prototype.md",
     "05_mockups/README.md",
     "05_mockups/mockups.md",
     "01_research/benchmark.md",
@@ -215,10 +229,6 @@
     "02_personas/persona_1.md",
     "08_prioritization/mvp_definition.md",
     "08_prioritization/prioritization_matrix.md",
-    "08_prioritization/Le client découvre le site.png",
-    "07_feedback/test_protocol.md",
-    "07_feedback/feedback_summary.md",
-    "05_mockups/mockups_images/localizationpoltergeist.png",
     "03_user_journey/user_journey.md",
     "02_personas/persona_3.md",
     "02_personas/persona_2.md",

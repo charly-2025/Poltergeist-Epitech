@@ -25,17 +25,10 @@
     gap: 16px;
 }
 
-.Post-avatar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: linear-gradient(to bottom,#17DB35,#0F7E27) !important;
-    color : black;
-    font-weight: bold;
-}
+
+
+
+
 
 .Post-UserInfo {
     display: flex;
@@ -122,4 +115,52 @@
     display: flex;
     flex-direction: row;
     gap: 12px;
+}
+
+.Reply {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.Post-avatar {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50%;
+  overflow: hidden;    
+  flex-shrink: 0;        
+  background-color: #111;
+}
+
+.Post-avatar img {
+  width: 100% !important;   
+  height: 100% !important;
+  object-fit: contain !important;
+  background-color: #141414 !important;
+}
+
+.Reply-avatar {
+  width: 48px !important;
+  height: 48px !important;
+  border-radius: 50%;
+  overflow: hidden;    
+  flex-shrink: 0;        
+  
+}
+
+.Reply-avatar img {
+  width: 100% !important;   
+  height: 100% !important;
+  object-fit: contain !important;
+  
+}
+
+.Reply-body {
+  flex: 1;
+}
+
+.Reply-author {
+  font-size: 12px;
+  opacity: 0.7;
+  margin-bottom: 4px;
 }

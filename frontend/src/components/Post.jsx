@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import "./Post.css";
+import { getAvatar } from "../utils/avatars";
+
 
 import { Like,Comment,Favorite } from "./Like-Com-Fav.jsx";
 import {Avatar} from "@heroui/react";
@@ -91,7 +93,12 @@ const Post = ({thread_id,title,content,country,city,listLike,listCom,createdDate
   return (
     <div className="Post-container">
         <div className="Post-header">
-          <Avatar name="Anonymous" className="Post-avatar"/>
+          <Avatar
+  src={getAvatar(userData?.anonyme_id ?? 0, thread_id)}
+  name="Anonymous"
+  className="Post-avatar"
+/>
+
           <div className="Post-UserInfo">
             <div className="Post-Username">Anonymous<p>- {timeAgo(createdDate)} ago </p></div>
             <p className="Post-UserLocation"><img src={Marker} alt="marker" /> {country} , {city}</p>
