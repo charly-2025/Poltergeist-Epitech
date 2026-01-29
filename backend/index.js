@@ -12,6 +12,7 @@ import user_router from "./routes/user.js";
 
 import swaggerUi from "swagger-ui-express"
 import swaggerJsDoc from "swagger-jsdoc";
+import location_router from "./routes/location.js";
 
 
 config({ path: '../.env' });   
@@ -30,6 +31,7 @@ app.set('trust proxy', true);
 app.use('/', checkAuth_router);
 app.use('/', register_router);
 app.use('/', threads_router);   
+app.use('/', location_router); 
 app.use('/', user_router); 
 app.get('/', function (req, res) {
     console.log(req.ip)
