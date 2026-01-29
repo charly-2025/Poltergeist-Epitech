@@ -59,6 +59,7 @@ export default function CreatePopUp({
         wrapper: "thread-wrapper",
         base: "thread-modal",
       }}
+      hideCloseButton={true}
     >
       <ModalContent>
         {(onClose) => (

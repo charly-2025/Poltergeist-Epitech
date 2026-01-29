@@ -53,13 +53,13 @@ const Header = ({localization}) => {
           <div className='Logo-namesite'>
             <img src={Logo} alt="Logo" style={{height:70}} />
             <div className='Header-Name-Loc'>
-            <h1>POLTERGEIST</h1>
-                {localization?(<div className='Header-Loc'>
-                <img src={LocalizationLoc} alt='LogoLoc'/>
-                <div>{localization?.country} , {localization.name}</div>
-                </div>):""}
+              <h1>POLTERGEIST</h1>
+                  {localization?(<div className='Header-Loc'>
+                  <img src={LocalizationLoc} alt='LogoLoc'/>
+                  <div>{localization?.country} , {localization.city}</div>
+                  </div>):""}
             </div>
-      </div>
+          </div>
       {windowWidth>=1362 ? <Navbar/> : ""}
     </div>
     );

@@ -28,6 +28,8 @@
 .Header-Name-Loc{
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 .Header-Loc{
@@ -51,8 +53,8 @@
 .Logo-namesite {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-self: center;
+  justify-content:flex-start;
+  align-self: flex-start;
   gap: 15px;
   color: #17db35;
   /*Police : Jersey 20*/
