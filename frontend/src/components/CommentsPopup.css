@@ -1,0 +1,154 @@
+.CommentsPopup-open-btn{
+  padding: 8px 14px;
+  background: linear-gradient(90deg, #17DB35, #0fa820);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(23, 219, 53, 0.12);
+}
+
+.CommentsPopup-overlay{
+  position: fixed;
+  inset: 0;
+  background: 
+  rgba(0, 8, 2, 0.66);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.CommentsPopup-modal{
+  width: 100%;
+  max-width: 720px;
+  background: #0F0F0F;
+  border-radius: 12px;
+  padding: 22px;
+  position: relative;
+  box-shadow: 0 12px 40px rgba(2, 6, 23, 0.6);
+  border: 1px solid #1F1F1F;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.CommentsPopup-close{
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.CommentsPopup-title{
+  color: #17DB35;
+  margin: 6px 0 0 0;
+  font-size: 1.2rem;
+}
+
+.CommentsPopup-list{
+  overflow-y: auto;
+  padding-right: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.CommentsPopup-empty{
+  color: #fff;
+  padding: 12px;
+}
+
+.CommentsPopup-comment{
+  background: #1F1F1F;
+  border-radius: 8px;
+  padding: 12px;
+  color: #fff;
+  border: 1px solid #1F1F1F;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.CommentsPopup-comment-header{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.CommentsPopup-avatar{
+  flex-shrink: 0;
+}
+
+.CommentsPopup-comment-info{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.CommentsPopup-username{
+  color: #17DB35;
+  font-weight: 600;
+}
+
+.CommentsPopup-timestamp{
+  color: #9aa7b2;
+  font-size: 0.85rem;
+}
+
+.CommentsPopup-comment-text{
+  margin: 0;
+  line-height: 1.4;
+  color: #fff;
+}
+
+.CommentsPopup-add{
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+.CommentsPopup-add textarea{
+  flex: 1;
+  min-height: 64px;
+  max-height: 160px;
+  resize: vertical;
+  padding: 10px;
+  border-radius: 8px;
+  background: #1F1F1F;
+  color: #fff;
+  border: 1px solid #1F1F1F;
+}
+
+.CommentsPopup-add textarea::placeholder{
+  color: #9aa7b2;
+}
+
+.CommentsPopup-submit{
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #17DB35, #0fa820);
+  border: none;
+  color: #000;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+@media (max-width:520px){
+  .CommentsPopup-modal{
+    max-width: 100%;
+    padding: 16px;
+  }
+  .CommentsPopup-open-btn{
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
