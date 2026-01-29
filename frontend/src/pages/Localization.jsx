@@ -60,6 +60,7 @@ const [listCity, setListCity] = useState([
   { country: "Japon", city: "Yokohama" },
   { country: "Japon", city: "Nagoya" }
 ]);
+    const [listCitySecond, setListCitySecond] = useState(listCity);
     const [listCountry, setListCountry] = useState([]);
     const [CountryFiltered, setCountryFiltered] = useState("all");
     const [searchCity, setSearchCity] = useState("");
@@ -80,7 +81,28 @@ const [listCity, setListCity] = useState([
         checkAuth();
       }, []);
 
-    useEffect(() => {/*Fetch list ville filtré */}, [searchCity, CountryFiltered]);
+    useEffect(() => {
+      const fetchLocatizations = async () => {
+        try {
+          const response = await fetch(`http://localhost:3000/location?search=${searchCity}`, {
+            method: "GET",
+            credentials: "include"
+          });
+          if (!response.ok) return;
+          const data = await response.json();
+          console.log(data);
+          setListCity(data);
+        } catch (error) {
+          console.error("Error fetching localizations:", error);
+        }
+      };
+
+      if (searchCity !== "" || CountryFiltered !== "all") {
+        fetchLocatizations();
+      } else if (searchCity === "" && CountryFiltered === "all") {
+        setListCity(listCitySecond);
+      }
+    }, [searchCity, CountryFiltered]);
 
     
 
