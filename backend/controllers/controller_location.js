@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 /**
  * @swagger
- * /getLocation:
+ * /location:
  *   get:
  *     summary: search locations by city or country
  *     tags: [Location]
