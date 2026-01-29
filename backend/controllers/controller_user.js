@@ -159,8 +159,7 @@ export const getUserInfos = async (req, res) => {
  *                       thread_random_profile_picture:
  *                         type: number
  *                       createdAt:
- *                         type: string
- *                         format: timestamp
+ *                         format: date-time
  *       404:
  *         description: No threads found
  *         content:

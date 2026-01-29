@@ -1,21 +1,23 @@
 import mongoose from "mongoose";
+import Threads from "../models/thread_model.js"
 
 /**
  * @swagger
- * /location:
+ * /location?search={search}:
  *   get:
- *     summary: search locations by city or country
- *     tags: [Location]
+ *     summary: search location and get number of location's number of threads
+ *     tags:
+ *       - Location
  *     parameters:
  *       - in: query
  *         name: search
+ *         required: true
  *         schema:
  *           type: string
- *         required: true
- *         description: Search for city or country 
+ *         description: string to filter location via city or country ( it fetchs max 30 locations )
  *     responses:
  *       200:
- *         description: List of location which match with the search
+ *         description: list of max 30 locations
  *         content:
  *           application/json:
  *             schema:
@@ -23,14 +25,14 @@ import mongoose from "mongoose";
  *               items:
  *                 type: object
  *                 properties:
- *                   _id:
+ *                   city:
  *                     type: string
- *                   location_city:
+ *                   country:
  *                     type: string
- *                   location_country:
- *                     type: string
+ *                   nb_threads:
+ *                     type: integer
  *       400:
- *         description: Search parameter should not be null
+ *         description: search null
  *         content:
  *           application/json:
  *             schema:
@@ -38,6 +40,7 @@ import mongoose from "mongoose";
  *               properties:
  *                 message:
  *                   type: string
+ *                   example: search should not be null
  *       500:
  *         description: Server error
  *         content:
@@ -47,7 +50,7 @@ import mongoose from "mongoose";
  *               properties:
  *                 message:
  *                   type: string
- */   
+ */  
 
 export const getLocation = async (req, res) => {
     try {
@@ -65,7 +68,15 @@ export const getLocation = async (req, res) => {
             })
             .limit(30)
             .toArray();
-        res.status(200).json(locations);
+        const locs_count = await Promise.all(
+            locations.map(async (loc) => {
+                const nb_threads = await Threads.countDocuments({
+                    "thread_city": loc.city 
+                });
+                return {...loc,nb_threads};
+            })
+        );
+        res.status(200).json(locs_count);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

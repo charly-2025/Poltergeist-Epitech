@@ -58,11 +58,9 @@ import User from "../models/auth.js"
  *                   thread_random_profile_picture:
  *                     type: number
  *                   createdAt:
- *                     type: string
- *                     format: timestamp
+ *                     format: date-time
  *                   updatedAt:
- *                     type: string
- *                     format: timestamp
+ *                     format: date-time
  *                   thread_id:
  *                     type: number
  *                   __v:
@@ -145,7 +143,7 @@ export const getThreads = async (req, res) => {
  *               thread_city:
  *                 type: string
  *     responses:
- *       200:
+ *       201:
  *         description: return the json object of created thread 
  *         content:
  *           application/json:
@@ -180,9 +178,9 @@ export const getThreads = async (req, res) => {
  *                      thread_random_profile_picture :
  *                          type : number   
  *                      createdAt : 
- *                          type : timestamp
+ *                          type : date-time
  *                      updatedAt : 
- *                          type : timestamp
+ *                          type : date-time
  *                      thread_id:
  *                          type: number
  *                      __v : 
@@ -212,7 +210,7 @@ export const createThread = async (req, res) => {
         thread.thread_random_profile_picture = thread.author_id * thread.thread_id;
 
         await thread.save();
-        res.status(200).json(thread);
+        res.status(201).json(thread);
     } catch (err) {
         res.status(500).json({ message: err.message });
     }   
@@ -232,7 +230,7 @@ export const createThread = async (req, res) => {
  *           type: number
  *         description: The auto incremented ID of the thread to like
  *     responses:
- *       200:
+ *       201:
  *         description: Thread liked or already liked
  *         content:
  *           application/json:
@@ -276,11 +274,11 @@ export const likeThread = async(req, res) => {
         if (thread.thread_likes.includes(userID)){
             thread.thread_likes.pull(userID)
             await thread.save();
-            return res.status(200).json({ message: "unliked" });}
+            return res.status(201).json({ message: "unliked" });}
         else {
             thread.thread_likes.push(userID)}
         await thread.save();
-        return res.status(200).json({ message: "liked" });
+        return res.status(201).json({ message: "liked" });
         
     } catch (err) {
         res.status(500).json({ message: err.message });
@@ -301,7 +299,7 @@ export const likeThread = async(req, res) => {
  *           type: number
  *         description: The auto incremented ID of the thread to favorite
  *     responses:
- *       200:
+ *       201:
  *         description: Thread favorited or already favorited
  *         content:
  *           application/json:
@@ -345,11 +343,11 @@ export const favoriteThread = async(req, res) => {
         if (thread.thread_favorite.includes(userID)){
             thread.thread_favorite.pull(userID)
             await thread.save();
-            return res.status(200).json({ message: "unadded" });}
+            return res.status(201).json({ message: "unadded" });}
         else {
             thread.thread_favorite.push(userID)}
         await thread.save();
-        return res.status(200).json({ message: "added" });
+        return res.status(201).json({ message: "added" });
         
     } catch (err) {
         res.status(400).json({ message: err.message });
@@ -390,7 +388,7 @@ export const favoriteThread = async(req, res) => {
  *                 message:
  *                   type: string
  *                   example: Thread not found 
- *       400:
+ *       403:
  *         description: the author id is not the same as the userID 
  *         content:
  *           application/json:
@@ -425,7 +423,7 @@ export const deleteThread = async(req, res) => {
         }
 
         if (thread_infos.author_id != userID){
-            res.status(400).json({
+            res.status(403).json({
                 message: "You are not the author of this thread"
             })
         }else {
@@ -442,6 +440,64 @@ export const deleteThread = async(req, res) => {
 };
 
 
+/**
+ * @swagger
+ * /thread/{threadId}/replies:
+ *   post:
+ *     summary: Add a reply to a thread
+ *     description: Adds a new reply to a thread. Optionally supports quoting another reply.
+ *     tags: [Threads]
+ *     parameters:
+ *       - in: path
+ *         name: threadId
+ *         required: true
+ *         schema:
+ *           type: number
+ *         description: ID of the thread
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               rep_content:
+ *                 type: string
+ *               quote_reply_id:
+ *                 type: string
+ *     responses:
+ *       201:
+ *         description: Reply created
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *                 author_id:
+ *                   type: string
+ *                 rep_content:
+ *                   type: string
+ *                 quote:
+ *                   type: object
+ *                   properties:
+ *                     reply_id:
+ *                       type: string
+ *                     author_id:
+ *                       type: string
+ *                     cut:
+ *                       type: string
+ *                 createdAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: no response
+ *       404:
+ *         description: Thread or quoted reply not found
+ *       500:
+ *         description: server error
+ */
 
 
 export const addReply = async (req, res) => {
@@ -494,8 +550,8 @@ export const addReply = async (req, res) => {
 /**
  * @swagger
  * /thread/{threadId}/replies:
- *   post:
- *     summary: Add a reply (comment) to a thread
+ *   get:
+ *     summary: get all replies for a thread.
  *     tags: [Threads]
  *     parameters:
  *       - in: path
@@ -503,97 +559,39 @@ export const addReply = async (req, res) => {
  *         required: true
  *         schema:
  *           type: number
- *         description: The auto-incremented ID of the thread
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - rep_content
- *             properties:
- *               rep_content:
- *                 type: string
- *                 example: "This is my comment"
- *               quote_reply_id:
- *                 type: string
- *                 nullable: true
- *                 description: Optional - the _id of an existing reply in this thread to quote/reply to later
- *                 example: "65f1c2e9a9c1d1b8b7a12345"
+ *         description: ID of the thread
  *     responses:
- *       201:
- *         description: Returns the newly created reply
+ *       200:
+ *         description: All replies
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 _id:
- *                   type: string
- *                   example: "65f1c2e9a9c1d1b8b7a99999"
- *                 author_id:
- *                   type: number
- *                   example: 12
- *                 rep_content:
- *                   type: string
- *                   example: "This is my comment"
- *                 rep_likes:
- *                   type: array
- *                   items:
- *                     type: number
- *                   example: []
- *                 quote:
- *                   type: object
- *                   nullable: true
- *                   properties:
- *                     reply_id:
- *                       type: string
- *                       nullable: true
- *                     author_id:
- *                       type: number
- *                       nullable: true
- *                     cut:
- *                       type: string
- *                       nullable: true
- *                 createdAt:
- *                   type: string
- *                   format: date-time
- *                 updatedAt:
- *                   type: string
- *                   format: date-time
- *       400:
- *         description: Invalid request (missing content or bad quote id)
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: "rep_content is required"
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   _id:
+ *                     type: string
+ *                   author_id:
+ *                     type: string
+ *                   rep_content:
+ *                     type: string
+ *                   quote:
+ *                     type: object
+ *                     properties:
+ *                       reply_id:
+ *                         type: string
+ *                       author_id:
+ *                         type: string
+ *                       cut:
+ *                         type: string
+ *                   createdAt:
+ *                     type: string
+ *                     format: date-time
  *       404:
- *         description: Thread not found (or quote reply not found if quote_reply_id is provided)
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: "thread does not exist"
- *       401:
- *         description: Unauthorized
+ *         description: thread not found
  *       500:
- *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: "Server error"
+ *         description: server error
  */
 
 export const getReplies = async (req, res) => {
@@ -613,93 +611,3 @@ export const getReplies = async (req, res) => {
   }
 };
 
-/**
- * @swagger
- * /thread/{threadId}/replies:
- *   get:
- *     summary: get all replies from a thread
- *     tags: [Threads]
- *     parameters:
- *       - in: path
- *         name: threadId
- *         required: true
- *         schema:
- *           type: number
- *         description: get all replies
- *     requestBody:
- *       required: true
- *       
- *     responses:
- *       201:
- *         description: Returns all the replies from the thread
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 _id:
- *                   type: string
- *                   example: "65f1c2e9a9c1d1b8b7a99999"
- *                 author_id:
- *                   type: number
- *                   example: 12
- *                 rep_content:
- *                   type: string
- *                   example: "This is my comment"
- *                 rep_likes:
- *                   type: array
- *                   items:
- *                     type: number
- *                   example: []
- *                 quote:
- *                   type: object
- *                   nullable: true
- *                   properties:
- *                     reply_id:
- *                       type: string
- *                       nullable: true
- *                     author_id:
- *                       type: number
- *                       nullable: true
- *                     cut:
- *                       type: string
- *                       nullable: true
- *                 createdAt:
- *                   type: string
- *                   format: date-time
- *                 updatedAt:
- *                   type: string
- *                   format: date-time
- *       400:
- *         description: Invalid request (missing content or bad quote id)
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: "rep_content is required"
- *       404:
- *         description: Thread not found (or quote reply not found if quote_reply_id is provided)
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: "thread does not exist"
- *       401:
- *         description: Unauthorized
- *       500:
- *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                   example: "Server error"
- */

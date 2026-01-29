@@ -6,9 +6,7 @@ const rep_schema = new mongoose.Schema({
   author_id: { type: Number, required: true },
   rep_content: { type: String, required: true },
   rep_likes: { type: [Number], default: [] },
-
-
-  quote: { //JVC STYLE 18-25 2SUCRES
+  quote: { 
     reply_id: { type: mongoose.Schema.Types.ObjectId, default: null }, 
     author_id: { type: Number, default: null },                        
     excerpt: { type: String, default: null }                           
