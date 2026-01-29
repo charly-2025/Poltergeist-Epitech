@@ -152,3 +152,17 @@
   }
 }
 
+.CommentsPopup-avatar {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background-color: #111;
+}
+
+.CommentsPopup-avatar img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: contain !important;
+}
