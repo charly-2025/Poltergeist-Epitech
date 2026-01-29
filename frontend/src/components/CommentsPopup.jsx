@@ -1,7 +1,7 @@
-
 import "./CommentsPopup.css";
 import { useEffect, useState } from "react";
 import { Avatar } from "@heroui/react";
+import { getAvatar } from "../utils/avatars"; // ✅ added
 
 const CommentsPopup = ({ postId, open, onClose }) => {
     const [listComments, setListComments] = useState([]);
@@ -98,9 +98,14 @@ const CommentsPopup = ({ postId, open, onClose }) => {
                                 <div className="CommentsPopup-empty">Aucun commentaire</div>
                             ) : (
                                 listComments.map((comment) => (
-                                    <div key={comment.rep_id} className="CommentsPopup-comment">
+                                    <div key={comment._id} className="CommentsPopup-comment"> {/* ✅ was comment.rep_id */}
                                         <div className="CommentsPopup-comment-header">
-                                            <Avatar  name="Anonymous" size="sm" className="CommentsPopup-avatar"/>
+                                            <Avatar
+                                                src={getAvatar(comment.author_id, postId)}   // ✅ added
+                                                name="Anonymous"
+                                                size="sm"
+                                                className="CommentsPopup-avatar"
+                                            />
                                             <div className="CommentsPopup-comment-info">
                                                 <span className="CommentsPopup-username">Anonymous</span>
                                                 <span className="CommentsPopup-timestamp">- {timeAgo(comment.createdAt)} ago</span>
@@ -128,4 +133,3 @@ const CommentsPopup = ({ postId, open, onClose }) => {
 }
 
 export default CommentsPopup;
-
