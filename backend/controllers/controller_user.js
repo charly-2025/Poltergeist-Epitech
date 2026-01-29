@@ -124,9 +124,6 @@ export const getUserInfos = async (req, res) => {
  *             schema:
  *               type: object
  *               properties:
- *                 count:
- *                   type: integer
- *                   description: Number of threads returned
  *                 threads:
  *                   type: array
  *                   items:

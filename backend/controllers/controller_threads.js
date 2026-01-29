@@ -2,7 +2,6 @@ import Threads from "../models/thread_model.js";
 import User from "../models/auth.js"
 
 
-
 /**
  * @swagger
  * /getThreads:
@@ -46,25 +45,37 @@ import User from "../models/auth.js"
  *                   thread_likes:
  *                     type: array
  *                     items:
- *                       type : integer
+ *                       type: integer
  *                   thread_replies:
  *                     type: array
  *                     items:
- *                       type : integer
+ *                       type: integer
  *                   thread_favorite:
  *                     type: array
  *                     items:
- *                       type : integer
+ *                       type: integer
  *                   thread_random_profile_picture:
  *                     type: number
  *                   createdAt:
+ *                     type: string
  *                     format: date-time
  *                   updatedAt:
+ *                     type: string
  *                     format: date-time
  *                   thread_id:
  *                     type: number
  *                   __v:
  *                     type: number
+ *       400:
+ *         description: user location is null
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "User location is null"
  *       500:
  *         description: Server error
  *         content:
@@ -74,18 +85,7 @@ import User from "../models/auth.js"
  *               properties:
  *                 message:
  *                   type: string
- *       400:
- *         description: Server error
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 message:
- *                   type: string
- *                 example:
- *                   value: "User location is null"
- */   
+ */ 
 
 export const getThreads = async (req, res) => {
     try {
@@ -149,44 +149,45 @@ export const getThreads = async (req, res) => {
  *           application/json:
  *             schema:
  *               type: object
- *               items:
- *                  properties:
- *                      _id : 
- *                          type : string
- *                      author_id:
- *                          type: number
- *                      thread_title:
- *                          type : string
- *                      thread_content:
- *                          type : string
- *                      thread_country:
- *                          type : string
- *                      thread_city:
- *                          type : string
- *                      thread_likes :
- *                        type: array
- *                        items:
- *                         type : integer
- *                      thread_replies : 
- *                        type: array
- *                        items:
- *                         type : integer
- *                      thread_favorite : 
- *                        type: array
- *                        items:
- *                         type : integer
- *                      thread_random_profile_picture :
- *                          type : number   
- *                      createdAt : 
- *                          type : date-time
- *                      updatedAt : 
- *                          type : date-time
- *                      thread_id:
- *                          type: number
- *                      __v : 
- *                          type : number
+ *               properties:
+ *                 _id:
+ *                   type: string
+ *                 author_id:
+ *                   type: number
+ *                 thread_title:
+ *                   type: string
+ *                 thread_content:
+ *                   type: string
+ *                 thread_country:
+ *                   type: string
+ *                 thread_city:
+ *                   type: string
+ *                 thread_likes:
+ *                   type: array
+ *                   items:
+ *                     type: integer
+ *                 thread_replies:
+ *                   type: array
+ *                   items:
+ *                     type: integer
+ *                 thread_favorite:
+ *                   type: array
+ *                   items:
+ *                     type: integer
+ *                 thread_random_profile_picture:
+ *                   type: number   
+ *                 createdAt:
+ *                   type: string
+ *                   format: date-time
+ *                 updatedAt:
+ *                   type: string
+ *                   format: date-time
+ *                 thread_id:
+ *                   type: number
+ *                 __v:
+ *                   type: number
  *       500:
- *         description: Error
+ *         description: server error
  *         content:
  *           application/json:
  *             schema:
@@ -194,7 +195,7 @@ export const getThreads = async (req, res) => {
  *               properties:
  *                 message:
  *                   type: string
- */   
+ */
    
 
 export const createThread = async (req, res) => {
@@ -583,7 +584,7 @@ export const addReply = async (req, res) => {
  *                         type: string
  *                       author_id:
  *                         type: string
- *                       cut:
+ *                       excerpt:
  *                         type: string
  *                   createdAt:
  *                     type: string
