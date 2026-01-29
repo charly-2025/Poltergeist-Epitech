@@ -107,12 +107,14 @@
             "id": "ba91ddcd5defb877",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "docs/08_prioritization/prioritization images/homepage.png"
+                "file": "docs/08_prioritization/mvp_definition.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "homepage"
+              "icon": "lucide-file",
+              "title": "mvp_definition"
             }
           }
         ],
@@ -280,6 +282,7 @@
   },
   "active": "ba91ddcd5defb877",
   "lastOpenFiles": [
+    "docs/08_prioritization/prioritization images/homepage.png",
     "docs/04_wireframes/poltergeist design.pdf",
     "frontend/src/utils/avatars.js",
     "frontend/src/utils/avatars",
@@ -291,7 +294,6 @@
     "frontend/public/avatars/6ghostupsidedown.png",
     "frontend/public/avatars/5ghostimpostor.png",
     "frontend/public/avatars/4ghostgarfield.png",
-    "docs/08_prioritization/prioritization images/homepage.png",
     "docs/02_personas/readme.md",
     "frontend/src/components/CommentsPopup.jsx",
     "frontend/src/components/CommentsPopup.css",
@@ -308,7 +310,6 @@
     "backend/world-cities.csv",
     "backend/routes/location.js",
     "backend/models/location_model.js",
-    "backend/controllers/controller_location.js",
     "docs/01_research/readme.md",
     "docs/03_user_journey/user_journey.md",
     "docs/08_prioritization/prioritization_matrix.md",

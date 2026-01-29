@@ -136,6 +136,7 @@
   width: 100% !important;   
   height: 100% !important;
   object-fit: contain !important;
+  background-color: #141414 !important;
 }
 
 .Reply-avatar {
@@ -144,13 +145,14 @@
   border-radius: 50%;
   overflow: hidden;    
   flex-shrink: 0;        
-  background-color: #111;
+  
 }
 
 .Reply-avatar img {
   width: 100% !important;   
   height: 100% !important;
   object-fit: contain !important;
+  
 }
 
 .Reply-body {
