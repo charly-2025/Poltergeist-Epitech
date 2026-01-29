@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import LocalizationLogo from "../images/location.png";
 import "./CityCard.css";
 
-const CityCard = ({localization,setLocalization,city}/*variable comme city name, country+listedesPost pour mettre a jour le nb de thread*/) => {
+const CityCard = ({localization,setLocalization,city}) => {
     const [nbThread,setNbThread] = useState(0);
 
     useEffect(() => {/*Fetch le nombre de thread par ville*/}, [/*liste post*/]);

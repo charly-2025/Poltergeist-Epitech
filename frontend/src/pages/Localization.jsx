@@ -61,7 +61,6 @@ const [listCity, setListCity] = useState([
   { country: "Japon", city: "Nagoya" }
 ]);
     const [listCitySecond, setListCitySecond] = useState(listCity);
-    const [listCountry, setListCountry] = useState([]);
     const [CountryFiltered, setCountryFiltered] = useState("all");
     const [searchCity, setSearchCity] = useState("");
     const navigate = useNavigate();
