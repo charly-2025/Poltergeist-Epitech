@@ -1,7 +1,7 @@
 import "./CommentsPopup.css";
 import { useEffect, useState } from "react";
 import { Avatar } from "@heroui/react";
-import { getAvatar } from "../utils/avatars"; // ✅ added
+import { getAvatar } from "../utils/avatars"; 
 
 const CommentsPopup = ({ postId, open, onClose }) => {
     const [listComments, setListComments] = useState([]);
@@ -98,10 +98,10 @@ const CommentsPopup = ({ postId, open, onClose }) => {
                                 <div className="CommentsPopup-empty">Aucun commentaire</div>
                             ) : (
                                 listComments.map((comment) => (
-                                    <div key={comment._id} className="CommentsPopup-comment"> {/* ✅ was comment.rep_id */}
+                                    <div key={comment._id} className="CommentsPopup-comment"> 
                                         <div className="CommentsPopup-comment-header">
                                             <Avatar
-                                                src={getAvatar(comment.author_id, postId)}   // ✅ added
+                                                src={getAvatar(comment.author_id, postId)}  
                                                 name="Anonymous"
                                                 size="sm"
                                                 className="CommentsPopup-avatar"

@@ -94,7 +94,7 @@ const Post = ({thread_id,title,content,country,city,listLike,listCom,createdDate
     <div className="Post-container">
         <div className="Post-header">
           <Avatar
-  src={getAvatar(userData?.userID ?? 0, thread_id)}
+  src={getAvatar(userData?.anonyme_id ?? 0, thread_id)}
   name="Anonymous"
   className="Post-avatar"
 />

@@ -107,12 +107,12 @@
             "id": "ba91ddcd5defb877",
             "type": "leaf",
             "state": {
-              "type": "pdf",
+              "type": "image",
               "state": {
-                "file": "docs/04_wireframes/poltergeist design.pdf"
+                "file": "docs/08_prioritization/prioritization images/homepage.png"
               },
-              "icon": "lucide-file-text",
-              "title": "poltergeist design"
+              "icon": "lucide-image",
+              "title": "homepage"
             }
           }
         ],
@@ -280,6 +280,7 @@
   },
   "active": "ba91ddcd5defb877",
   "lastOpenFiles": [
+    "docs/04_wireframes/poltergeist design.pdf",
     "frontend/src/utils/avatars.js",
     "frontend/src/utils/avatars",
     "frontend/src/utils",
@@ -301,7 +302,6 @@
     "docs/03_user_journey/README.md",
     "docs/02_personas/README.md",
     "docs/01_research/README.md",
-    "docs/04_wireframes/poltergeist design.pdf",
     "docs/04_wireframes",
     "frontend/public/avatars/3ghostdemon.png",
     "frontend/public/avatars/2ghostbretagne.png",
