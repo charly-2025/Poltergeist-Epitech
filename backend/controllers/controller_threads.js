@@ -1,6 +1,8 @@
 import Threads from "../models/thread_model.js";
 import User from "../models/auth.js"
 
+
+
 /**
  * @swagger
  * /getThreads:
@@ -437,4 +439,54 @@ export const deleteThread = async(req, res) => {
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
+};
+
+
+
+
+export const addReply = async (req, res) => {
+  try {
+    const userID = req.anonyme_id.userID;
+    const threadId = Number(req.params.threadId);
+
+    const { rep_content, quote_reply_id } = req.body;
+
+    if (!rep_content) {
+      return res.status(400).json({ message: "no response" });
+    }
+
+    const thread = await Threads.findOne({ thread_id: threadId });
+    if (!thread) {
+      return res.status(404).json({ message: "thread does not exist" });
+    }
+
+    let quote = null;
+
+    if (quote_reply_id) {
+      const quoted = thread.thread_replies.id(quote_reply_id);
+      if (!quoted) {
+        return res.status(404).json({ message: "nothing to quote/quoteid not found" });
+      }
+
+      quote = {
+        reply_id: quoted._id,
+        author_id: quoted.author_id,
+        cut: quoted.rep_content.slice(0, 50),
+      };
+    }
+
+    thread.thread_replies.push({
+      author_id: userID,
+      rep_content,
+      quote,
+    });
+
+    await thread.save();
+
+    const newReply = thread.thread_replies[thread.thread_replies.length - 1];
+    return res.status(201).json(newReply);
+
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
 };
