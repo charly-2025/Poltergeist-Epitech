@@ -595,3 +595,20 @@ export const addReply = async (req, res) => {
  *                   type: string
  *                   example: "Server error"
  */
+
+export const getReplies = async (req, res) => {
+  try {
+    const threadId = Number(req.params.threadId);
+
+    const thread = await Threads.findOne({ thread_id: threadId })
+      .select("thread_replies"); 
+
+    if (!thread) {
+      return res.status(404).json({ message: "thread not found" });
+    }
+
+    return res.status(200).json(thread.thread_replies);
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};
