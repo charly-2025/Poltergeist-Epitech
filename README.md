@@ -1,5 +1,78 @@
-## README – Structure
+## Project Overview
 
+This is a web application functioning as a social network. The application allows users to register and remain completely anonymous: no username, no email, no password, nothing. Total anonymity. Inspired by 4chan and Reddit, it allows anonymous users to create discussion threads, comment under these threads, and browse threads based on location. Threads are organized by location, allowing each user (by selecting a city) to filter threads by city.
+
+--- 
+## Installation and Local Run
+
+```
+Clone the project:
+git clone B-TBM-100-REN-1-1-yowl-1
+cd B-TBM-100-REN-1-1-yowl-1/mvp
+```
+
+### Prerequisites
+
+Make sure you have installed:
+- Docker
+- Docker Compose
+
+### Environment Variables
+
+The backend relies on the following environment variables:
+
+```
+MONGO_URI=mongodb://mongo:27017/poltergeistdb
+JWT_SECRET= <a code secret>
+IP_secret= <a code secret>
+```
+
+Navigate to the backend folder and do this : 
+
+```
+docker cp world-cities.csv b-tbm-100-ren-1-1-yowl-1-mongo-1:/world-cities.csv
+```
+
+Then,
+
+```
+docker exec b-tbm-100-ren-1-1-yowl-1-mongo-1 mongoimport \
+  --db poltergeistdb \
+  --collection Location \
+  --type csv \
+  --file /world-cities.csv \
+  --headerline \
+```
+
+### Running the Project
+
+From the mvp/ directory, simply run:
+
+```
+docker compose up --build
+```
+
+
+Once running, the application is accessible at:
+  - http://localhost:3001
+
+---
+### Justification of Technical Choices
+
+  - React was chosen for its component-based architecture for an dynamic interface.
+  - Express.js was chosen because it is really ideal for a simple REST Api
+  - MongoDB has a flexible structure with flexible schemas, no SQL so it can be very simple for a simple mvp project, stores data as JSON-like documents which it is really close to what we send to frontend and frontend send to backend
+
+---
+## Prototype 
+
+Link to the Figma pages : 
+- Computer : 
+	- https://www.figma.com/proto/OEcowloXSBYUQo7YhL5OER/poltergeist-design?node-id=524-3097&t=w1sveIcvoZkEgrYw-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=524%3A3097
+- Mobile :
+	- https://www.figma.com/proto/OEcowloXSBYUQo7YhL5OER/poltergeist-design?node-id=883-7058&t=kpquvZzO9wT9Mq2t-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=524%3A3097
+
+--- 
 ## Folders Structure
 
 ```
@@ -15,10 +88,11 @@
 | |-- 08_ prioritization /
 | |-- 09_ pitch /
 |-- mvp /
-|-- < source code of the web application >
+  |-- < source code of the web application >
 
 ```
 
+--- 
 ## Commit Convention
 ```
 Format of the commit message: KARMA GIT
