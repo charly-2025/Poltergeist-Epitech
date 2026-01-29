@@ -255,7 +255,7 @@ export const UpdateLocation = async (req, res) => {
         const {country, city} = req.body
         const anonyme_id = req.anonyme_id.userID
         if (!country || !city){
-            res.status(400).json({message: "Values should not be null"})
+            return res.status(400).json({message: "Values should not be null"})
         }
         const user = await User.findOneAndUpdate(
             {"anonyme_id" : anonyme_id},
@@ -264,10 +264,13 @@ export const UpdateLocation = async (req, res) => {
                 "location.city": city
             }},{new: true}
         ).select("anonyme_id location") 
-        res.status(200).json({location: user.location})
+        if (!user) {
+        return res.status(404).json({ message: "User not found" });
+        }
+        return res.status(200).json({location: user.location})
 
     }catch (err) {
-        res.status(500).json({ error: err.message });
+        return res.status(500).json({ error: err.message });
     }
 }
 

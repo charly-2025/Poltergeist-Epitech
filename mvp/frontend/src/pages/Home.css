@@ -126,8 +126,8 @@
 
 .create-thread-btn {
   position: fixed;
-  bottom: 24px;
-  right: 24px;
+  bottom: 90px;
+  right: 40px;
 
   background: linear-gradient(135deg, #17DB35, #0F7E27);
   color: black;
@@ -141,6 +141,12 @@
   z-index: 1000;
 
   transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.create-thread-btn:disabled{
+    display: none;
+    cursor: not-allowed;
+    box-shadow: none;
 }
 
 .create-thread-btn:hover {

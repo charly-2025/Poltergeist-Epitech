@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Avatar } from "@heroui/react";
 import { getAvatar } from "../utils/avatars"; 
 
-const CommentsPopup = ({ postId, open, onClose }) => {
+const CommentsPopup = ({postId, open, onClose }) => {
     const [listComments, setListComments] = useState([]);
     const [newComment, setNewComment] = useState("");
     const [internalOpen, setInternalOpen] = useState(false);
@@ -83,7 +83,7 @@ const CommentsPopup = ({ postId, open, onClose }) => {
         <>
             {!isControlled && (
                 <button className="CommentsPopup-open-btn" onClick={openPopup} aria-expanded={isOpen}>
-                    Voir les commentaires
+                    View comments
                 </button>
             )}
 
@@ -91,11 +91,11 @@ const CommentsPopup = ({ postId, open, onClose }) => {
                 <div className="CommentsPopup-overlay" onClick={closePopup}>
                     <div className="CommentsPopup-modal" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
                         <button className="CommentsPopup-close" onClick={closePopup} aria-label="Close">×</button>
-                        <h3 className="CommentsPopup-title">Commentaires</h3>
+                        <h3 className="CommentsPopup-title">Comments</h3>
 
                         <div className="CommentsPopup-list">
                             {listComments.length === 0 ? (
-                                <div className="CommentsPopup-empty">Aucun commentaire</div>
+                                <div className="CommentsPopup-empty">No comments</div>
                             ) : (
                                 listComments.map((comment) => (
                                     <div key={comment._id} className="CommentsPopup-comment"> 
@@ -121,9 +121,9 @@ const CommentsPopup = ({ postId, open, onClose }) => {
                             <textarea
                                 value={newComment}
                                 onChange={(e) => setNewComment(e.target.value)}
-                                placeholder="Ajouter un commentaire..."
+                                placeholder="Add a comment..."
                             />
-                            <button onClick={handleAddComment} className="CommentsPopup-submit">Envoyer</button>
+                            <button onClick={handleAddComment} className="CommentsPopup-submit">Send</button>
                         </div>
                     </div>
                 </div>
