@@ -38,7 +38,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: #22ff88;
+  color: #17DB35;
 }
 
 .thread-header h2 {
@@ -77,7 +77,7 @@
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  background: linear-gradient(135deg,#22ff88,#0fbf60);
+  background: linear-gradient(135deg,#17DB35,#0fbf60);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -99,7 +99,7 @@
 }
 
 .tag-add {
-  background: #18c964 !important;
+  background: #17DB35 ;
   color: black;
   font-weight: 600;
 }
@@ -128,10 +128,123 @@
 
 .publish-btn {
   width: 100%;
-  background: linear-gradient(135deg,#22ff88,#0fbf60);
+  background: linear-gradient(135deg,#17DB35,#0fbf60);
   color: black;
   font-weight: 700;
   padding: 12px;
   border-radius: 16px;
   font-size: 16px;
+}
+.thread-textarea textarea {
+  background: rgba(10, 15, 12, 0.9) ;
+  border: 1px solid rgba(34, 255, 136, 0.35) ;
+  border-radius: 16px ;
+  color: #eafff2 ;
+
+  font-size: 15px;
+  line-height: 1.6;
+
+  padding: 14px 16px ;
+
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.thread-textarea textarea::placeholder {
+  color: rgba(200, 255, 220, 0.35);
+}
+
+
+.thread-textarea textarea:focus {
+  outline: none;
+  border-color: #22ff88 !important;
+  box-shadow: 0 0 0 2px rgba(34, 255, 136, 0.35);
+}
+
+
+.thread-textarea textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+.thread-textarea textarea::-webkit-scrollbar-thumb {
+  background: rgba(34, 255, 136, 0.4);
+  border-radius: 20px;
+}
+
+.thread-textarea textarea::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.thread-textarea input {
+  background: rgba(10, 15, 12, 0.9) ;
+  border: 1px solid rgba(34, 255, 136, 0.35) ;
+  border-radius: 16px ;
+  color: #eafff2 ;
+
+  font-size: 15px;
+  line-height: 1.6;
+
+  padding: 14px 16px ;
+
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+.thread-textarea input::placeholder {
+  color: rgba(200, 255, 220, 0.35);
+}
+.thread-textarea input:focus {
+  outline: none;
+  border-color: #22ff88 ;
+  box-shadow: 0 0 0 2px rgba(34, 255, 136, 0.35);
+}
+.thread-textarea input::-webkit-scrollbar {
+  width: 6px;
+}
+
+.thread-textarea input::-webkit-scrollbar-thumb {
+  background: rgba(34, 255, 136, 0.4);
+  border-radius: 20px;
+}
+
+.thread-textarea input::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.thread-modal {
+  max-width: 900px ;
+  width: 90vw ;
+}
+
+
+.scrollable {
+  max-height: 65vh;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+
+.scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background: rgba(34,255,136,0.35);
+  border-radius: 10px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+
+.thread-block {
+  padding: 14px;
+}
+
+.thread-header h2 {
+  font-size: 1.15rem;
+}
+
+
+.thread-modal input,
+.thread-textarea textarea {
+  font-size: 14px;
 }

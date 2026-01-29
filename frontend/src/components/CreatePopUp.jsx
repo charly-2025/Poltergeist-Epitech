@@ -52,7 +52,7 @@ export default function CreatePopUp({
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       placement="center"
-      size="lg"
+      size="xl"
       backdrop="blur"
       portalContainer={document.body}
       classNames={{
@@ -70,7 +70,7 @@ export default function CreatePopUp({
               <h2>Nouveau Thread</h2>
             </ModalHeader>
 
-            <ModalBody className="thread-body">
+            <ModalBody className="thread-body scrollable">
               {error && (
                 <div className="thread-error">
                   ⚠ {error}
@@ -84,6 +84,7 @@ export default function CreatePopUp({
                 </div>
 
                 <Input
+                  className="thread-textarea"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Donnez un titre accrocheur à votre thread..."
@@ -100,10 +101,12 @@ export default function CreatePopUp({
                 </div>
 
                 <Textarea
+                  className="thread-textarea"
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   placeholder="Partagez votre histoire..."
                 />
+
 
                 <span className="counter">{content.length}/1000</span>
               </div>
@@ -111,11 +114,12 @@ export default function CreatePopUp({
              
               <div className="thread-block">
                 <div className="thread-label">
-                  <span className="icon green">📍</span>
+                  <span className="icon green"></span>
                   <h3>Localisation</h3>
                 </div>
 
                 <Input
+                  className="thread-textarea"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   placeholder="Sélectionnez ou tapez votre ville..."
@@ -131,6 +135,7 @@ export default function CreatePopUp({
 
                 <div className="tag-row">
                   <Input
+                    className="thread-textarea"
                     value={hashtags}
                     onChange={(e) => setHashtags(e.target.value)}
                     placeholder="Ajoutez un hashtag..."
