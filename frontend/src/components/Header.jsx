@@ -18,9 +18,6 @@ const Header = ({localization}) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
   const {isOpen, onOpen, onOpenChange,onClose} = useDisclosure();
   
-
-
-
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);

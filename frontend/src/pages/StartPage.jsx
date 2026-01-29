@@ -1,9 +1,9 @@
-import React from "react";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./StartPage.css";
 
 const StartPage = () =>{
+    const [accepted, setAccepted] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -136,7 +136,7 @@ const StartPage = () =>{
                 </div>
 
                 <div className="accept-conditions">
-                  <button className="Check-conditions"></button>
+                  <input type="checkbox" checked={accepted} onChange={(e) => setAccepted(e.target.checked)} className="Check-conditions"/>
                   <p>
                     I have read and accept the Terms and Conditions of Use. I understand that the
                     platform uses artificial intelligence to moderate content and that I am
@@ -144,7 +144,7 @@ const StartPage = () =>{
                   </p>
 
                 </div>
-                <button onClick={registerUser}>Log in</button>
+                <button onClick={registerUser} disabled={!accepted}>Log in</button>
             </div>
           </div>
         </div>
