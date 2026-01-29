@@ -1,10 +1,11 @@
 import Threads from "../models/thread_model.js";
+import User from "../models/auth.js"
 
 /**
  * @swagger
- * /getThreads?type={type}&search={search}:
+ * /getThreads:
  *   get:
- *     summary: get the 50 most recents threads ( just by recents or by proximity)
+ *     summary: Retrieve threads based on type and search query
  *     tags: [Threads]
  *     parameters:
  *       - in: query
@@ -12,52 +13,60 @@ import Threads from "../models/thread_model.js";
  *         schema:
  *           type: string
  *           enum: [recents, proximity]
+ *         description: Type of thread list to get
  *       - in: query
  *         name: search
  *         schema:
  *           type: string
- *         description: If the type is recents , so it will get the 50 most recent threads and additionnaly where the string 'search' is contained in the thread title.  However if the type is proximity , it will get the 50 threads most recents and where the search string is contained in the thread city value.
- * 
+ *         description: Search string for thread's title
  *     responses:
  *       200:
- *         description: return 50 threads 
+ *         description: List of max 50 threads
  *         content:
  *           application/json:
  *             schema:
- *               type: object
+ *               type: array
  *               items:
- *                  properties:
- *                      _id : 
- *                          type : string
- *                          exemple : "a10b45157z4z"
- *                      author_id:
- *                          type: number
- *                      thread_title:
- *                          type : string
- *                      thread_content:
- *                          type : string
- *                      thread_country:
- *                          type : string
- *                      thread_city:
- *                          type : string
- *                      thread_likes :
- *                          type : array
- *                      thread_replies : 
- *                          type : array
- *                      thread_favorite :
- *                          type : array
- *                      thread_random_profile_picture :
- *                          type : number   
- *                      createdAt : 
- *                          type : timestamp
- *                      updatedAt : 
- *                          type : timestamp
- *                      thread_id:
- *                          type: number
- *                      __v : 
- *                          type : number
+ *                 type: object
+ *                 properties:
+ *                   _id:
+ *                     type: string
+ *                   author_id:
+ *                     type: number
+ *                   thread_title:
+ *                     type: string
+ *                   thread_content:
+ *                     type: string
+ *                   thread_country:
+ *                     type: string
+ *                   thread_city:
+ *                     type: string
+ *                   thread_likes:
+ *                     type: array
+ *                     items:
+ *                       type : integer
+ *                   thread_replies:
+ *                     type: array
+ *                     items:
+ *                       type : integer
+ *                   thread_favorite:
+ *                     type: array
+ *                     items:
+ *                       type : integer
+ *                   thread_random_profile_picture:
+ *                     type: number
+ *                   createdAt:
+ *                     type: string
+ *                     format: timestamp
+ *                   updatedAt:
+ *                     type: string
+ *                     format: timestamp
+ *                   thread_id:
+ *                     type: number
+ *                   __v:
+ *                     type: number
  *       500:
- *         description: Error
+ *         description: Server error
  *         content:
  *           application/json:
  *             schema:
@@ -65,47 +74,51 @@ import Threads from "../models/thread_model.js";
  *               properties:
  *                 message:
  *                   type: string
+ *       400:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                 example:
+ *                   value: "User location is null"
  */   
 
 export const getThreads = async (req, res) => {
-    try { 
-        const { type = "recents", search } = req.query; 
-        let filter = {}
+    try {
+        const { type = "recents", search } = req.query;
+        const userId = req.anonyme_id?.userID;
 
-        if (search) {
-            if (type === "proximity") {
-                filter.$or = [
-                    { thread_city : { $regex: search , $options : "i" } }
-                ];
+        let filter = {};
+        if (type === "proximity" && userId) {
+            const user = await User.findOne({ anonyme_id: userId });
+            const userCity = user?.location?.city;
+
+            if (userCity) {
+                filter.thread_city = { $regex: userCity, $options: "i" };
             } else {
-                filter.thread_title = { $regex: search, $options: "i"} 
+                return res.status(400).json({ message: "User location is null" });
             }
         }
+        if (search) {
+            filter.thread_title = { $regex: search, $options: "i" };
+        }
         const threads = await Threads.find(filter)
-            .sort({createdAt: -1})
+            .sort({ createdAt: -1 })
             .limit(50);
-
         res.status(200).json(threads);
     } catch (err) {
-    res.status(500).json({ message: err.message });
+        res.status(500).json({ message: err.message });
     }
-};
+};     
 
-export const getThreadsID = async (req, res) => {
-    try { 
 
-        const threads = await Threads.find(filter)
-            .sort({createdAt: -1})
-            .limit(50);
-
-        res.status(200).json(threads);
-    } catch (err) {
-    res.status(400).json({ message: err.message });
-    }
-};
 /**
  * @swagger
- * /threads:
+ * /thread:
  *   post:
  *     summary: create a new thread
  *     tags: [Threads]
@@ -151,11 +164,17 @@ export const getThreadsID = async (req, res) => {
  *                      thread_city:
  *                          type : string
  *                      thread_likes :
- *                          type : array
+ *                        type: array
+ *                        items:
+ *                         type : integer
  *                      thread_replies : 
- *                          type : array
+ *                        type: array
+ *                        items:
+ *                         type : integer
  *                      thread_favorite : 
- *                          type : array
+ *                        type: array
+ *                        items:
+ *                         type : integer
  *                      thread_random_profile_picture :
  *                          type : number   
  *                      createdAt : 
@@ -201,7 +220,7 @@ export const createThread = async (req, res) => {
  * @swagger
  * /threads/{threadId}/like:
  *   post:
- *     summary: Like a thread
+ *     summary: Like or unlike a thread
  *     tags: [Threads]
  *     parameters:
  *       - in: path
@@ -209,7 +228,7 @@ export const createThread = async (req, res) => {
  *         required: true
  *         schema:
  *           type: number
- *         description: The auto-incremented ID of the thread to like
+ *         description: The auto incremented ID of the thread to like
  *     responses:
  *       200:
  *         description: Thread liked or already liked
@@ -231,10 +250,8 @@ export const createThread = async (req, res) => {
  *                 message:
  *                   type: string
  *                   example: Thread not found
- *       401:
- *         description: Unauthorized
  *       500:
- *         description: Server error
+ *         description: Error
  *         content:
  *           application/json:
  *             schema:
@@ -242,15 +259,15 @@ export const createThread = async (req, res) => {
  *               properties:
  *                 message:
  *                   type: string
- */
+ */   
 
 
 export const likeThread = async(req, res) => {
     try {
         const userID = req.anonyme_id.userID
         const threadId = req.params.threadId
-                if (!threadId){
-                return res.status(404).json({message:"thread does not exist"})}
+        if (!threadId){
+            return res.status(404).json({message:"thread does not exist"})}
 
         const thread = await Threads.findOne({ thread_id: threadId });
 
@@ -264,17 +281,62 @@ export const likeThread = async(req, res) => {
         return res.status(200).json({ message: "liked" });
         
     } catch (err) {
-        res.status(400).json({ message: err.message });
+        res.status(500).json({ message: err.message });
     }
 };
 
-export const saveThread = async(req, res) => {
+/**
+ * @swagger
+ * /threads/{threadId}/favorite:
+ *   post:
+ *     summary: favorite or unfavorite a thread
+ *     tags: [Threads]
+ *     parameters:
+ *       - in: path
+ *         name: threadId
+ *         required: true
+ *         schema:
+ *           type: number
+ *         description: The auto incremented ID of the thread to favorite
+ *     responses:
+ *       200:
+ *         description: Thread favorited or already favorited
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Thread favorited
+ *       404:
+ *         description: Thread not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Thread not found
+ *       500:
+ *         description: Error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ */   
+
+export const favoriteThread = async(req, res) => {
     try {
         const userID = req.anonyme_id.userID
         const threadId = req.params.threadId
 
-                if (!threadId){
-                return res.status(404).json({message:"thread does not exist"})}
+        if (!threadId){
+            return res.status(404).json({message:"thread does not exist"})}
 
         const thread = await Threads.findOne({ thread_id: threadId });
 
@@ -292,6 +354,87 @@ export const saveThread = async(req, res) => {
     }
 };
 
-export const getReplies = async(req, res) => {
-    
-}
+/**
+ * @swagger
+ * /threads/{threadId}:
+ *   delete:
+ *     summary: delete one of your thread
+ *     tags: [Threads]
+ *     parameters:
+ *       - in: path
+ *         name: threadId
+ *         required: true
+ *         schema:
+ *           type: number
+ *         description: The auto incremented ID of the thread to delete
+ *     responses:
+ *       200:
+ *         description: thread deleted
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Thread deleted
+ *       404:
+ *         description: Thread not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Thread not found 
+ *       400:
+ *         description: the author id is not the same as the userID 
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: You are not the author of this thread
+ *       500:
+ *         description: Error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ */   
+
+export const deleteThread = async(req, res) => {
+    try {
+        const userID = req.anonyme_id.userID
+        const ID_Thread = req.params.threadId
+        
+        const thread_infos = await Threads.findOne({ thread_id : ID_Thread })
+        console.log(thread_infos.author_id, thread_infos.thread_id, ID_Thread)
+        if (!thread_infos){
+            res.status(404).json({
+                message : "Thread not found"
+            })
+        }
+
+        if (thread_infos.author_id != userID){
+            res.status(400).json({
+                message: "You are not the author of this thread"
+            })
+        }else {
+            const resultat = await Threads.deleteOne({ thread_id: ID_Thread });   
+            if (resultat.deletedCount === 0){
+                res.status(400).json({message : "No thread deleted"})
+            }
+            res.status(200).json({message : "Thread deleted"})
+        }
+
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};

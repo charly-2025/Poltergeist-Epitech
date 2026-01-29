@@ -23,21 +23,38 @@ export default function CreatePopUp({
   const [location, setLocation] = useState("");
   const [hashtags, setHashtags] = useState("");
   const [tags, setTags] = useState([]);
+  const [error, setError] = useState("");
 
   const addTag = () => {
     if (!hashtags || tags.length >= 5) return;
     setTags([...tags, hashtags]);
     setHashtags("");
   };
+  const handlePublish = () => {
+  //ici plus tard POST API
+    if (!title.trim() || !content.trim()) {
+    setError("Le titre et le contenu sont obligatoires");
+    return;
+  }
+
+  setError("");
+  setTitle("");
+  setContent("");
+  setLocation("");
+  setTags([]);
+  setHashtags("");
+
+  onOpenChange(false);
+};
 
   return (
     <Modal
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       placement="center"
-      size="lg"
+      size="xl"
       backdrop="blur"
-      hideCloseButton
+      portalContainer={document.body}
       classNames={{
         wrapper: "thread-wrapper",
         base: "thread-modal",
@@ -53,8 +70,12 @@ export default function CreatePopUp({
               <h2>Nouveau Thread</h2>
             </ModalHeader>
 
-            <ModalBody className="thread-body">
-
+            <ModalBody className="thread-body scrollable">
+              {error && (
+                <div className="thread-error">
+                  ⚠ {error}
+                </div>
+              )}
               
               <div className="thread-block">
                 <div className="thread-label">
@@ -63,6 +84,7 @@ export default function CreatePopUp({
                 </div>
 
                 <Input
+                  className="thread-textarea"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                   placeholder="Donnez un titre accrocheur à votre thread..."
@@ -79,10 +101,12 @@ export default function CreatePopUp({
                 </div>
 
                 <Textarea
+                  className="thread-textarea"
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
                   placeholder="Partagez votre histoire..."
                 />
+
 
                 <span className="counter">{content.length}/1000</span>
               </div>
@@ -90,11 +114,12 @@ export default function CreatePopUp({
              
               <div className="thread-block">
                 <div className="thread-label">
-                  <span className="icon green">📍</span>
+                  <span className="icon green"></span>
                   <h3>Localisation</h3>
                 </div>
 
                 <Input
+                  className="thread-textarea"
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
                   placeholder="Sélectionnez ou tapez votre ville..."
@@ -110,6 +135,7 @@ export default function CreatePopUp({
 
                 <div className="tag-row">
                   <Input
+                    className="thread-textarea"
                     value={hashtags}
                     onChange={(e) => setHashtags(e.target.value)}
                     placeholder="Ajoutez un hashtag..."
@@ -135,9 +161,10 @@ export default function CreatePopUp({
                   Votre publication sera anonyme. Respectez les règles de la
                   communauté.
                 </p>
-                 <Button className="publish-btn">
-                ✈ Publier le thread
-              </Button>
+                 <Button className="publish-btn" onPress={handlePublish}>
+                    ✈ Publier le thread
+                </Button>
+
               </div>
 
             </ModalBody>
