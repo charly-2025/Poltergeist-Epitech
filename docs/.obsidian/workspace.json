@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "prioritization_matrix"
             }
+          },
+          {
+            "id": "464d2d3c0eca6ea5",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.5"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.11.5"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -183,7 +196,7 @@
       "bases:Create new base": false
     }
   },
-  "active": "9a1cbfe6a2a68a74",
+  "active": "464d2d3c0eca6ea5",
   "lastOpenFiles": [
     "08_prioritization/mvp_definition.md",
     "08_prioritization/prioritization_matrix.md",
