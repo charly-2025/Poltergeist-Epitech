@@ -23,12 +23,29 @@ export default function CreatePopUp({
   const [location, setLocation] = useState("");
   const [hashtags, setHashtags] = useState("");
   const [tags, setTags] = useState([]);
+  const [error, setError] = useState("");
 
   const addTag = () => {
     if (!hashtags || tags.length >= 5) return;
     setTags([...tags, hashtags]);
     setHashtags("");
   };
+  const handlePublish = () => {
+  //ici plus tard POST API
+    if (!title.trim() || !content.trim()) {
+    setError("Le titre et le contenu sont obligatoires");
+    return;
+  }
+
+  setError("");
+  setTitle("");
+  setContent("");
+  setLocation("");
+  setTags([]);
+  setHashtags("");
+
+  onOpenChange(false);
+};
 
   return (
     <Modal
@@ -37,7 +54,7 @@ export default function CreatePopUp({
       placement="center"
       size="lg"
       backdrop="blur"
-      hideCloseButton
+      portalContainer={document.body}
       classNames={{
         wrapper: "thread-wrapper",
         base: "thread-modal",
@@ -54,7 +71,11 @@ export default function CreatePopUp({
             </ModalHeader>
 
             <ModalBody className="thread-body">
-
+              {error && (
+                <div className="thread-error">
+                  ⚠ {error}
+                </div>
+              )}
               
               <div className="thread-block">
                 <div className="thread-label">
@@ -135,9 +156,10 @@ export default function CreatePopUp({
                   Votre publication sera anonyme. Respectez les règles de la
                   communauté.
                 </p>
-                 <Button className="publish-btn">
-                ✈ Publier le thread
-              </Button>
+                 <Button className="publish-btn" onPress={handlePublish}>
+                    ✈ Publier le thread
+                </Button>
+
               </div>
 
             </ModalBody>

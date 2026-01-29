@@ -1,9 +1,31 @@
 .thread-wrapper {
+  position: fixed;
+  inset: 0;
   display: flex ;
   align-items: center ;
   justify-content: center;
-  min-height: 500vh;
+  z-index: 9999;
 }
+
+
+.thread-wrapper::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+.thread-error {
+  background: rgba(255,0,0,0.1);
+  border: 1px solid rgba(255,0,0,0.4);
+  padding: 10px 14px;
+  border-radius: 12px;
+  color: #ff6b6b;
+  font-size: 14px;
+}
+
 
 .thread-modal {
   background: radial-gradient(circle at top, #0b0f0d, #050505);
