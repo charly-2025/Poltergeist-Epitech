@@ -1,250 +1,145 @@
-.thread-wrapper {
+.thread-wrapper{
   position: fixed;
   inset: 0;
-  display: flex ;
-  align-items: center ;
+  background: rgba(0,8,2,0.66);
+  display: flex;
+  align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 1000;
+  padding: 12px;
 }
 
-
-.thread-wrapper::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  backdrop-filter: blur(8px);
-  background: rgba(0, 0, 0, 0.6);
-  z-index: -1;
-}
-
-.thread-error {
-  background: rgba(255,0,0,0.1);
-  border: 1px solid rgba(255,0,0,0.4);
-  padding: 10px 14px;
+.thread-modal{
+  width: 100%;
+  max-width: 720px;
+  background: #0F0F0F;
   border-radius: 12px;
-  color: #ff6b6b;
-  font-size: 14px;
+  padding: 14px;
+  position: relative;
+  box-shadow: 0 12px 40px rgba(2,6,23,0.6);
+  border: 1px solid #1F1F1F;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-
-.thread-modal {
-  background: radial-gradient(circle at top, #0b0f0d, #050505);
-  border-radius: 22px;
-  border: 1px solid rgba(0,255,120,0.2);
-  box-shadow: 0 0 50px rgba(0,255,120,0.2);
-}
-
-.thread-header {
+.thread-header{
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: #17DB35;
+  margin: 0;
+  padding: 6px 0;
 }
 
-.thread-header h2 {
-  font-size: 1.3rem;
-  font-weight: 700;
-  align-items: center;
+.thread-header h2{
+  color: #17DB35;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
 }
 
-.back-btn {
+.back-btn{
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #fff;
   cursor: pointer;
-  opacity: 0.7;
 }
 
-.thread-body {
+.thread-body{
   display: flex;
   flex-direction: column;
-  gap: 22px;
-}
-
-.thread-block {
-  background: rgba(20,20,20,0.7);
-  padding: 10px;
-  margin: 2px;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-.thread-label {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  margin-bottom: 12px;
-}
-
-.icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: linear-gradient(135deg,#17DB35,#0fbf60);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: black;
-}
-
-.counter {
-  font-size: 12px;
-  opacity: 0.5;
-  margin-top: 6px;
-  display: block;
-  text-align: right;
-}
-
-.tag-row {
-  display: flex;
   gap: 10px;
-}
-
-.tag-add {
-  background: #17DB35 ;
-  color: black;
-  font-weight: 600;
-}
-
-.tags {
-  display: flex;
-  gap: 8px;
-  margin-top: 8px;
-  flex-wrap: wrap;
-}
-
-.tag {
-  background: rgba(0,255,120,0.15);
-  padding: 6px 12px;
-  border-radius: 999px;
-  font-size: 13px;
-}
-
-.thread-warning {
-  border: 1px solid rgba(0,255,120,0.3);
-  background: rgba(0,255,120,0.08);
-  padding: 14px;
-  border-radius: 14px;
-  font-size: 13px;
-}
-
-.publish-btn {
-  width: 100%;
-  background: linear-gradient(135deg,#17DB35,#0fbf60);
-  color: black;
-  font-weight: 700;
-  padding: 12px;
-  border-radius: 16px;
-  font-size: 16px;
-}
-.thread-textarea textarea {
-  background: rgba(10, 15, 12, 0.9) ;
-  border: 1px solid rgba(34, 255, 136, 0.35) ;
-  border-radius: 16px ;
-  color: #eafff2 ;
-
-  font-size: 15px;
-  line-height: 1.6;
-
-  padding: 14px 16px ;
-
-  transition: border 0.2s ease, box-shadow 0.2s ease;
-}
-
-.thread-textarea textarea::placeholder {
-  color: rgba(200, 255, 220, 0.35);
-}
-
-
-.thread-textarea textarea:focus {
-  outline: none;
-  border-color: #22ff88 !important;
-  box-shadow: 0 0 0 2px rgba(34, 255, 136, 0.35);
-}
-
-
-.thread-textarea textarea::-webkit-scrollbar {
-  width: 6px;
-}
-
-.thread-textarea textarea::-webkit-scrollbar-thumb {
-  background: rgba(34, 255, 136, 0.4);
-  border-radius: 20px;
-}
-
-.thread-textarea textarea::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.thread-textarea input {
-  background: rgba(10, 15, 12, 0.9) ;
-  border: 1px solid rgba(34, 255, 136, 0.35) ;
-  border-radius: 16px ;
-  color: #eafff2 ;
-
-  font-size: 15px;
-  line-height: 1.6;
-
-  padding: 14px 16px ;
-
-  transition: border 0.2s ease, box-shadow 0.2s ease;
-}
-.thread-textarea input::placeholder {
-  color: rgba(200, 255, 220, 0.35);
-}
-.thread-textarea input:focus {
-  outline: none;
-  border-color: #22ff88 ;
-  box-shadow: 0 0 0 2px rgba(34, 255, 136, 0.35);
-}
-.thread-textarea input::-webkit-scrollbar {
-  width: 6px;
-}
-
-.thread-textarea input::-webkit-scrollbar-thumb {
-  background: rgba(34, 255, 136, 0.4);
-  border-radius: 20px;
-}
-
-.thread-textarea input::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.thread-modal {
-  max-width: 900px ;
-  width: 90vw ;
-}
-
-
-.scrollable {
-  max-height: 65vh;
   overflow-y: auto;
   padding-right: 6px;
 }
 
+.thread-body::-webkit-scrollbar{width:6px}
+.thread-body::-webkit-scrollbar-track{background:transparent}
 
-.scrollable::-webkit-scrollbar {
-  width: 6px;
-}
-
-.scrollable::-webkit-scrollbar-thumb {
-  background: rgba(34,255,136,0.35);
-  border-radius: 10px;
-}
-
-.scrollable::-webkit-scrollbar-track {
+.thread-block{
   background: transparent;
+  border-radius: 8px;
+  padding: 6px 0;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-
-.thread-block {
-  padding: 14px;
+.thread-block h3{
+  color: #17DB35;
+  margin: 0 0 6px 0;
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
-.thread-header h2 {
-  font-size: 1.15rem;
-}
+.thread-textarea{width:96%}
 
-
-.thread-modal input,
-.thread-textarea textarea {
+.thread-textarea input{
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #0d0d0d;
+  color: #fff;
+  border: none;
   font-size: 14px;
+}
+
+.thread-textarea textarea{
+  width: 100%;
+  min-height: 96px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: #0d0d0d;
+  color: #fff;
+  border: none;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.thread-textarea textarea::placeholder,
+.thread-textarea input::placeholder{
+  color: #9aa7b2;
+}
+
+.thread-textarea textarea:focus,
+.thread-textarea input:focus{
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(23, 219, 52, 0);
+}
+
+.thread-error{
+  background: rgba(255,0,0,0.06);
+  color: #ff6b6b;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.thread-warning{
+  background: transparent;
+  color: #9aa7b2;
+  font-size: 13px;
+  margin: 0;
+}
+
+.publish-btn{
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: linear-gradient(90deg,#17DB35,#0fa820);
+  border: none;
+  color: #000;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+@media (max-width:520px){
+  .thread-modal{max-width:100%;padding:12px}
+  .thread-header h2{font-size:1rem}
 }

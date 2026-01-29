@@ -9,7 +9,7 @@ import CommentsPopup from "./CommentsPopup.jsx";
 
 import Marker from "../images/marker.png";
 
-const Post = ({thread_id,title,content,country,city,listLike,listCom,listFavorite,createdDate}) => { 
+const Post = ({setCommentsOpen, thread_id,title,content,country,city,listLike,listCom,listFavorite,createdDate}) => { 
   const [isLiked, setIsLiked] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
   const [userData, setUserData] = useState(null);
@@ -71,6 +71,7 @@ const Post = ({thread_id,title,content,country,city,listLike,listCom,listFavorit
 
   const openComments = () => {
     setShowComments(true);
+    setCommentsOpen(true);
   }
 
 
@@ -129,10 +130,10 @@ const Post = ({thread_id,title,content,country,city,listLike,listCom,listFavorit
           <p className="Post-Text">{content}</p>
         </div>
         <div className="Post-footer">
-          <div className="Like-Com"><Like isLiked={isLiked} handleLike={handleLike}  /><Comment openComments={openComments} /></div>
+          <div className="Like-Com"><Like isLiked={isLiked} handleLike={handleLike}  /><Comment openComments={openComments}/></div>
           <Favorite isFavorited={isFavorited} handleFavorite={handleFavorite} />
         </div>
-        <CommentsPopup postId={thread_id} open={showComments} onClose={() => setShowComments(false)} />
+        <CommentsPopup postId={thread_id} open={showComments} onClose={() => {setShowComments(false);setCommentsOpen(false)}} />
     </div>
   );
 };

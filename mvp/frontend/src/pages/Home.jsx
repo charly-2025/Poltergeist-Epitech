@@ -17,7 +17,7 @@ import CloseCross from "../images/close.png";
 
 export function Home  ({ localization}) {
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
-    
+    const [CommentsOpen, setCommentsOpen] = useState(false);
     const [activeTheme, setActiveTheme] = useState("recents");
     const [listPosts, setListPosts] = useState([]);  
     const [searchQuery, setSearchQuery] = useState("");
@@ -38,7 +38,6 @@ export function Home  ({ localization}) {
     
         checkAuth();
       }, []);
-
 
 
     useEffect(() => {
@@ -94,12 +93,13 @@ export function Home  ({ localization}) {
                 </div>
                 : <div className="Posts-container">
                     {listPosts.map(post => (
-                    <Post thread_id={post.thread_id} title={post.thread_title} content={post.thread_content} country={post.thread_country} city={post.thread_city} listLike={post.thread_likes} listCom={post.thread_replies} listFavorite={post.thread_favorite} createdDate={post.createdAt}/>))}
+                    <Post setCommentsOpen={setCommentsOpen} thread_id={post.thread_id} title={post.thread_title} content={post.thread_content} country={post.thread_country} city={post.thread_city} listLike={post.thread_likes} listCom={post.thread_replies} listFavorite={post.thread_favorite} createdDate={post.createdAt}/>))}
                 </div>}
 
                 <Button
                     onPress={onOpen}
                     className="create-thread-btn"
+                    disabled={localization===null || CommentsOpen}
                 >
                     + Create thread
                 </Button>

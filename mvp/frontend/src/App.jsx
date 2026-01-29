@@ -43,13 +43,8 @@ function App() {
       console.log("Localization updated:", localization);
     };
     updateLocalization();
-  }, [localization]); 
+  }, [localization?.city, localization?.country]); 
 
-
-
-
-
-  /*use effect pour récuperer la localisation une fois+un autre pour mettre a jour la localisation*/
 
   return (
     <div className="App">

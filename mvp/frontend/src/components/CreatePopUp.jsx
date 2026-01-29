@@ -86,9 +86,9 @@ export default function CreatePopUp({
           <>
             <ModalHeader className="thread-header">
               <span className="back-btn" onClick={onClose}>
-                ← Retour
+                ← Back
               </span>
-              <h2>Nouveau Thread</h2>
+              <h2>New Thread</h2>
             </ModalHeader>
 
             <ModalBody className="thread-body scrollable">
@@ -96,36 +96,35 @@ export default function CreatePopUp({
               {error && <div className="thread-error">⚠ {error}</div>}
 
               <div className="thread-block">
-                <h3>Titre</h3>
+                <h3>Title</h3>
                 <Input
                   className="thread-textarea"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  placeholder="Titre du thread"
+                  placeholder="Title of the thread"
                 />
               </div>
 
               <div className="thread-block">
-                <h3>Contenu</h3>
+                <h3>Content</h3>
                 <Textarea
                   className="thread-textarea"
                   value={content}
                   onChange={(e) => setContent(e.target.value)}
-                  placeholder="Écrivez votre message..."
+                  placeholder="Write your message..."
                 />
               </div>
               <div className="thread-warning">
-                📌 <strong>Rappel important</strong>
+                📌 <strong>Important reminder</strong>
                 <p>
-                  Votre publication sera anonyme. Respectez les règles de la
-                  communauté.
+                   Your post will be anonymous. Please follow the community guidelines.
                 </p>
               <Button
                 className="publish-btn"
                 onPress={handlePublish}
                 isDisabled={loading}
               >
-                {loading ? "Publication..." : "Publier le thread"}
+                {loading ? "Publishing..." : "Publish thread"}
               </Button>
               </div>
             </ModalBody>
