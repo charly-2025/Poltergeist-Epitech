@@ -100,7 +100,7 @@ const CommentsPopup = ({ postId, open, onClose }) => {
                                 listComments.map((comment) => (
                                     <div key={comment.rep_id} className="CommentsPopup-comment">
                                         <div className="CommentsPopup-comment-header">
-                                            <Avatar  name="Anonymous" size="sm" className="CommentsPopup-avatar"/>
+                                            <Avatar name="Anonymous" size="sm" className="CommentsPopup-avatar"/>
                                             <div className="CommentsPopup-comment-info">
                                                 <span className="CommentsPopup-username">Anonymous</span>
                                                 <span className="CommentsPopup-timestamp">- {timeAgo(comment.createdAt)} ago</span>
