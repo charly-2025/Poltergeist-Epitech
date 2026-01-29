@@ -27,35 +27,41 @@ import User from "../models/auth.js"
  *             schema:
  *               type: array
  *               items:
- *                  properties:
- *                      _id : 
- *                          type : string
- *                      author_id:
- *                          type: number
- *                      thread_title:
- *                          type : string
- *                      thread_content:
- *                          type : string
- *                      thread_country:
- *                          type : string
- *                      thread_city:
- *                          type : string
- *                      thread_likes :
- *                          type : array
- *                      thread_replies : 
- *                          type : array
- *                      thread_favorite : 
- *                          type : array
- *                      thread_random_profile_picture :
- *                          type : number   
- *                      createdAt : 
- *                          type : timestamp
- *                      updatedAt : 
- *                          type : timestamp
- *                      thread_id:
- *                          type: number
- *                      __v : 
- *                          type : number
+ *                 type: object
+ *                 properties:
+ *                   _id:
+ *                     type: string
+ *                   author_id:
+ *                     type: number
+ *                   thread_title:
+ *                     type: string
+ *                   thread_content:
+ *                     type: string
+ *                   thread_country:
+ *                     type: string
+ *                   thread_city:
+ *                     type: string
+ *                   thread_likes:
+ *                     type: array
+ *                     items: {}
+ *                   thread_replies:
+ *                     type: array
+ *                     items: {}
+ *                   thread_favorite:
+ *                     type: array
+ *                     items: {}
+ *                   thread_random_profile_picture:
+ *                     type: number
+ *                   createdAt:
+ *                     type: string
+ *                     format: date-time
+ *                   updatedAt:
+ *                     type: string
+ *                     format: date-time
+ *                   thread_id:
+ *                     type: number
+ *                   __v:
+ *                     type: number
  *       500:
  *         description: Server error
  *         content:
@@ -65,7 +71,7 @@ import User from "../models/auth.js"
  *               properties:
  *                 message:
  *                   type: string
-  *       400:
+ *       400:
  *         description: Server error
  *         content:
  *           application/json:
@@ -74,7 +80,8 @@ import User from "../models/auth.js"
  *               properties:
  *                 message:
  *                   type: string
- *                   example: User location is null
+ *                 example:
+ *                   value: "User location is null"
  */   
 
 export const getThreads = async (req, res) => {
@@ -333,6 +340,91 @@ export const favoriteThread = async(req, res) => {
         await thread.save();
         return res.status(200).json({ message: "added" });
         
+    } catch (err) {
+        res.status(500).json({ message: err.message });
+    }
+};
+
+/**
+ * @swagger
+ * /threads/{threadId}:
+ *   delete:
+ *     summary: delete one of your thread
+ *     tags: [Threads]
+ *     parameters:
+ *       - in: path
+ *         name: threadId
+ *         required: true
+ *         schema:
+ *           type: number
+ *         description: The auto incremented ID of the thread to delete
+ *     responses:
+ *       200:
+ *         description: thread deleted
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Thread deleted
+ *       404:
+ *         description: Thread not found
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: Thread not found 
+ *       400:
+ *         description: the author id is not the same as the userID 
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: You are not the author of this thread
+ *       500:
+ *         description: Error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ */   
+
+export const deleteThread = async(req, res) => {
+    try {
+        const userID = req.anonyme_id.userID
+        const ID_Thread = req.params.threadId
+        
+        const thread_infos = await Threads.findOne({ thread_id : ID_Thread })
+        console.log(thread_infos.author_id, thread_infos.thread_id, ID_Thread)
+        if (!thread_infos){
+            res.status(404).json({
+                message : "Thread not found"
+            })
+        }
+
+        if (thread_infos.author_id != userID){
+            res.status(400).json({
+                message: "You are not the author of this thread"
+            })
+        }else {
+            const resultat = await Threads.deleteOne({ thread_id: ID_Thread });   
+            if (resultat.deletedCount === 0){
+                res.status(400).json({message : "No thread deleted"})
+            }
+            res.status(200).json({message : "Thread deleted"})
+        }
+
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
