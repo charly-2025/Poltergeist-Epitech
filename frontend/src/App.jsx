@@ -18,7 +18,9 @@ function App() {
       try {
         const response = await fetch('http://localhost:3000/getUserInfos', {method: 'GET', credentials: 'include'});
         const data = await response.json();
-        setLocalization(data.location);
+        if (data.country && data.city) {
+          setLocalization({ country: data.country, city: data.city });
+        }
       } catch (error) {
         console.error("Error fetching localization data:", error);
       }  
