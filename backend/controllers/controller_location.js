@@ -3,7 +3,7 @@ import Threads from "../models/thread_model.js"
 
 /**
  * @swagger
- * /location?search={search}:
+ * /location:
  *   get:
  *     summary: search location and get number of location's number of threads
  *     tags:
