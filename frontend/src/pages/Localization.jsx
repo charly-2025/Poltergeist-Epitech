@@ -60,6 +60,7 @@ const [listCity, setListCity] = useState([
   { country: "Japon", city: "Yokohama" },
   { country: "Japon", city: "Nagoya" }
 ]);
+    const [listCitySecond, setListCitySecond] = useState(listCity);
     const [listCountry, setListCountry] = useState([]);
     const [CountryFiltered, setCountryFiltered] = useState("all");
     const [searchCity, setSearchCity] = useState("");
@@ -98,6 +99,8 @@ const [listCity, setListCity] = useState([
 
       if (searchCity !== "" || CountryFiltered !== "all") {
         fetchLocatizations();
+      } else if (searchCity === "" && CountryFiltered === "all") {
+        setListCity(listCitySecond);
       }
     }, [searchCity, CountryFiltered]);
 
