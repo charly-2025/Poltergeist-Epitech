@@ -291,3 +291,7 @@ export const saveThread = async(req, res) => {
         res.status(400).json({ message: err.message });
     }
 };
+
+export const getReplies = async(req, res) => {
+    
+}

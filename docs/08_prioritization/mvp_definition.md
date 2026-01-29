@@ -1,6 +1,6 @@
-![[Le client découvre le site.png]]![[Pasted image 20260127122308.png]]
-![[Pasted image 20260127122320.png]]
-![[Pasted image 20260127122409.png]]
+![[Le client découvre le site.png]]![[homepage.png]]
+![[localization.png]]
+![[liked.png]]
 
 Minimal features : little selection of avatars that are variants of the website's logo,
 ability to sort posts based on recentness rather than location, ability to leave feedback on the site etc.
