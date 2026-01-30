@@ -87,14 +87,20 @@ export function Home  ({ localization}) {
                     ) : ""}
                 </div>
 
-                {localization===null && activeTheme === "proximity" ? <div className="AlertNoLoc">
+                {localization===null && activeTheme === "proximity" ? (
+                
+                <div className="AlertNoLoc">
                     <p>Please set your localization to view posts by proximity.</p>
                     <Link to="/localization">Go to Localization Page</Link>
-                </div>
-                : <div className="Posts-container">
+                </div>) : listPosts.length === 0 ? (
+                    <div className="AlertNoLoc">
+                        <p>No posts available.</p>
+                    </div>
+                    ) : (
+                <div className="Posts-container">
                     {listPosts.map(post => (
                     <Post key={post.thread_id} setCommentsOpen={setCommentsOpen} thread_id={post.thread_id} title={post.thread_title} content={post.thread_content} country={post.thread_country} city={post.thread_city} listLike={post.thread_likes} listCom={post.thread_replies} listFavorite={post.thread_favorite} createdDate={post.createdAt}/>))}
-                </div>}
+                </div>)}
 
                 <Button
                     onPress={onOpen}

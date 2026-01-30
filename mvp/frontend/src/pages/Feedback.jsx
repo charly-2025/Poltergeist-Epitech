@@ -28,7 +28,10 @@ const Feedback = ({localization}) => {
         <div className="Feedback-container">
             <Header localization={localization} />
             <div className="Feedback-content">
-                <h2>We value your feedback!</h2>
+                <div className="ComingSoon-container">
+                  <h1>Coming Soon</h1>
+                  <p>We’re working on this feature.<br />Stay connect!</p>
+                </div>
             </div>
             <Footer />
         </div>

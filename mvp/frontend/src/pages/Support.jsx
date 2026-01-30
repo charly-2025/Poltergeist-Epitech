@@ -29,7 +29,10 @@ const Support = ({localization}) => {
         <div className="Support-container">
             <Header localization={localization} />
             <div className="Support-content">
-                <h2>Need Help? Contact Our Support Team!</h2>
+                <div className="ComingSoon-container">
+                  <h1>Coming Soon</h1>
+                  <p>We’re working on this feature.<br />Stay connect!</p>
+                </div>
             </div>
             <Footer />
         </div>
