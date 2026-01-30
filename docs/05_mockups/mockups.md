@@ -1,8 +1,10 @@
+
 ![termsandconditionspoltergeist](termsandconditionspoltergeist.webp)
 
 ⬆️ **The Terms and Conditions** page is typically the first thing you’ll encounter. The ghost icon comes from the name **Poltergeist**—a term used to describe a spirit that haunts a specific place.
 
 This symbolism reflects the core ideas behind the website: the ghost represents anonymity, while the concept of haunting refers to being tied to whatever city/place you choose to see the post of.
+
 
 
 
@@ -14,6 +16,7 @@ We deliberately kept options and features to a minimum. In a world where every p
 
 _“If you try to please everyone, you will please no one.”_  
 — **Aesop** (paraphrased)
+
 
 ![threadspoltergeist](threadspoltergeist.webp)
 

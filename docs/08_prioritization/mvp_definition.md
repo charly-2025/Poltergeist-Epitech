@@ -1,5 +1,11 @@
-![](Le%20client%20découvre%20le%20site.webp)![homepage](homepage.webp)
+![](Le%20client%20découvre%20le%20site.webp)
+
+![homepage](homepage.webp)
+
+![](homepage.webp)
 ![localization](localization.webp)
+
+
 ![liked](liked.webp)
 
 Minimal features : little selection of avatars that are variants of the website's logo,

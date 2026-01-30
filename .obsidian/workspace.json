@@ -109,12 +109,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/08_prioritization/mvp_definition.md",
+                "file": "docs/04_wireframes/wireframes.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "mvp_definition"
+              "title": "wireframes"
             }
           }
         ],
@@ -282,13 +282,14 @@
   },
   "active": "ba91ddcd5defb877",
   "lastOpenFiles": [
-    "docs/08_prioritization/prioritization_matrix.md",
-    "docs/08_prioritization/mvp_definition.md",
+    "docs/05_mockups/mockups.md",
     "docs/06_prototype/prototype.md",
     "docs/07_feedback/test_protocol.md",
-    "docs/07_feedback/README.md",
     "docs/07_feedback/feedback_summary.md",
-    "docs/05_mockups/mockups.md",
+    "docs/08_prioritization/mvp_definition.md",
+    "docs/08_prioritization/prioritization images/localization.webp",
+    "docs/08_prioritization/prioritization_matrix.md",
+    "docs/07_feedback/README.md",
     "docs/04_wireframes/wireframes.md",
     "output/wireframes.md",
     "output/attachment/102fdc78935d27acc9f0d1c942744489.webp",
@@ -300,7 +301,6 @@
     "output/attachment/5678c3b6cbadab42a53d5a4e9979aaa3.webp",
     "output/attachment/8a0c70d56af4bc42e9c14dedecd73b51.webp",
     "output/attachment/10486ab29cd3fffde18de92202b021db.webp",
-    "output/attachment/bdc4846a03b1e9d6f867607291cb2c34.webp",
     "output/attachment",
     "output",
     "docs/04_wireframes/README.md",
@@ -326,7 +326,6 @@
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/quick-start/_category_.json",
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/Contributing/typescript.md",
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/Contributing/reporting-issues.md",
-    "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/Contributing/project-goals.md",
-    "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/Contributing/fundamental-concepts.md"
+    "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/Contributing/project-goals.md"
   ]
 }
