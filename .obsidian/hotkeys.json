@@ -1,0 +1,10 @@
+{
+  "image-converter:process-all-images-current-note": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "R"
+    }
+  ]
+}

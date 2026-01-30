@@ -1,1 +1,1 @@
-![[- Ability to post - Creation of threads - Total anonymity.png]]
+![[- Ability to post - Creation of threads - Total anonymity.webp]]
