@@ -1,1 +1,1 @@
-![- Ability to post - Creation of threads - Total anonymity](-%20Ability%20to%20post%20-%20Creation%20of%20threads%20-%20Total%20anonymity.webp)
+![- Ability to post - Creation of threads - Total anonymity](prioritization_images/-%20Ability%20to%20post%20-%20Creation%20of%20threads%20-%20Total%20anonymity.webp)

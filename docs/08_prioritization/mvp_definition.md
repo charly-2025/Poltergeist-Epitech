@@ -1,12 +1,11 @@
-![](Le%20client%20découvre%20le%20site.webp)
+![](prioritization_images/Le%20client%20découvre%20le%20site.webp)
 
-![homepage](homepage.webp)
+![homepage](prioritization_images/homepage.webp)
 
-![](homepage.webp)
-![localization](localization.webp)
+![](prioritization_images/homepage.webp)
+![localization](prioritization_images/localization.webp)
 
-
-![liked](liked.webp)
+![liked](prioritization_images/liked.webp)
 
 Minimal features : little selection of avatars that are variants of the website's logo,
 ability to sort posts based on recentness rather than location, ability to leave feedback on the site etc.
