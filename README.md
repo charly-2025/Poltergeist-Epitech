@@ -1,3 +1,7 @@
+## Release
+
+The delivered MVP is available under the Git tag `v0.1.0`
+
 ## Project Overview
 
 This is a web application functioning as a social network. The application allows users to register and remain completely anonymous: no username, no email, no password, nothing. Total anonymity. Inspired by 4chan and Reddit, it allows anonymous users to create discussion threads, comment under these threads, and browse threads based on location. Threads are organized by location, allowing each user (by selecting a city) to filter threads by city.
