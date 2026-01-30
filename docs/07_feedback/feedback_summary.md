@@ -4,7 +4,9 @@ Julia :
 	- Otherwise did every step without much trouble
 
 Octave :
-	-
+	- Had an easy time for everything
+	- Liked the resemblance to already existing forums (4chan, jvc etc.)
+	- Thought we should put in some form of avatars in someway or another
 
 Lino :
 	- Had an easy time navigating
