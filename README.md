@@ -1,6 +1,6 @@
 ## Release
 
-The delivered MVP is available under the Git tag `v0.1.0`
+The delivered MVP is available under the Git tag `v0.1.4`
 
 ## Project Overview
 
