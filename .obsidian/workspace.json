@@ -109,12 +109,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/08_prioritization/prioritization_matrix.md",
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "prioritization_matrix"
+              "title": "README"
             }
           }
         ],
@@ -282,9 +282,9 @@
   },
   "active": "ba91ddcd5defb877",
   "lastOpenFiles": [
+    "docs/08_prioritization/prioritization_matrix.md",
     "docs/07_feedback/feedback_summary.md",
     "docs/08_prioritization/prioritization images/- Ability to post - Creation of threads - Total anonymity.png",
-    "docs/08_prioritization/prioritization_matrix.md",
     "docs/07_feedback/README.md",
     "docs/04_wireframes/README.md",
     "docs/04_wireframes/wireframes.md",

@@ -34,11 +34,16 @@ cd backend/
 docker cp world-cities.csv mvp-mongo-1:/world-cities.csv
 ```
 
-Then,
+Then, do :
 
 ```
 cd ../
 docker compose up --build
+``` 
+
+and in a other shell window , do : 
+
+```
 cd backend/
 docker exec mvp-mongo-1 mongoimport \
   --db poltergeistdb \
