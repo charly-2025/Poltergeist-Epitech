@@ -219,7 +219,7 @@
   "dropPasteCursorLocation": "back",
   "neverProcessFilenames": "",
   "modalBehavior": "never",
-  "ProcessCurrentNoteconvertTo": "webp",
+  "ProcessCurrentNoteconvertTo": "png",
   "ProcessCurrentNotequality": 0.75,
   "ProcessCurrentNoteResizeModalresizeMode": "None",
   "ProcessCurrentNoteresizeModaldesiredWidth": 600,
