@@ -81,3 +81,19 @@ export const getLocation = async (req, res) => {
     }
 };     
  
+
+export const getLocationNbThreads = async (req, res) => {
+  try {
+    const { city } = req.params;
+
+    if (!city) {
+      return res.status(400).json({ message: "city should not be null" });
+    }
+
+    const nb_threads = await Threads.countDocuments({ thread_city: city });
+
+    return res.status(200).json({ nb_threads });
+  } catch (err) {
+    return res.status(500).json({ message: err.message });
+  }
+};

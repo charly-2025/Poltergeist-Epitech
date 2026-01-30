@@ -130,7 +130,7 @@ const [listCity, setListCity] = useState([
                     
                     </div>
                     <div className="Localization-listCity">
-                        {listCity.map(city=>(<CityCard localization={localization} setLocalization={setLocalization} city={city}/>/*CityCard + variabele */))}
+                        {listCity.map(city=>(<CityCard listCity={listCity} localization={localization} setLocalization={setLocalization} city={city}/>/*CityCard + variabele */))}
                     </div>
                 </div>
             </div>

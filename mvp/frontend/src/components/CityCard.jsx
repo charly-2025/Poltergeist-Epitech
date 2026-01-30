@@ -2,10 +2,21 @@ import React, { useEffect, useState } from "react";
 import LocalizationLogo from "../images/location.png";
 import "./CityCard.css";
 
-const CityCard = ({localization,setLocalization,city}) => {
+const CityCard = ({listCity,localization,setLocalization,city}) => {
     const [nbThread,setNbThread] = useState(0);
 
-    useEffect(() => {/*Fetch le nombre de thread par ville*/}, [/*liste post*/]);
+    useEffect(() => {
+        const fetchNbThread = async () => {
+            try {
+                const response = await fetch(`http://localhost:3000/location/nbThreads/${city.city}`, {method: 'GET', credentials: 'include'});
+                const data = await response.json();
+                setNbThread(data.nb_threads);
+            } catch (error) {
+                console.error("Error fetching nb threads:", error);
+            }
+        };
+        fetchNbThread();
+    }, [listCity]);
 
     const handleCityCard = () =>{
         setLocalization(city);
