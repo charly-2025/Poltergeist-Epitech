@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import "./Post.css";
 import { getAvatar } from "../utils/avatars";
 
@@ -14,6 +14,8 @@ const Post = ({setCommentsOpen, thread_id,title,content,country,city,listLike,li
   const [isFavorited, setIsFavorited] = useState(false);
   const [userData, setUserData] = useState(null);
   const [showComments, setShowComments] = useState(false);
+  const [nbLikes, setNbLikes] = useState(listLike.length);
+  const [nbComments, setNbComments] = useState(listCom.length);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -46,6 +48,12 @@ const Post = ({setCommentsOpen, thread_id,title,content,country,city,listLike,li
       }
     }
   }, [listFavorite, userData]);
+
+
+  useEffect(() => {
+    setNbComments(listCom.length);
+    setNbLikes(listLike.length);
+  }, [listCom, listLike]);
 
 
   function timeAgo(dateString) {
@@ -100,7 +108,8 @@ const Post = ({setCommentsOpen, thread_id,title,content,country,city,listLike,li
           credentials: 'include',
         });
         if (response.ok) {
-          setIsLiked(!isLiked);
+          setIsLiked(prev => !prev);
+          setNbLikes(prev => isLiked ? prev - 1 : prev + 1);
         }
       } catch (error) {
         console.error("Error toggling like:", error);
@@ -130,10 +139,10 @@ const Post = ({setCommentsOpen, thread_id,title,content,country,city,listLike,li
           <p className="Post-Text">{content}</p>
         </div>
         <div className="Post-footer">
-          <div className="Like-Com"><Like isLiked={isLiked} handleLike={handleLike}  /><Comment openComments={openComments}/></div>
+          <div className="Like-Com"><Like isLiked={isLiked} handleLike={handleLike}  /> {nbLikes} <Comment openComments={openComments}/> {nbComments} </div>
           <Favorite isFavorited={isFavorited} handleFavorite={handleFavorite} />
         </div>
-        <CommentsPopup postId={thread_id} open={showComments} onClose={() => {setShowComments(false);setCommentsOpen(false)}} />
+        <CommentsPopup postId={thread_id} open={showComments} onClose={() => {setShowComments(false);setCommentsOpen(false)}} onNewComment={() => setNbComments(prev => prev + 1)}/>
     </div>
   );
 };
