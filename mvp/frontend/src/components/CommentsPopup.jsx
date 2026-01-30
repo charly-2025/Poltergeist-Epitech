@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Avatar } from "@heroui/react";
 import { getAvatar } from "../utils/avatars"; 
 
-const CommentsPopup = ({postId, open, onClose }) => {
+const CommentsPopup = ({postId, open, onClose, onNewComment }) => {
     const [listComments, setListComments] = useState([]);
     const [newComment, setNewComment] = useState("");
     const [internalOpen, setInternalOpen] = useState(false);
@@ -64,6 +64,7 @@ const CommentsPopup = ({postId, open, onClose }) => {
                 const data = await response.json();
                 setListComments(prev => [...prev, data]);
                 setNewComment("");
+                if (onNewComment) onNewComment();
             }
         } catch (error) {
             console.error("Error adding comment:", error);
