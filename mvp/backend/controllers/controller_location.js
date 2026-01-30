@@ -82,6 +82,50 @@ export const getLocation = async (req, res) => {
 };     
  
 
+/**
+ * @swagger
+ * /location/nbThreads/{city}:
+ *   get:
+ *     summary: Get number of threads for a specific city
+ *     tags: [Threads]
+ *     parameters:
+ *       - in: path
+ *         name: city
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: City name to count threads for
+ *     responses:
+ *       200:
+ *         description: Number of threads for the given city
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 nb_threads:
+ *                   type: number
+ *       400:
+ *         description: city should not be null
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: city should not be null
+ *       500:
+ *         description: Server error
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ */
+
 export const getLocationNbThreads = async (req, res) => {
   try {
     const { city } = req.params;
