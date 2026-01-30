@@ -282,6 +282,9 @@
   },
   "active": "ba91ddcd5defb877",
   "lastOpenFiles": [
+    "docs/09_pitch/pitch_deck.pdf",
+    "docs/09_pitch/README.md",
+    "docs/04_wireframes/README.md",
     "docs/08_prioritization/mvp_definition.md",
     "docs/08_prioritization/prioritization_matrix.md",
     "docs/08_prioritization/prioritization images/- Ability to post - Creation of threads - Total anonymity.png",
@@ -319,8 +322,6 @@
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/intro.md",
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-6.x/intro.md",
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-5.x/validation.md",
-    "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-5.x/quick-start.md",
-    "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-5.x/intro.md",
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/static/img/undraw_docusaurus_tree.svg",
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/static/img/undraw_docusaurus_react.svg",
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/static/img/undraw_docusaurus_mountain.svg",
