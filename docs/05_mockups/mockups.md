@@ -1,4 +1,4 @@
-![[termsandconditionspoltergeist.webp]]
+![termsandconditionspoltergeist](termsandconditionspoltergeist.webp)
 
 ⬆️ **The Terms and Conditions** page is typically the first thing you’ll encounter. The ghost icon comes from the name **Poltergeist**—a term used to describe a spirit that haunts a specific place.
 
@@ -6,7 +6,7 @@ This symbolism reflects the core ideas behind the website: the ghost represents 
 
 
 
-![[localizationpoltergeist.webp]]
+![localizationpoltergeist](localizationpoltergeist.webp)
 
 ⬆️ **Localization page**, where you choose the city whose posts you want to see.
 
@@ -15,7 +15,7 @@ We deliberately kept options and features to a minimum. In a world where every p
 _“If you try to please everyone, you will please no one.”_  
 — **Aesop** (paraphrased)
 
-![[threadspoltergeist.webp]]
+![threadspoltergeist](threadspoltergeist.webp)
 
 ⬆️ This is the **main page**, where the arguing happens.
 

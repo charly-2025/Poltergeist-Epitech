@@ -6,5 +6,13 @@
       ],
       "key": "R"
     }
+  ],
+  "obsidian-link-converter:convert-wikis-to-md-in-vault": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "V"
+    }
   ]
 }

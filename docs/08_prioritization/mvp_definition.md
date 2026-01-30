@@ -1,6 +1,6 @@
-![[Le client découvre le site.webp]]![[homepage.webp]]
-![[localization.webp]]
-![[liked.webp]]
+![Le client découvre le site](Le%20client%20découvre%20le%20site.webp)![homepage](homepage.webp)
+![localization](localization.webp)
+![liked](liked.webp)
 
 Minimal features : little selection of avatars that are variants of the website's logo,
 ability to sort posts based on recentness rather than location, ability to leave feedback on the site etc.
