@@ -1,4 +1,4 @@
-![Le client découvre le site](Le%20client%20découvre%20le%20site.webp)![homepage](homepage.webp)
+![](Le%20client%20découvre%20le%20site.webp)![homepage](homepage.webp)
 ![localization](localization.webp)
 ![liked](liked.webp)
 
