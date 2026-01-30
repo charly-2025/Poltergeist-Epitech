@@ -109,7 +109,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
+                "file": "docs/06_prototype/README.md",
                 "mode": "source",
                 "source": false
               },
@@ -280,8 +280,10 @@
       "bases:Create new base": false
     }
   },
-  "active": "ba91ddcd5defb877",
+  "active": "9e0501d1af55fa7c",
   "lastOpenFiles": [
+    "docs/06_prototype/prototype.md",
+    "README.md",
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/quick-start/first-steps.md",
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/quick-start/_category_.json",
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/Contributing/typescript.md",
@@ -322,8 +324,6 @@
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/src/pages/markdown-page.md",
     "mvp/backend/node_modules/socks/docs/examples/typescript/connectExample.md",
     "mvp/backend/node_modules/socks/docs/examples/typescript/bindExample.md",
-    "mvp/backend/node_modules/socks/docs/examples/typescript/associateExample.md",
-    "mvp/backend/node_modules/socks/docs/examples/javascript/connectExample.md",
     "mvp/backend/node_modules/kareem/coverage/lcov-report/sort-arrow-sprite.png",
     "mvp/backend/node_modules/kareem/coverage/lcov-report/favicon.png",
     "mvp/backend/node_modules/swagger-ui-dist/favicon-32x32.png",
