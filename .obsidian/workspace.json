@@ -107,14 +107,12 @@
             "id": "ba91ddcd5defb877",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "pdf",
               "state": {
-                "file": "docs/07_feedback/feedback_summary.md",
-                "mode": "source",
-                "source": false
+                "file": "docs/09_pitch/pitch_deck.pdf"
               },
-              "icon": "lucide-file",
-              "title": "feedback_summary"
+              "icon": "lucide-file-text",
+              "title": "pitch_deck"
             }
           }
         ],
@@ -282,6 +280,7 @@
   },
   "active": "ba91ddcd5defb877",
   "lastOpenFiles": [
+    "docs/07_feedback/feedback_summary.md",
     "docs/09_pitch/pitch_deck.pdf",
     "docs/09_pitch/README.md",
     "docs/04_wireframes/README.md",
@@ -318,7 +317,6 @@
     "mvp/backend/node_modules/mongodb/src/cmap/wire_protocol/on_demand/document.ts",
     "mvp/backend/node_modules/mongodb/src/cmap/auth/mongodb_oidc/token_machine_workflow.ts",
     "mvp/backend/node_modules/mongodb/src/cmap/auth/mongodb_oidc/k8s_machine_workflow.ts",
-    "mvp/backend/node_modules/mongodb/src/cmap/auth/mongodb_oidc/token_cache.ts",
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-7.x/intro.md",
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-6.x/intro.md",
     "mvp/backend/node_modules/swagger-jsdoc/docusaurus/versioned_docs/version-5.x/validation.md",
