@@ -1,0 +1,18 @@
+{
+  "image-converter:process-all-images-current-note": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "R"
+    }
+  ],
+  "obsidian-link-converter:convert-wikis-to-md-in-active-file": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "Y"
+    }
+  ]
+}
