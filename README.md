@@ -26,7 +26,7 @@ A niche social network that is **100% anonymous**, inspired by Reddit and 4chan:
 - Noa Loussouarn
 - Fourchet
 
-The project kept growing outside of school: see [charly-2025/poltergeist](https://github.com/charly-2025/poltergeist).
+The project kept growing outside of school: see [Poltergeist-Showcase](https://github.com/charly-2025/Poltergeist-Showcase) and [poltergeist.ch](https://poltergeist.ch).
 
 ---
 
