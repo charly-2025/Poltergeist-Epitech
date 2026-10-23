@@ -18,6 +18,8 @@ A niche social network that is **100% anonymous**, inspired by Reddit and 4chan:
 
 `React` · `Node.js` · `MongoDB` · `Docker` · `Figma`
 
+The project kept growing outside of school: see [Poltergeist-Showcase](https://github.com/charly-2025/Poltergeist-Showcase) and [visitors.poltergeist.ch](https://visitors.poltergeist.ch).
+
 ---
 
 ## Technical documentation
