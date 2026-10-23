@@ -1,27 +1,61 @@
-## Release
+# Poltergeist (school MVP)
+
+> Built at **Epitech Rennes** · B-TBM-100 · Product Design · January to February 2026
+
+## Overview
+
+A niche social network that is **100% anonymous**, inspired by Reddit and 4chan: no username, no email, no password. Threads are tied to a city, so everyone can browse the conversations around them. The project covers the whole product process (user needs, personas, prioritization, Figma mockups) up to a working MVP.
+
+## Features
+
+- Full product design process documented in `docs/` (needs, prioritization, mockups)
+- Anonymous threads and comments
+- Threads filtered by city (worldwide cities database import)
+- Node.js + MongoDB backend, React frontend, all running with Docker Compose
+- MVP delivered under the `v0.1.4` tag
+
+## Tech stack
+
+`React` · `Node.js` · `MongoDB` · `Docker` · `Figma`
+
+## Team
+
+- Baptiste Mesnager
+- Charly Richard-Fromont
+- gabriel
+- Noa Loussouarn
+- Fourchet
+
+The project kept growing outside of school: see [charly-2025/poltergeist](https://github.com/charly-2025/poltergeist).
+
+---
+
+## Technical documentation
+
+### Release
 
 The delivered MVP is available under the Git tag `v0.1.4`
 
-## Project Overview
+### Project Overview
 
 This is a web application functioning as a social network. The application allows users to register and remain completely anonymous: no username, no email, no password, nothing. Total anonymity. Inspired by 4chan and Reddit, it allows anonymous users to create discussion threads, comment under these threads, and browse threads based on location. Threads are organized by location, allowing each user (by selecting a city) to filter threads by city.
 
 --- 
-## Installation and Local Run
+### Installation and Local Run
 
 ```
 Clone the project:
-git clone B-TBM-100-REN-1-1-yowl-1
-cd B-TBM-100-REN-1-1-yowl-1/mvp
+git clone Poltergeist-Epitech
+cd Poltergeist-Epitech/mvp
 ```
 
-### Prerequisites
+#### Prerequisites
 
 Make sure you have installed:
 - Docker
 - Docker Compose
 
-### Environment Variables
+#### Environment Variables
 
 The backend relies on the following environment variables:
 
@@ -57,7 +91,7 @@ docker exec mvp-mongo-1 mongoimport \
   --headerline
 ```
 
-### Running the Project
+#### Running the Project
 
 stop the current build docker compose you did before.
 From the mvp/ directory, and rebuild and simply run:
@@ -70,14 +104,14 @@ Once running, the application is accessible at:
   - http://localhost:3001
 
 ---
-### Justification of Technical Choices
+#### Justification of Technical Choices
 
   - React was chosen for its component-based architecture for an dynamic interface.
   - Express.js was chosen because it is really ideal for a simple REST Api
   - MongoDB has a flexible structure with flexible schemas, no SQL so it can be very simple for a simple mvp project, stores data as JSON-like documents which it is really close to what we send to frontend and frontend send to backend
 
 ---
-## Prototype 
+### Prototype 
 
 Link to the Figma pages : 
 - Computer : 
@@ -86,7 +120,7 @@ Link to the Figma pages :
 	- https://www.figma.com/proto/OEcowloXSBYUQo7YhL5OER/poltergeist-design?node-id=883-7058&t=kpquvZzO9wT9Mq2t-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=524%3A3097
 
 --- 
-## Folders Structure
+### Folders Structure
 
 ```
 .
@@ -106,7 +140,7 @@ Link to the Figma pages :
 ```
 
 --- 
-## Commit Convention
+### Commit Convention
 ```
 Format of the commit message: KARMA GIT
 
@@ -131,3 +165,7 @@ USEFUL <scope>:
   - Figma
 
 ```
+
+---
+
+More of my work on my [portfolio](https://charly-2025.github.io/myPortfolio/).
